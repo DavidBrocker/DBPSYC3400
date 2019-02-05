@@ -1,5 +1,5 @@
 ---
-title: "MyLabJournal"
+title: "PSYC 3400: Statistics"
 output: html_document
 ---
 
@@ -17,27 +17,74 @@ output: html_document
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **My Lab Journal**
+# **Course Description**
 
-This is a template example for lab journaling. Students in Matt Crump's Human Cognition and Performance Lab will use this template to learn R, and other things. Students can replace this text with more fun things. People not in my lab can use this too.
+##Course Details
 
-## How to use
+### Required Texts
 
-1. fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
+[Understanding Statistics in the Behavioral Sciences by Robert Pagano](https://www.amazon.com/Understanding-Statistics-Behavioral-Sciences-10th/dp/1111837260/ref=sr_1_1?ie=UTF8&qid=1548815933&sr=8-1&keywords=understanding+statistics+in+behavioral+sciences) 
 
-2. Blog/journal what you are doing in R, by editing the Journal.Rmd. See the [Journal page](https://crumplab.github.io/LabJournalWebsite/Journal.html) for an example of what to do to get started learning R.
+R For Dummies 2nd Edition
 
-3. See the [links page](https://crumplab.github.io/LabJournalWebsite/Links.html) for lots of helpful links on learning R.
 
-4. Change everything to make it your own.
 
+### Contact Information
+
+David Brocker
+
+DavidABrocker@gmail.com
+
+Office Hours: 12:00-1:30 Tuesday's in 4606A or by Appointment
+
+### What is the point of the lab section?
+
+The lab section serves as a way to go from the theoretical and conceptual materials and transform them into the practical applications that they serve. In lecture, you will learn about *why* a certain statistic is calculated when dealing with specific data, in lab, you will learn *how*. 
+
+Additionally, the labs will serve as a way to review the material on the exercises. I will give you problems with different numbers, but they will test the same type of knowledge that the exercises aim to test. 
+
+If you miss a lab, it is quite difficult to catch up. I will do my best to make my notes available, but there is a difference in reading it versus seeing it first hand. 
+
+During lab you will be shown how to do various parts of the exercises using R-Studio. This is the best time for you to ask me any questions you have.
+
+### When do we meet?
+
+1/30
+
+2/6
+
+2/13
+
+2/20
+
+2/27
+
+3/6
+
+3/13
+
+3/20
+
+3/27
+
+4/3
+
+4/10
+
+4/17
+
+**4/24** No Class 
+
+5/1
+
+**5/8** Last Class: Review Day
 
 </div>
 <div class="col-sm-6">
 
-### [Crump Lab: Human Cognition and Performance](https://crumplab.github.io)
 
-<a href = "https://crumplab.github.io">
+
+
 ![](images/logo.png)
 </a>
 </div>

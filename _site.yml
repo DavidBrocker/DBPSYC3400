@@ -1,11 +1,11 @@
-name: "MyLabJournal"
+name: "PSYC 3400"
 navbar:
-  title: "MyLabJournal"
+  title: "PSYCH 3400"
   left:
     - text: "Home"
       href: index.html
-    - text: "Journal"
-      href: Journal.html
-    - text: "Links"
-      href: Links.html
+    - text: "Lab 1"
+      href: Lab-1.html
+    - text: "Lab 2"
+      href: Lab-2.html
 output_dir: "docs"

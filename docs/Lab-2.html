@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>PSYC 3400l</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">PSYC 3400l</h1>
+
+</div>
+
+
+<div id="lab-02" class="section level2">
+<h2>Lab 02</h2>
+<p>Welcome back!</p>
+<p>How did everyone find the exercises? Were they too difficult? Were they too easy? Were there any parts that you didn’t understand? Each week when an exercise is turned in I would like to take time in the beginning of lab to make sure that everyone is on the same page. Statistics, especially when using an unfamiliar program like R, can be quite difficult. If you fall behind it is <em>essential</em> that you let me know so I know what things to stress.</p>
+<p>First, let us do some review.</p>
+<ol style="list-style-type: decimal">
+<li><p>What would I need to type into R to have it display a histogram of the dataset: 1,2,3,4,5,6,7,8,9,10?</p></li>
+<li><p>How could I rename the x-axis on this plot so that it carried more information than it currently does?</p></li>
+</ol>
+<pre class="r"><code>x = c(1,2,3,4,5,6,7,8,9,10,11)
+y = c(1,4,9,16,25,36,49,64,81,100,121)
+plot(y~x, main = &quot;Years Spent in School vs. Salary&quot;, ylab = &quot;Salary&quot;)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Uh-oh! I had just finished typing in a really long function and I accidentally forgot a comma. Is there any way for me to get everything I typed back without needing to retype it?</p></li>
+<li><p>Given the following dataset, create a plot that shows the relationship between x and y, y and x, and z and y:</p></li>
+</ol>
+<p>x = {2,4,6,10,16,26,42} y = {1,3,5,7,9,11,13} z = {5,10,15,20,25,30,35}</p>
+<pre class="r"><code>x = c(2,4,6,10,16,26,42)
+y = c(1,3,5,7,9,11,13)
+z = c(5,10,15,20,25,30,35)
+
+
+df&lt;-data.frame(x,y,z)
+plot(df$x~df$y)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>plot(df$y~df$x)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="r"><code>plot(df$z~df$y)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Below are two plots. Of the two, which one do you thing shows a more apparent relationship or pattern?</li>
+</ol>
+<pre class="r"><code>x=c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+y=c(2,2,7,9,11,13,15,17,11,20,22,24,27,28,31,32,35,37,38,40)
+plot(x~y, main = &quot;Plot 1&quot;, ylab = &quot; &quot;, xlab = &quot; &quot;)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>a=rnorm(20,20,5)
+b=rnorm(20,100,10)
+plot(a~b, main = &quot;Plot 2&quot;, ylab = &quot; &quot;, xlab = &quot; &quot;)</code></pre>
+<p><img src="Lab-2_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>Any questions?</p>
+<div id="new-material-mean-standard-deviation-z-score" class="section level3">
+<h3>New Material: Mean, Standard Deviation, Z-Score</h3>
+<p>You will see the formula for the arithmetic mean in several differnt ways. Here are just a few.</p>
+<p><span class="math inline">\(\mu = \frac{\sum x}{n}\)</span> or $M =  $</p>
+<p>In other words, all numbers in a set should be added together and divided by the number of items in the set.</p>
+<p><em>Standard Deviation</em></p>
+<p><span class="math inline">\(\sigma = \sqrt\frac{\sum (x - \mu)^2 }{n}\)</span></p>
+<p>This is the formula used to find a z score.</p>
+<p>Z is equal to the raw score <span class="math inline">\(x\)</span> minus the mean <span class="math inline">\(\mu\)</span>, divided by the standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math inline">\(z =\frac{x-\mu}{\sigma}\)</span></p>
+<p>There is no function in R to calculate a z-score, so instead we will have to use the built in functions for each part of the equation like such:</p>
+<pre class="r"><code>x = c(12,16,20,41)
+mx = mean(x)
+sdx = sd(x)
+
+z = ((x-mx)/sdx)
+z </code></pre>
+<pre><code>## [1] -0.7933668 -0.4837602 -0.1741537  1.4512807</code></pre>
+<pre class="r"><code>x = c(12,16,20,41)
+scale(x)</code></pre>
+<pre><code>##            [,1]
+## [1,] -0.7933668
+## [2,] -0.4837602
+## [3,] -0.1741537
+## [4,]  1.4512807
+## attr(,&quot;scaled:center&quot;)
+## [1] 22.25
+## attr(,&quot;scaled:scale&quot;)
+## [1] 12.91962</code></pre>
+<p>Here are a few practice problems:</p>
+<ol style="list-style-type: decimal">
+<li>Find the mean and standard deviation for the following dataset: datset1 = {10,63,51,24,87,42}</li>
+</ol>
+<pre class="r"><code>datset1 = c(10,63,51,24,87,42)
+mds = round(mean(datset1), digits = 2)
+sdds=round(sd(datset1), digits = 2)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the z scores for the same dataset.</li>
+</ol>
+<pre class="r"><code>z = ((datset1-mds)/sdds)
+z</code></pre>
+<pre><code>## [1] -1.3138394  0.6113331  0.1754450 -0.8053033  1.4831093 -0.1514711</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Perform the following summations on this dataset:</li>
+</ol>
+<p>c = (5,8,1,16,4,11)</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\sum c^2\)</span></p></li>
+<li><p><span class="math inline">\(\sum (c)^2\)</span></p></li>
+<li><p><span class="math inline">\(\sum c+2\)</span></p></li>
+</ol>
+<pre class="r"><code>c = c(5,8,1,16,4,11)
+a = sum(c)^2
+b = sum(c^2)
+d = sum(c+1)
+
+a</code></pre>
+<pre><code>## [1] 2025</code></pre>
+<pre class="r"><code>b</code></pre>
+<pre><code>## [1] 483</code></pre>
+<pre class="r"><code>d</code></pre>
+<pre><code>## [1] 51</code></pre>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
