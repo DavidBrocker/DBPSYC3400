@@ -1,5 +1,5 @@
 ---
-title: "PSYC 3400l"
+title: " "
 output:
   html_document:
     toc: true
@@ -14,7 +14,7 @@ output:
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 
-## Lab 01
+
 
 ### Introduction
 Hello!
