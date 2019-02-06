@@ -66,7 +66,7 @@ plot(a~b, main = "Plot 2", ylab = " ", xlab = " ")
 
 Any questions?
 
-###New Material: Mean, Standard Deviation, Z-Score
+###New Material: Mean, Standard Deviation, Z-Score, Summation, Stem and Leaf
 
 You will see the formula for the arithmetic mean in several differnt ways. Here are just a few. 
 
@@ -118,26 +118,64 @@ z
 ```
 3. Perform the following summations on this dataset:
 
-c = (5,8,1,16,4,11)
+x = (5,8,1,16,4,11)
 
-a) $\sum c^2$
+a) $\sum X^2$
 
-b) $\sum (c)^2$
+b) $\sum (X)^2$
 
-c) $\sum c+2$
+c) $\sum X+2$
+
+d) $(\sum X)(4 \sum X ) $
 
 ```{r}
-c = c(5,8,1,16,4,11)
-a = sum(c)^2
-b = sum(c^2)
-d = sum(c+1)
+x = c(5,8,1,16,4,11)
+a = sum(x)^2
+b = sum(x^2)
+c = sum(x+1)
+d = (sum(x)*(4*sum(x)))
+
 
 a
 b
+c
 d
 ```
 
 
+Suppose that a psychologist wants to investigate the scores of his students in his statistics class. He may want to create a stem and leaf diagram in order to visualize the scores. 
 
+Here is how he might do this for the following data:
 
+{85,90,88,95,90,91,85,94,83,86,90,90,88,94,90}
+
+```{r}
+set.seed(100)
+x = round(rnorm(15,89,7), digits = 0)
+x
+stem(x)
+
+```
+
+From this output we can infer a few things: 
+
+1) Several students (9) scored somewhere in the 90'.
+2) No students failed
+3) There are two areas for scores in the 80's and scores in the 90's, this is because the first "leaf" represents values from 0-4 and the second "leaf" accounts for the 5-9.
+
+Similar to histograms, ( `hist(x, scale = )`) we can manipulate how the stem and leaf plot is displayed using the following phrase: `stem(x, scale = `)
+
+Watch what happens when we use the different scale values.
+
+```{r}
+set.seed(10)
+x = round(rnorm(15,20,2),digits = 0)
+x
+stem(x,scale = 1)
+stem(x,scale = 2)
+stem(x, scale = .5)
+```
+The first stem and leaf plot is the deafult you will get if you just type in `stem(x)`.
+The second stem and leaf plot separates each leaf making the list twice as long. 
+The third stem and leaf plot uses half the spacing as the first, so the scale is about half as long. 
 

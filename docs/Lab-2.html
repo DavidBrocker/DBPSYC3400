@@ -11,7 +11,7 @@
 
 
 
-<title>PSYC 3400</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -296,7 +296,6 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">PSYC 3400</h1>
 
 </div>
 
@@ -341,8 +340,8 @@ b=rnorm(20,100,10)
 plot(a~b, main = &quot;Plot 2&quot;, ylab = &quot; &quot;, xlab = &quot; &quot;)</code></pre>
 <p><img src="Lab-2_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>Any questions?</p>
-<div id="new-material-mean-standard-deviation-z-score" class="section level3">
-<h3>New Material: Mean, Standard Deviation, Z-Score</h3>
+<div id="new-material-mean-standard-deviation-z-score-summation-stem-and-leaf" class="section level3">
+<h3>New Material: Mean, Standard Deviation, Z-Score, Summation, Stem and Leaf</h3>
 <p>You will see the formula for the arithmetic mean in several differnt ways. Here are just a few.</p>
 <p><span class="math inline">\(\mu = \frac{\sum x}{n}\)</span> or $M =  $</p>
 <p>In other words, all numbers in a set should be added together and divided by the number of items in the set.</p>
@@ -386,23 +385,80 @@ z</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Perform the following summations on this dataset:</li>
 </ol>
-<p>c = (5,8,1,16,4,11)</p>
+<p>x = (5,8,1,16,4,11)</p>
 <ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\sum c^2\)</span></p></li>
-<li><p><span class="math inline">\(\sum (c)^2\)</span></p></li>
-<li><p><span class="math inline">\(\sum c+2\)</span></p></li>
+<li><p><span class="math inline">\(\sum X^2\)</span></p></li>
+<li><p><span class="math inline">\(\sum (X)^2\)</span></p></li>
+<li><p><span class="math inline">\(\sum X+2\)</span></p></li>
+<li><p>$(X)(4 X ) $</p></li>
 </ol>
-<pre class="r"><code>c = c(5,8,1,16,4,11)
-a = sum(c)^2
-b = sum(c^2)
-d = sum(c+1)
+<pre class="r"><code>x = c(5,8,1,16,4,11)
+a = sum(x)^2
+b = sum(x^2)
+c = sum(x+1)
+d = (sum(x)*(4*sum(x)))
+
 
 a</code></pre>
 <pre><code>## [1] 2025</code></pre>
 <pre class="r"><code>b</code></pre>
 <pre><code>## [1] 483</code></pre>
-<pre class="r"><code>d</code></pre>
+<pre class="r"><code>c</code></pre>
 <pre><code>## [1] 51</code></pre>
+<pre class="r"><code>d</code></pre>
+<pre><code>## [1] 8100</code></pre>
+<p>Suppose that a psychologist wants to investigate the scores of his students in his statistics class. He may want to create a stem and leaf diagram in order to visualize the scores.</p>
+<p>Here is how he might do this for the following data:</p>
+<p>{85,90,88,95,90,91,85,94,83,86,90,90,88,94,90}</p>
+<pre class="r"><code>set.seed(100)
+x = round(rnorm(15,89,7), digits = 0)
+x</code></pre>
+<pre><code>##  [1] 85 90 88 95 90 91 85 94 83 86 90 90 88 94 90</code></pre>
+<pre class="r"><code>stem(x)</code></pre>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   8 | 3
+##   8 | 55688
+##   9 | 00000144
+##   9 | 5</code></pre>
+<p>From this output we can infer a few things:</p>
+<ol style="list-style-type: decimal">
+<li>Several students (9) scored somewhere in the 90’.</li>
+<li>No students failed</li>
+<li>There are two areas for scores in the 80’s and scores in the 90’s, this is because the first “leaf” represents values from 0-4 and the second “leaf” accounts for the 5-9.</li>
+</ol>
+<p>Similar to histograms, ( <code>hist(x, scale = )</code>) we can manipulate how the stem and leaf plot is displayed using the following phrase: <code>stem(x, scale =</code>)</p>
+<p>Watch what happens when we use the different scale values.</p>
+<pre class="r"><code>set.seed(10)
+x = round(rnorm(15,20,2),digits = 0)
+x</code></pre>
+<pre><code>##  [1] 20 20 17 19 21 21 18 19 17 19 22 22 20 22 21</code></pre>
+<pre class="r"><code>stem(x,scale = 1)</code></pre>
+<pre><code>## 
+##   The decimal point is at the |
+## 
+##   16 | 00
+##   18 | 0000
+##   20 | 000000
+##   22 | 000</code></pre>
+<pre class="r"><code>stem(x,scale = 2)</code></pre>
+<pre><code>## 
+##   The decimal point is at the |
+## 
+##   17 | 00
+##   18 | 0
+##   19 | 000
+##   20 | 000
+##   21 | 000
+##   22 | 000</code></pre>
+<pre class="r"><code>stem(x, scale = .5)</code></pre>
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   1 | 778999
+##   2 | 000111222</code></pre>
+<p>The first stem and leaf plot is the deafult you will get if you just type in <code>stem(x)</code>. The second stem and leaf plot separates each leaf making the list twice as long. The third stem and leaf plot uses half the spacing as the first, so the scale is about half as long.</p>
 </div>
 
 
