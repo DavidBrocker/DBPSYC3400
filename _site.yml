@@ -8,4 +8,6 @@ navbar:
       href: Lab-1.html
     - text: "Lab 2"
       href: Lab-2.html
+    - text: "Lab 3"
+      href: Lab-3.html
 output_dir: "docs"

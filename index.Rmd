@@ -25,8 +25,9 @@ output: html_document
 
 [Understanding Statistics in the Behavioral Sciences by Robert Pagano](https://www.amazon.com/Understanding-Statistics-Behavioral-Sciences-10th/dp/1111837260/ref=sr_1_1?ie=UTF8&qid=1548815933&sr=8-1&keywords=understanding+statistics+in+behavioral+sciences) 
 
-R For Dummies 2nd Edition
+### Optional
 
+[R For Dummies 2nd Edition](https://www.amazon.com/R-Dummies-Andrie-Vries/dp/1119055806/ref=sr_1_1?keywords=r+for+dummies+de+vries&qid=1549591007&sr=8-1)
 
 
 ### Contact Information
