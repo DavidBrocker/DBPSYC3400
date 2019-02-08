@@ -70,7 +70,7 @@ Any questions?
 
 You will see the formula for the arithmetic mean in several different ways. Here are just a few. 
 
-$\mu = \frac{\sum x}{n}$ or $M = \frac{x_1 + x_2 + x_3...}{N} $
+$\mu = \frac{\sum x}{n}$ or $M = \frac{x_1 + x_2 + x_3...}{N}$
 
 In other words, all numbers in a set should be added together and divided by the number of items in the set. 
 

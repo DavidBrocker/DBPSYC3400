@@ -340,13 +340,15 @@ b=rnorm(20,100,10)
 plot(a~b, main = &quot;Plot 2&quot;, ylab = &quot; &quot;, xlab = &quot; &quot;)</code></pre>
 <p><img src="Lab-2_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>Any questions?</p>
-<div id="new-material-mean-standard-deviation-z-score-summation-stem-and-leaf" class="section level3">
-<h3>New Material: Mean, Standard Deviation, Z-Score, Summation, Stem and Leaf</h3>
-<p>You will see the formula for the arithmetic mean in several differnt ways. Here are just a few.</p>
-<p><span class="math inline">\(\mu = \frac{\sum x}{n}\)</span> or $M =  $</p>
+<div id="new-material-mean-standard-deviation-variance-z-score-summation-and-stem-and-leaf-plots" class="section level3">
+<h3>New Material: Mean, Standard Deviation, Variance, Z-Score, Summation, and Stem and Leaf Plots</h3>
+<p>You will see the formula for the arithmetic mean in several different ways. Here are just a few.</p>
+<p><span class="math inline">\(\mu = \frac{\sum x}{n}\)</span> or <span class="math inline">\(M = \frac{x_1 + x_2 + x_3...}{N}\)</span></p>
 <p>In other words, all numbers in a set should be added together and divided by the number of items in the set.</p>
 <p><em>Standard Deviation</em></p>
 <p><span class="math inline">\(\sigma = \sqrt\frac{\sum (x - \mu)^2 }{n}\)</span></p>
+<p><em>Variance</em></p>
+<p>Variance is simply <span class="math inline">\((\sigma ^2)\)</span></p>
 <p>This is the formula used to find a z score.</p>
 <p>Z is equal to the raw score <span class="math inline">\(x\)</span> minus the mean <span class="math inline">\(\mu\)</span>, divided by the standard deviation <span class="math inline">\(\sigma\)</span>.</p>
 <p><span class="math inline">\(z =\frac{x-\mu}{\sigma}\)</span></p>
@@ -371,11 +373,16 @@ scale(x)</code></pre>
 ## [1] 12.91962</code></pre>
 <p>Here are a few practice problems:</p>
 <ol style="list-style-type: decimal">
-<li>Find the mean and standard deviation for the following dataset: datset1 = {10,63,51,24,87,42}</li>
+<li>Find the mean, standard deviation, and variance for the following dataset: datset1 = {10,63,51,24,87,42}</li>
 </ol>
 <pre class="r"><code>datset1 = c(10,63,51,24,87,42)
-mds = round(mean(datset1), digits = 2)
-sdds=round(sd(datset1), digits = 2)</code></pre>
+mds = mean(datset1)
+sdds=sd(datset1)
+vards=(sdds^2)
+vards</code></pre>
+<pre><code>## [1] 758.1667</code></pre>
+<pre class="r"><code>var(datset1)</code></pre>
+<pre><code>## [1] 758.1667</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Find the z scores for the same dataset.</li>
 </ol>
@@ -389,24 +396,15 @@ z</code></pre>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\sum X^2\)</span></p></li>
 <li><p><span class="math inline">\(\sum (X)^2\)</span></p></li>
-<li><p><span class="math inline">\(\sum X+2\)</span></p></li>
-<li><p>$(X)(4 X ) $</p></li>
 </ol>
 <pre class="r"><code>x = c(5,8,1,16,4,11)
 a = sum(x)^2
 b = sum(x^2)
-c = sum(x+1)
-d = (sum(x)*(4*sum(x)))
-
 
 a</code></pre>
 <pre><code>## [1] 2025</code></pre>
 <pre class="r"><code>b</code></pre>
 <pre><code>## [1] 483</code></pre>
-<pre class="r"><code>c</code></pre>
-<pre><code>## [1] 51</code></pre>
-<pre class="r"><code>d</code></pre>
-<pre><code>## [1] 8100</code></pre>
 <p>Suppose that a psychologist wants to investigate the scores of his students in his statistics class. He may want to create a stem and leaf diagram in order to visualize the scores.</p>
 <p>Here is how he might do this for the following data:</p>
 <p>{85,90,88,95,90,91,85,94,83,86,90,90,88,94,90}</p>
