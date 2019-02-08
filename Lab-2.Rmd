@@ -66,9 +66,9 @@ plot(a~b, main = "Plot 2", ylab = " ", xlab = " ")
 
 Any questions?
 
-###New Material: Mean, Standard Deviation, Z-Score, Summation, Stem and Leaf
+###New Material: Mean, Standard Deviation, Variance, Z-Score, Summation, and Stem and Leaf Plots
 
-You will see the formula for the arithmetic mean in several differnt ways. Here are just a few. 
+You will see the formula for the arithmetic mean in several different ways. Here are just a few. 
 
 $\mu = \frac{\sum x}{n}$ or $M = \frac{x_1 + x_2 + x_3...}{N} $
 
@@ -77,6 +77,10 @@ In other words, all numbers in a set should be added together and divided by the
 *Standard Deviation*
 
 $\sigma = \sqrt\frac{\sum (x - \mu)^2 }{n}$
+
+*Variance*
+
+Variance is simply $(\sigma ^2)$
 
 This is the formula used to find a z score. 
 
@@ -102,13 +106,17 @@ scale(x)
 
 Here are a few practice problems:
 
-1. Find the mean and standard deviation for the following dataset:
+1. Find the mean, standard deviation, and variance for the following dataset:
 datset1 = {10,63,51,24,87,42}
 
 ```{r}
 datset1 = c(10,63,51,24,87,42)
-mds = round(mean(datset1), digits = 2)
-sdds=round(sd(datset1), digits = 2)
+mds = mean(datset1)
+sdds=sd(datset1)
+vards=(sdds^2)
+vards
+var(datset1)
+
 ```
 2. Find the z scores for the same dataset. 
 
@@ -124,22 +132,14 @@ a) $\sum X^2$
 
 b) $\sum (X)^2$
 
-c) $\sum X+2$
-
-d) $(\sum X)(4 \sum X ) $
 
 ```{r}
 x = c(5,8,1,16,4,11)
 a = sum(x)^2
 b = sum(x^2)
-c = sum(x+1)
-d = (sum(x)*(4*sum(x)))
-
 
 a
 b
-c
-d
 ```
 
 
