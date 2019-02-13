@@ -287,6 +287,9 @@ div.tocify {
 <li>
   <a href="Lab-3.html">Lab 3</a>
 </li>
+<li>
+  <a href="test.pdf">Test</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -303,8 +306,8 @@ div.tocify {
 </div>
 
 
-<div id="correlation" class="section level1">
-<h1>Correlation</h1>
+<div id="correlation" class="section level3">
+<h3>Correlation</h3>
 <p>Correlaton refers to the strength of the relationship between two different variables.</p>
 <p>Correlation is often represented by the letter r.</p>
 <p>The equation for correlation(r) looks a little intimidating but if it is broken down into steps, it is much more managable.</p>
@@ -401,6 +404,72 @@ r</code></pre>
 <p><img src="Lab-3_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>cor(cars$speed,cars$dist)</code></pre>
 <pre><code>## [1] 0.8068949</code></pre>
+</div>
+<div id="linear-regression" class="section level2">
+<h2>Linear Regression</h2>
+<p>Linear regression refers to an equation of the “best fitting line” that shows where a line could be placed taht would best explain the relationship, if any, or your data.</p>
+<p>The equation is as follows:</p>
+<p><span class="math inline">\(\hat{Y} = a + bx\)</span></p>
+<p>Where <span class="math inline">\(\hat{Y}\)</span> equals the predicted value of Y given X.</p>
+<p>In order to find b:</p>
+<p><span class="math inline">\(b = \frac{n\sum XY -\sum X\sum Y }{n\sum X^2-\sum (X)^2}\)</span> or <span class="math inline">\(b = \frac{\sum XY }{\sum X^2}\)</span></p>
+<p>In order to fid a:</p>
+<p><span class="math inline">\(a = \mathrel{\bar{Y}}-b\mathrel{\bar{X}}\)</span></p>
+<p>Let us work with a sample set of data:</p>
+<p>x = 20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100</p>
+<p>y = 10.93,11.78,10.97,11.27,11.37,10.31,12.84,12.15,10.86,13.25,12.43,11.70,12.90 12.8,12.82,12.69,12.55</p>
+<pre class="r"><code>x = c(20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100)
+y= c(10.93,11.78,10.97,11.27,11.37,10.31,12.84,12.15,10.86,13.25,12.43,11.70,12.90,
+ 12.8,12.82,12.69,12.55)
+x</code></pre>
+<pre><code> [1]  20  25  30  35  40  45  50  55  60  65  70  75  80  85  90  95 100</code></pre>
+<pre class="r"><code>y</code></pre>
+<pre><code> [1] 10.93 11.78 10.97 11.27 11.37 10.31 12.84 12.15 10.86 13.25 12.43
+[12] 11.70 12.90 12.80 12.82 12.69 12.55</code></pre>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(n\sum XY -\sum X\sum Y\)</span></li>
+</ol>
+<pre class="r"><code>length(x)</code></pre>
+<pre><code>## [1] 17</code></pre>
+<pre class="r"><code>length(y)</code></pre>
+<pre><code>## [1] 17</code></pre>
+<pre class="r"><code>topb=(length(x)*sum(x*y))-(sum(x)*(sum(y)))
+topb</code></pre>
+<pre><code>[1] 4135.25</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(b = \frac{4135.25 }{n\sum X^2-\sum (X)^2}\)</span></li>
+</ol>
+<pre class="r"><code>botb=length(x)*(sum(x^2)-(sum(x)^2))
+botb</code></pre>
+<pre><code>## [1] -16473000</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(b = \frac{4135.25 }{-16473000}\)</span></li>
+</ol>
+<pre class="r"><code>b=topb/botb
+b</code></pre>
+<pre><code>## [1] -0.000251032</code></pre>
+<pre class="r"><code>xy.mod&lt;-lm(y~x)
+xy.mod = summary(xy.mod)
+xy.mod</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.30993 -0.29221 -0.09373  0.29159  1.15311 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 10.546765   0.438253  24.065 2.13e-13 ***
+x            0.023848   0.006762   3.527  0.00305 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.683 on 15 degrees of freedom
+Multiple R-squared:  0.4533,    Adjusted R-squared:  0.4168 
+F-statistic: 12.44 on 1 and 15 DF,  p-value: 0.003052</code></pre>
+<p><span class="math inline">\(b = \frac{\sum XY -\frac{\sum X\sum Y}{N}{\sum X^2-\frac{\sum (X)^2}{N}}}\)</span></p>
 </div>
 
 

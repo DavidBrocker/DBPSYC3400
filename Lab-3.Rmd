@@ -1,13 +1,15 @@
 ---
-title: " "
+title: ' '
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: '1'
   html_document:
-    toc: true
-    toc_float: true
-    collapsed: false
-    number_sections: false
+    collapsed: no
+    number_sections: no
+    toc: yes
     toc_depth: 1
-    #code_folding: hide
+    toc_float: yes
 ---
 ###Correlation
 
@@ -131,4 +133,103 @@ Let us take a look at a data set with some meaning and more data points.
 ```{r}
 plot(cars$speed~cars$dist, xlab="Distance",ylab = "Speed",main="Distance vs. Speed", sub = "r = .81")
 cor(cars$speed,cars$dist)
+```
+
+
+##Linear Regression
+
+Linear regression refers to an equation of the "best fitting line" that shows where a line could be placed taht would best explain the relationship, if any, or your data. 
+
+The equation is as follows:
+
+$\hat{Y} = a + bx$
+
+Where $\hat{Y}$ equals the predicted value of Y given X. 
+
+In order to find b:
+
+$b = \frac{n\sum XY -\sum X\sum Y }{n\sum X^2-\sum (X)^2}$ or $b = \frac{\sum XY }{\sum X^2}$
+
+In order to fid a:
+
+$a = \mathrel{\bar{Y}}-b\mathrel{\bar{X}}$
+
+Let us work with a sample set of data:
+
+x = 20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100
+
+y = 10.93,11.78,10.97,11.27,11.37,10.31,12.84,12.15,10.86,13.25,12.43,11.70,12.90
+ 12.8,12.82,12.69,12.55
+
+```{r,comment=NA}
+x = c(20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100)
+y= c(10.93,11.78,10.97,11.27,11.37,10.31,12.84,12.15,10.86,13.25,12.43,11.70,12.90,
+ 12.8,12.82,12.69,12.55)
+x
+y
+
+```
+1. $n\sum XY -\sum X\sum Y$
+```{r}
+length(x)
+length(y)
+```
+
+```{r,comment=NA}
+topb=(sum(x*y))-(sum(x)*(sum(y)/17))
+topb
+```
+2. $b = \frac{4135.25}{n\sum X^2-\sum (X)^2}$
+
+```{r}
+botb= (sum(x^2))-((sum(x)^2)/17)
+botb
+```
+3. $b = \frac{4135.25 }{256}$
+
+```{r}
+b=topb/botb
+b
+```
+
+$a = \mathrel{\bar{Y}}-b\mathrel{\bar{X}}$
+
+```{r}
+a=mean(y)-b*(mean(x))
+a
+```
+
+
+$\frac{\sum(X-\mathrel{\bar{X}}^2)\sum(Y-\mathrel{\bar{Y}}^2)}{\sum(X-\mathrel{\bar{X}}$
+
+```{r}
+ssxy=sum((x-mean(x))*(y-mean(y)))
+ssxy
+```
+
+
+
+```{r}
+ssx=sum((x - mean(x))^2)
+ssx
+```
+
+$\frac{243.25}{10,200}$
+
+```{r}
+b = (ssxy/ssx)
+b
+```
+
+```{r}
+a=(mean(y))-(b*(mean(x)))
+a
+```
+$\hat{Y} = 10.546 + .0238x$
+
+
+```{r,comment=NA}
+xy.mod<-lm(y~x)
+xy.mod = summary(xy.mod)
+xy.mod
 ```
