@@ -1,9 +1,6 @@
 ---
 title: ' '
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '1'
   html_document:
     collapsed: no
     number_sections: no
@@ -11,6 +8,10 @@ output:
     toc_depth: 1
     toc_float: yes
 ---
+```{r global_options,}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
+```
+
 ###Correlation
 
 Correlaton refers to the strength of the relationship between two different variables. 
@@ -112,14 +113,15 @@ Before we start discussing what that means, let us see the other way of calculat
 ```{r}
 x
 y
-cor(x,y)
+corxy=cor(x,y)
+corxy
 ```
 
 That seems *a lot* easier than the eight steps we went through!
 
 The important thing to remember is that while R can do things for you very fast, it is important that you know why you are doing them in the first place!
 
-So we found that for our data, the r was equal to `r`. This is a relatively weak correlation. In psychology you will likely never see correlations that are above .9. This obtained r would indicate some positive correlation.  
+So we found that for our data, the r was equal to `r`. This is a relatively weak correlation. In psychology you will likely never see correlations that are above .9. This obtained r of `r cor(x,y)` would indicate some positive correlation. In order to obtain $R^2$we simply square the obtained r and get `r corxy^2`
 
 Here is what a plot of the data looks like:
 
@@ -179,13 +181,13 @@ length(y)
 topb=(sum(x*y))-(sum(x)*(sum(y)/17))
 topb
 ```
-2. $b = \frac{4135.25}{n\sum X^2-\sum (X)^2}$
+2. $b = \frac{243.25}{n\sum X^2-\sum (X)^2}$
 
 ```{r}
 botb= (sum(x^2))-((sum(x)^2)/17)
 botb
 ```
-3. $b = \frac{4135.25 }{256}$
+3. $b = \frac{243.25}{10,200}$
 
 ```{r}
 b=topb/botb
@@ -199,8 +201,13 @@ a=mean(y)-b*(mean(x))
 a
 ```
 
+$\hat{Y} = 10.546 + .0238x$
 
-$\frac{\sum(X-\mathrel{\bar{X}}^2)\sum(Y-\mathrel{\bar{Y}}^2)}{\sum(X-\mathrel{\bar{X}}$
+$\frac{\sum(X-\mathrel{\bar{X}}^2)\sum(Y-\mathrel{\bar{Y}}^2)}{\sum(X-\mathrel{\bar{X}})^2}$
+
+or 
+
+$\frac{SSxy}{SSx}$
 
 ```{r}
 ssxy=sum((x-mean(x))*(y-mean(y)))
@@ -218,6 +225,7 @@ $\frac{243.25}{10,200}$
 
 ```{r}
 b = (ssxy/ssx)
+b = round(b,digits=4)
 b
 ```
 
@@ -227,9 +235,32 @@ a
 ```
 $\hat{Y} = 10.546 + .0238x$
 
+As with correlation, there is an 'easier' way to find the equation for the best fitting line. 
+
+Now, let us use the `lm()` function to create the prediction equation. What you will notice is the use of `<-`, which is another way of assignment. We will also name the equation prediction `xy.mod`. which stands for model. 
+
 
 ```{r,comment=NA}
 xy.mod<-lm(y~x)
 xy.mod = summary(xy.mod)
 xy.mod
 ```
+
+From the above output you should note a few things: the number across from the `(Intercept)` will be your value for a. The number across from `x` will be your value for b. This `summary()` will also give you other statistics such as the `R-squared`. 
+
+
+We have the equation of the line, so let us draw it To do this we will use the `abline()` function. The parts of the function asks to specify the `a=` and `b=` so the full function should read `abline(a=intercept,b=slope)`. We will throw in `col= ` in order to color the line red. There are plenty of graphical options built into R, we will not go too in depth at the moment. `
+
+Before inserting the function, we will need to `plot` our data first. When dealing with so-called 'real' data, your dependent variable should be the y and the independent should be the x.
+
+```{r}
+plot(y~x,sub="Line of Best Fit Y'=10.546+.0238x")
+abline(a=a,b=b,col="red")
+```
+
+
+
+
+
+
+

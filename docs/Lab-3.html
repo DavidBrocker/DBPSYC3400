@@ -288,7 +288,7 @@ div.tocify {
   <a href="Lab-3.html">Lab 3</a>
 </li>
 <li>
-  <a href="test.pdf">Test</a>
+  <a href="Lab-4.html">Lab 4</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -306,6 +306,7 @@ div.tocify {
 </div>
 
 
+<pre class="r"><code>knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)</code></pre>
 <div id="correlation" class="section level3">
 <h3>Correlation</h3>
 <p>Correlaton refers to the strength of the relationship between two different variables.</p>
@@ -327,7 +328,7 @@ div.tocify {
 y = c(13, 12, 13, 14, 13, 12, 11, 12, 11, 12, 13, 12, 12, 13, 13)
 xy=sum(x*y)
 xy</code></pre>
-<pre><code>## [1] 921</code></pre>
+<pre><code>[1] 921</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><span class="math inline">\(r = \frac{15(921)-(\sum x)(\sum(y))}{\sqrt{15 \sum x ^2-(\sum x)^2][15 \sum y ^2-(\sum y)^2]}}\)</span></li>
 </ol>
@@ -337,16 +338,16 @@ y = c(13, 12, 13, 14, 13, 12, 11, 12, 11, 12, 13, 12, 12, 13, 13)
 sumx = sum(x)
 sumy = sum(y)
 sumx</code></pre>
-<pre><code>## [1] 74</code></pre>
+<pre><code>[1] 74</code></pre>
 <pre class="r"><code>sumy</code></pre>
-<pre><code>## [1] 186</code></pre>
+<pre><code>[1] 186</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><span class="math inline">\(r = \frac{15(921-(74)(186)}{\sqrt{15 \sum x ^2-(\sum x)^2][15 \sum y ^2-(\sum y)^2]}}\)</span></li>
 </ol>
 <p>Let’s just take care of the numerator for now.</p>
 <pre class="r"><code>num=(15*xy)-(sumx*sumy)
 num</code></pre>
-<pre><code>## [1] 51</code></pre>
+<pre><code>[1] 51</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><span class="math inline">\(r = \frac{51}{\sqrt{15 \sum x ^2-(\sum x)^2][15 \sum y ^2-(\sum y)^2]}}\)</span></li>
 </ol>
@@ -356,9 +357,9 @@ num</code></pre>
 <pre class="r"><code>dsumx=sum(x^2)
 dsumy=sum(y^2)
 dsumx</code></pre>
-<pre><code>## [1] 376</code></pre>
+<pre><code>[1] 376</code></pre>
 <pre class="r"><code>dsumy</code></pre>
-<pre><code>## [1] 2316</code></pre>
+<pre><code>[1] 2316</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li><span class="math inline">\(r = {\sqrt{15(376)-(\sum x)^2][15(2316))-(\sum y)^2]}}\)</span></li>
 </ol>
@@ -366,44 +367,45 @@ dsumx</code></pre>
 <pre class="r"><code>ssx=sum(x)^2
 ssy=sum(y)^2
 ssx</code></pre>
-<pre><code>## [1] 5476</code></pre>
+<pre><code>[1] 5476</code></pre>
 <pre class="r"><code>ssy</code></pre>
-<pre><code>## [1] 34596</code></pre>
+<pre><code>[1] 34596</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li><span class="math inline">\({\sqrt{15(376)-5,476][15(2316))-34,596]}}\)</span></li>
 </ol>
 <p>Now we can clean up the denominator:</p>
 <pre class="r"><code>den = sqrt(((15*dsumx)-(ssx))*((15*dsumy)-(ssy)))
 den</code></pre>
-<pre><code>## [1] 153.675</code></pre>
+<pre><code>[1] 153.675</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li><span class="math inline">\(r = \frac{51}{153.675}\)</span></li>
 </ol>
 <p>Now divide</p>
 <pre class="r"><code>r = num/den
 r</code></pre>
-<pre><code>## [1] 0.3318692</code></pre>
+<pre><code>[1] 0.3318692</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li><span class="math inline">\(r = 0.33\)</span></li>
 </ol>
 <p>Before we start discussing what that means, let us see the other way of calculating r (there are many)</p>
 <pre class="r"><code>x</code></pre>
-<pre><code>##  [1] 5 5 4 4 5 5 4 5 3 5 6 6 5 6 6</code></pre>
+<pre><code> [1] 5 5 4 4 5 5 4 5 3 5 6 6 5 6 6</code></pre>
 <pre class="r"><code>y</code></pre>
-<pre><code>##  [1] 13 12 13 14 13 12 11 12 11 12 13 12 12 13 13</code></pre>
-<pre class="r"><code>cor(x,y)</code></pre>
-<pre><code>## [1] 0.3318692</code></pre>
+<pre><code> [1] 13 12 13 14 13 12 11 12 11 12 13 12 12 13 13</code></pre>
+<pre class="r"><code>corxy=cor(x,y)
+corxy</code></pre>
+<pre><code>[1] 0.3318692</code></pre>
 <p>That seems <em>a lot</em> easier than the eight steps we went through!</p>
 <p>The important thing to remember is that while R can do things for you very fast, it is important that you know why you are doing them in the first place!</p>
-<p>So we found that for our data, the r was equal to <code>r</code>. This is a relatively weak correlation. In psychology you will likely never see correlations that are above .9. This obtained r would indicate some positive correlation.</p>
+<p>So we found that for our data, the r was equal to <code>r</code>. This is a relatively weak correlation. In psychology you will likely never see correlations that are above .9. This obtained r of 0.3318692 would indicate some positive correlation. In order to obtain <span class="math inline">\(R^2\)</span>we simply square the obtained r and get 0.1101372</p>
 <p>Here is what a plot of the data looks like:</p>
 <pre class="r"><code>plot(x~y)</code></pre>
-<p><img src="Lab-3_files/figure-html/unnamed-chunk-9-1.png" width="672" /> It would be hard to guess a correlation by just looking at this data. There are only 15 points, but we can tell they are not all in the same space, nor are they all randomly dispersed. So if we <em>had</em> to take a guess, we could assume that a slight correlation could be prsent.</p>
+<p><img src="Lab-3_files/figure-html/unnamed-chunk-9-1.png" width="1152" /> It would be hard to guess a correlation by just looking at this data. There are only 15 points, but we can tell they are not all in the same space, nor are they all randomly dispersed. So if we <em>had</em> to take a guess, we could assume that a slight correlation could be prsent.</p>
 <p>Let us take a look at a data set with some meaning and more data points.</p>
 <pre class="r"><code>plot(cars$speed~cars$dist, xlab=&quot;Distance&quot;,ylab = &quot;Speed&quot;,main=&quot;Distance vs. Speed&quot;, sub = &quot;r = .81&quot;)</code></pre>
-<p><img src="Lab-3_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="Lab-3_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
 <pre class="r"><code>cor(cars$speed,cars$dist)</code></pre>
-<pre><code>## [1] 0.8068949</code></pre>
+<pre><code>[1] 0.8068949</code></pre>
 </div>
 <div id="linear-regression" class="section level2">
 <h2>Linear Regression</h2>
@@ -430,24 +432,49 @@ x</code></pre>
 <li><span class="math inline">\(n\sum XY -\sum X\sum Y\)</span></li>
 </ol>
 <pre class="r"><code>length(x)</code></pre>
-<pre><code>## [1] 17</code></pre>
+<pre><code>[1] 17</code></pre>
 <pre class="r"><code>length(y)</code></pre>
-<pre><code>## [1] 17</code></pre>
-<pre class="r"><code>topb=(length(x)*sum(x*y))-(sum(x)*(sum(y)))
+<pre><code>[1] 17</code></pre>
+<pre class="r"><code>topb=(sum(x*y))-(sum(x)*(sum(y)/17))
 topb</code></pre>
-<pre><code>[1] 4135.25</code></pre>
+<pre><code>[1] 243.25</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><span class="math inline">\(b = \frac{4135.25 }{n\sum X^2-\sum (X)^2}\)</span></li>
+<li><span class="math inline">\(b = \frac{243.25}{n\sum X^2-\sum (X)^2}\)</span></li>
 </ol>
-<pre class="r"><code>botb=length(x)*(sum(x^2)-(sum(x)^2))
+<pre class="r"><code>botb= (sum(x^2))-((sum(x)^2)/17)
 botb</code></pre>
-<pre><code>## [1] -16473000</code></pre>
+<pre><code>[1] 10200</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><span class="math inline">\(b = \frac{4135.25 }{-16473000}\)</span></li>
+<li><span class="math inline">\(b = \frac{243.25}{10,200}\)</span></li>
 </ol>
 <pre class="r"><code>b=topb/botb
 b</code></pre>
-<pre><code>## [1] -0.000251032</code></pre>
+<pre><code>[1] 0.02384804</code></pre>
+<p><span class="math inline">\(a = \mathrel{\bar{Y}}-b\mathrel{\bar{X}}\)</span></p>
+<pre class="r"><code>a=mean(y)-b*(mean(x))
+a</code></pre>
+<pre><code>[1] 10.54676</code></pre>
+<p><span class="math inline">\(\hat{Y} = 10.546 + .0238x\)</span></p>
+<p><span class="math inline">\(\frac{\sum(X-\mathrel{\bar{X}}^2)\sum(Y-\mathrel{\bar{Y}}^2)}{\sum(X-\mathrel{\bar{X}})^2}\)</span></p>
+<p>or</p>
+<p><span class="math inline">\(\frac{SSxy}{SSx}\)</span></p>
+<pre class="r"><code>ssxy=sum((x-mean(x))*(y-mean(y)))
+ssxy</code></pre>
+<pre><code>[1] 243.25</code></pre>
+<pre class="r"><code>ssx=sum((x - mean(x))^2)
+ssx</code></pre>
+<pre><code>[1] 10200</code></pre>
+<p><span class="math inline">\(\frac{243.25}{10,200}\)</span></p>
+<pre class="r"><code>b = (ssxy/ssx)
+b = round(b,digits=4)
+b</code></pre>
+<pre><code>[1] 0.0238</code></pre>
+<pre class="r"><code>a=(mean(y))-(b*(mean(x)))
+a</code></pre>
+<pre><code>[1] 10.54965</code></pre>
+<p><span class="math inline">\(\hat{Y} = 10.546 + .0238x\)</span></p>
+<p>As with correlation, there is an ‘easier’ way to find the equation for the best fitting line.</p>
+<p>Now, let us use the <code>lm()</code> function to create the prediction equation. What you will notice is the use of <code>&lt;-</code>, which is another way of assignment. We will also name the equation prediction <code>xy.mod</code>. which stands for model.</p>
 <pre class="r"><code>xy.mod&lt;-lm(y~x)
 xy.mod = summary(xy.mod)
 xy.mod</code></pre>
@@ -469,7 +496,12 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.683 on 15 degrees of freedom
 Multiple R-squared:  0.4533,    Adjusted R-squared:  0.4168 
 F-statistic: 12.44 on 1 and 15 DF,  p-value: 0.003052</code></pre>
-<p><span class="math inline">\(b = \frac{\sum XY -\frac{\sum X\sum Y}{N}{\sum X^2-\frac{\sum (X)^2}{N}}}\)</span></p>
+<p>From the above output you should note a few things: the number across from the <code>(Intercept)</code> will be your value for a. The number across from <code>x</code> will be your value for b. This <code>summary()</code> will also give you other statistics such as the <code>R-squared</code>.</p>
+<p>We have the equation of the line, so let us draw it To do this we will use the <code>abline()</code> function. The parts of the function asks to specify the <code>a=</code> and <code>b=</code> so the full function should read <code>abline(a=intercept,b=slope)</code>. We will throw in <code>col=</code> in order to color the line red. There are plenty of graphical options built into R, we will not go too in depth at the moment. `</p>
+<p>Before inserting the function, we will need to <code>plot</code> our data first. When dealing with so-called ‘real’ data, your dependent variable should be the y and the independent should be the x.</p>
+<pre class="r"><code>plot(y~x,sub=&quot;Line of Best Fit Y&#39;=10.546+.0238x&quot;)
+abline(a=a,b=b,col=&quot;red&quot;)</code></pre>
+<p><img src="Lab-3_files/figure-html/unnamed-chunk-22-1.png" width="1152" /></p>
 </div>
 
 
