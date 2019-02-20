@@ -1,19 +1,10 @@
 ---
-title: ' '
-output:
-  pdf_document:
-    toc: yes
-    toc_depth: '1'
-  html_document:
-    collapsed: no
-    number_sections: no
-    toc: yes
-    toc_depth: 1
-    toc_float: yes
+title: "Lab 2"
+author: "David Brocker"
+output: pdf_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```{r global_options,echo=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
 ```
 
 

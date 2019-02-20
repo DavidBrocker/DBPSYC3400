@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="additions-to-linear-regression" class="section level2">
+<h2>Additions to Linear Regression</h2>
+<p>In last weeks lecture we discussed how to create the regression line. If we are trying to predict Y given X, we can plug a value in for X and the output we get should be the predicted Y value.</p>
+<p>Is this prediction perfect?</p>
+<p>The regression line is created by the points you have in your dataset, but, keep in mind that the relationships in your datasets are not always perfect in nature. As such, there is an error of the prediction that can be computed. The textbook likens this error to the standard deviation, and you will see that the formula is quite similar as well.</p>
+<p>(2*sd(res)/length(x-2))</p>
+<p><span class="math inline">\(s_{Y|X} = \sqrt{\frac{\sum(Y-Y&#39;)^2}{N-2}}\)</span></p>
+<p>The expanded formula looks like:</p>
+<p><span class="math inline">\(s_{Y|X} = \sqrt{\frac{[\sum(XY)-(\sum X)(\sum Y^2/N]^2}{N-2}}\)</span></p>
+<p>Luckily for us, we can use R to find out the standard error through the use of the <code>summary()</code> function.</p>
+<pre class="r"><code>set.seed(91)
+x=rnorm(100,20)
+y=rnorm(100,40)
+plot(x,y)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-1-1.png" width="1152" /></p>
+<pre class="r"><code>xy.mod&lt;-lm(y~x)
+stder=2*sd(residuals(xy.mod))/sqrt(100)
+stder</code></pre>
+<pre><code>[1] 0.1898251</code></pre>
+<pre class="r"><code>summary(xy.mod)</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.19624 -0.59849 -0.00488  0.64597  2.44247 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 39.34739    1.64687  23.892   &lt;2e-16 ***
+x            0.02830    0.08255   0.343    0.733    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.954 on 98 degrees of freedom
+Multiple R-squared:  0.001197,  Adjusted R-squared:  -0.008995 
+F-statistic: 0.1175 on 1 and 98 DF,  p-value: 0.7325</code></pre>
+</div>
+<div id="graphical-additions" class="section level2">
+<h2>Graphical Additions</h2>
+<p>We have already seen the basics of using graphics to visualize our data with functons such as <code>plot()</code> and <code>hist()</code>.Additionally, we have seen that we can do certain things to clean-up our visualizations such as providing titles and captions through the use of <code>main=&quot;Title&quot;</code>, <code>sub=&quot;Caption&quot;</code> and respectively, adding axis lables with <code>xlab=&quot;X&quot;, ylab=&quot;Y&quot;</code>. `</p>
+<p>We have also seen how to draw a line through the points that would best explain the relationship present if any, in the dat through the use of <code>abline(a=,b=)</code>.</p>
+<pre class="r"><code>set.seed(105)
+var1=rnorm(10,30)
+var2=rnorm(10,23)
+plot(var1,var2,main=&quot;Some Nice Title&quot;,xlab = &quot;Variable 1&quot;,ylab=&quot;Variable 2&quot;, sub=&quot;r = .64 &quot; )</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-2-1.png" width="1152" /></p>
+<pre class="r"><code>var.mod&lt;-lm(var2~var1)
+summary(var.mod)</code></pre>
+<pre><code>
+Call:
+lm(formula = var2 ~ var1)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.22571 -0.00482  0.11789  0.26722  0.44729 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   6.0602     7.0975   0.854   0.4180  
+var1          0.5510     0.2368   2.327   0.0484 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.5139 on 8 degrees of freedom
+Multiple R-squared:  0.4036,    Adjusted R-squared:  0.3291 
+F-statistic: 5.414 on 1 and 8 DF,  p-value: 0.0484</code></pre>
+<p>We can tell that this line is equal to: <span class="math inline">\(Y= 6.060 + .551\)</span></p>
+<p>In our discussion on linear regressin we discussed how to add the line of best fit through the use of the <code>abline()</code> function.</p>
+<pre class="r"><code>plot(var1,var2)
+abline(a=6.060,b=.551,col=&quot;red&quot;)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-3-1.png" width="1152" /></p>
+<p>Additionally, we can color the line through the use of <code>col=&quot; &quot;</code>. R has quite the selection of colors available to you. The <code>colors()</code> function, you will see an output of 657 possible colors. Here are just a few:</p>
+<pre class="r"><code>cl=colors()
+sample(cl,5)</code></pre>
+<pre><code>[1] &quot;dodgerblue1&quot;  &quot;grey58&quot;       &quot;grey38&quot;       &quot;lemonchiffon&quot;
+[5] &quot;violetred4&quot;  </code></pre>
+<p>If you can think of a color, there is a name for it in R (most likely!)</p>
+<p>Now that we have colors nailed down, we can mention point characters, or as they are called in R <code>pch=</code>. This function will allow you to change how a point looks. Here is an example:</p>
+<pre class="r"><code>set.seed(71)
+x=rnorm(100,50)
+y=rnorm(100,25)
+plot(x,y,pch=2)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-5-1.png" width="1152" /> Here is an image of some of the possible choices you will can use. <img src="images/points.png" /></p>
+<p>If I wanted to plot a graph with green, filled in squares, I would do this:</p>
+<pre class="r"><code>set.seed(60)
+x=rnorm(15,100);y=rnorm(15,50)
+plot(x,y,col=&quot;green&quot;,pch=15)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-6-1.png" width="1152" /></p>
+<p>Okay, so we can add colors and shapes to our graphs. So what? What if we wanted to display certain information in a certain way, or what if we wanted to separate our data in some distinguishing way?</p>
+<p>If you are presented with a dataset with more than one independent variable, it can be difficult to discern any relationship when you have to graph it twice. Additionally we will calculate the linerar regression summaries of each independent vairables:</p>
+<pre class="r"><code>set.seed(10)
+Attention_Experiment&lt;-data.frame(Age=round(rnorm(50,17,2),digits = 0),Minutes_Phone=round(rnorm(50,120,5),digits=2),Test_Score=round(rnorm(50,80,10),digits=2))
+plot(Attention_Experiment$Test_Score~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Test Score&quot;)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-7-1.png" width="1152" /></p>
+<pre class="r"><code>plot(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Hours TV Watched&quot;)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-7-2.png" width="1152" /></p>
+<pre class="r"><code>Test_Age.mod&lt;-lm(Attention_Experiment$Test_Score~Attention_Experiment$Age)
+Phone_Use.mod&lt;-lm(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age)
+summary(Test_Age.mod)</code></pre>
+<pre><code>
+Call:
+lm(formula = Attention_Experiment$Test_Score ~ Attention_Experiment$Age)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-20.509  -7.738   2.219   7.314  14.414 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)               78.4391    12.9521   6.056 2.06e-07 ***
+Attention_Experiment$Age   0.1105     0.7900   0.140    0.889    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 9.82 on 48 degrees of freedom
+Multiple R-squared:  0.0004075, Adjusted R-squared:  -0.02042 
+F-statistic: 0.01957 on 1 and 48 DF,  p-value: 0.8893</code></pre>
+<pre class="r"><code>summary(Phone_Use.mod)</code></pre>
+<pre><code>
+Call:
+lm(formula = Attention_Experiment$Minutes_Phone ~ Attention_Experiment$Age)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.3595 -3.3896  0.4043  3.2590 10.7080 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              120.59529    6.50609  18.536   &lt;2e-16 ***
+Attention_Experiment$Age  -0.01564    0.39685  -0.039    0.969    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 4.933 on 48 degrees of freedom
+Multiple R-squared:  3.235e-05, Adjusted R-squared:  -0.0208 
+F-statistic: 0.001553 on 1 and 48 DF,  p-value: 0.9687</code></pre>
+<p>We could take the correlation using <code>cor()</code> and see what the value of R-Squared was and keep looking back and forth, but there is a (somewhat) easier way!</p>
+<p>For this we wil be introducing three new functions: <code>points()</code>, <code>xlim=',</code>ylim=<code>,and</code>head()`.</p>
+<p>First: <code>head()</code> will show us a preview of our data, from here we can see where the values tend to lie, and get an idea of where our axes should be.</p>
+<pre class="r"><code>head(Attention_Experiment,10)</code></pre>
+<pre><code>   Age Minutes_Phone Test_Score
+1   17        118.00      72.38
+2   17        118.33      84.19
+3   14        126.84      69.60
+4   16        130.69      87.12
+5   18        122.53      73.67
+6   18        123.93      85.63
+7   15        115.49      86.61
+8   16        122.66      63.42
+9   14        116.77      90.28
+10  16        121.45      91.28</code></pre>
+<p><code>Age</code> has a minimum of 14 and a maximum of 18.<code>Hours Watched</code> has a minumum of 5.05 and maximum of 7.10. <code>Test Score</code> has a minumum of 58.81 and a maximum of 78.98.</p>
+<p>We can use this information to create our new axis limits using <code>xlim</code> and <code>ylim</code>. Additionally. the <code>points()</code> function will be used in order to plot additional variables onto the existing plot. Finaly, we will use <code>abline()</code> to draw the line of best fit for each dataset.</p>
+<pre class="r"><code>plot(Attention_Experiment$Test_Score~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Test Score and Minutes on Phone&quot;,xlim=c(10,20),ylim=c(20,150),col=&quot;red&quot;,pch=15)
+points(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Hours TV Watched&quot;,xlim=c(10,20),ylim=c(20,150),col=&quot;blue&quot;,pch=15)
+legend(&quot;bottomleft&quot;,title=&quot;Legend&quot;,c(&quot;Phone Usage&quot;,&quot;Test Score&quot;),fill=c(&quot;red&quot;,&quot;blue&quot;),cex = .8)
+abline(Test_Age.mod,col=&quot;blue&quot;)
+abline(Phone_Use.mod,col=&quot;red&quot;)</code></pre>
+<p><img src="Lab-4_files/figure-html/unnamed-chunk-9-1.png" width="1152" /> That was a lot to squeeze into two lines so let’s just go over it one last time.</p>
+<ul>
+<li><code>plot()</code> Draw a graph of your points, it accepts the following inputs:</li>
+<li><code>x</code>,<code>y</code>:The independent and dependent variable you are interested in</li>
+<li><code>main =</code>,<code>xlab =</code>, <code>ylab =</code>, <code>sub =</code>: Title, x-axis lable, y-axis label, and caption.</li>
+<li><code>xlim =</code>,<code>ylim =</code>: These set parameters for the graph that will be drawn.</li>
+<li><code>col =</code> : Designates a desired color for the lines, and points that will be drawn.</li>
+<li><code>pch =</code>: Point character, assigns shape for points drawn.</li>
+<li><code>points()</code>: Plot additional points on an existing graph with pre-defined graphical parameters.</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

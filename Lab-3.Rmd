@@ -144,7 +144,7 @@ Linear regression refers to an equation of the "best fitting line" that shows wh
 
 The equation is as follows:
 
-$\hat{Y} = a + bx$
+$\hat{Y_x} = a_x + b_yx$
 
 Where $\hat{Y}$ equals the predicted value of Y given X. 
 
@@ -257,6 +257,7 @@ Before inserting the function, we will need to `plot` our data first. When deali
 plot(y~x,sub="Line of Best Fit Y'=10.546+.0238x")
 abline(a=a,b=b,col="red")
 ```
+
 
 
 
