@@ -17,9 +17,9 @@ output: html_document
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **Course Description**
+## **Course Description**
 
-##Course Details
+
 
 ### Required Texts
 
@@ -30,7 +30,7 @@ output: html_document
 [R For Dummies 2nd Edition](https://www.amazon.com/R-Dummies-Andrie-Vries/dp/1119055806/ref=sr_1_1?keywords=r+for+dummies+de+vries&qid=1549591007&sr=8-1)
 
 
-### Contact Information
+####Contact Information
 
 David Brocker
 

@@ -6,16 +6,17 @@ output:
     number_sections: no
     toc_depth: 1
     toc_float: yes
+    css: style.css
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Exam 1 R-Review Sheet
+###Exam 1 R-Review Sheet
 
 
-##Functions and Arguments
+####Functions and Arguments
 
 Here are some important functions and arguments to know:
 
@@ -51,7 +52,7 @@ Here are some important functions and arguments to know:
 
   - This can also be used to expand a linear model to give you values such as the coefficient of correlation, slope and intercept. 
   
-##Syntax
+####Syntax
 
 When using R-Studio, it is important that the math you do in the console follows the same rules as the math you would do on a calculator or a piece of paper. 
 
@@ -83,7 +84,7 @@ diff
 ```
 Not too bad, we were **only** off by *one hundred and fourteen thousand six hundred nintey-four*.
 
-##Math Operators
+#####Math Operators
 
 
 `()` matter, quite a lot. Additionally, here are the math operators you can use:

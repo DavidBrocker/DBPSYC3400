@@ -71,6 +71,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 </head>
 
@@ -312,8 +313,8 @@ div.tocify {
 </div>
 
 
-<div id="probability" class="section level1">
-<h1>Probability</h1>
+<div id="probability" class="section level3">
+<h3>Probability</h3>
 <p>Before we can talk about inferential satistics we have to understand probability.</p>
 <p>We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail.</p>
 <pre class="r"><code>coin=c(&quot;head&quot;,&quot;tails&quot;)
@@ -360,6 +361,7 @@ length(which(z == 10)) #Return the length of Z when &quot;10&quot; is present.</
 <pre><code>[1] 5</code></pre>
 <pre class="r"><code>length(which(z&gt;91))#Return the length of Z when a score is less than `&lt;`</code></pre>
 <pre><code>[1] 0</code></pre>
+</div>
 <div id="proportioning-data" class="section level2">
 <h2>Proportioning Data</h2>
 <p>The below code will allow you to take a set of data and see what proportion is accounted for given a certain criteria.</p>
@@ -461,7 +463,6 @@ mean(s1)</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
 <pre><code>[1] 10.11374</code></pre>
 <p>Do you see how it becomes difficult to tell a certain property of a random sample when you only have small sample to use?</p>
-</div>
 </div>
 </div>
 
