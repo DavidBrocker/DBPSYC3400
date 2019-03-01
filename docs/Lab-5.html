@@ -425,20 +425,20 @@ op</code></pre>
 <p>So, let’s make a sample of 20 numbers with a mean of 12 and a standard deviation of 3.</p>
 <pre class="r"><code>x = rnorm(20,12,3)
 x</code></pre>
-<pre><code> [1] 13.097284 15.506223  3.880974 13.454414 10.355446  9.762859 12.940350
- [8] 12.737303 10.744033 11.713643 14.068619 17.126588 15.664308  9.463079
-[15] 13.263097  9.466081 15.763571 13.006123  6.281570 12.017433</code></pre>
+<pre><code> [1]  4.772241 12.669913 13.647396 11.097458 14.711718 10.953515 11.231921
+ [8]  8.700693  9.439912 12.662757 12.629698 20.544733 10.058838 11.090353
+[15] 17.406570 12.610658  9.518459 14.033584 13.947719 16.284123</code></pre>
 <p>See how the numbers came out a little unwieldy? Let’s fix that:</p>
 <pre class="r"><code>x=round(rnorm(20,12,3),digits=2)
 x</code></pre>
-<pre><code> [1] 14.76 13.40 13.71 10.53 13.43 12.41 11.35  8.17 15.06 10.10  5.06
-[12] 11.58  8.97 13.29 12.76 12.84 10.26 13.45 16.24 10.07</code></pre>
+<pre><code> [1] 14.18  8.46  8.72 15.05 14.63 17.98 13.16 11.83 14.64 13.82 10.34
+[12] 10.23 13.05 10.94 17.16 10.99  7.87 11.84 10.55  7.66</code></pre>
 <p>Notice how the <code>digits=</code> command is preceded by a comma. This is because it is a part of the <code>round()</code> function but <em>not</em> a part of the <code>rnorm()</code> function.</p>
 <p>We can specify the mean and the standard deviation of the dataset, but does introducing the variability of the standard deviation make it harder for the mean to be exactly what we asked for? Let’s see!</p>
 <pre class="r"><code>x=rnorm(100,12,3)
 x = round(x, digits = 2)
 mean(x)</code></pre>
-<pre><code>[1] 12.1244</code></pre>
+<pre><code>[1] 12.3841</code></pre>
 </div>
 <div id="sampling" class="section level3">
 <h3>Sampling</h3>
