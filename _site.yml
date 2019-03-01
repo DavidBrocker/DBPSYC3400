@@ -10,6 +10,8 @@ navbar:
       href: Lab-2.html
     - text: "Lab 3"
       href: Lab-3.html
+    - text: "Review Sheet 1"
+      href: Review-Sheet.html
     - text: "Lab 4"
       href: Lab-4.html
     - text: "Lab 5"

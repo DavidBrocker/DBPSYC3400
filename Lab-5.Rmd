@@ -1,12 +1,13 @@
 ---
-title: ' '
+title: " "
 output:
   html_document:
-    collapsed: no
-    number_sections: no
-    toc: yes
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
     toc_depth: 1
-    toc_float: yes
+    #code_folding: hide
 ---
 
 ```{r global_options,echo=FALSE}
@@ -182,6 +183,3 @@ mean(s3)
 mean(x)
 ```
 Do you see how it becomes difficult to tell a certain property of a random sample when you only have small sample to use?
-
-
-

@@ -9,11 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="David Brocker" />
 
-<meta name="date" content="2019-02-11" />
 
-<title>Test</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -212,24 +210,82 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Test</h1>
-<h4 class="author"><em>David Brocker</em></h4>
-<h4 class="date"><em>February 11, 2019</em></h4>
 
 </div>
 
 
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<div id="exam-1-r-review-sheet" class="section level1">
+<h1>Exam 1 R-Review Sheet</h1>
+<div id="functions-and-arguments" class="section level2">
+<h2>Functions and Arguments</h2>
+<p>Here are some important functions and arguments to know:</p>
+<p><code>plot()</code> - This is the function to graphically visualize your data. Within this function can be several arguments.</p>
+<ul>
+<li><p><code>x</code>,<code>y</code>:The independent and dependent variable you are interested in</p></li>
+<li><p><code>main =</code>,<code>xlab =</code>, <code>ylab =</code>, <code>sub =</code>: Title, x-axis lable, y-axis label, and caption.</p></li>
+<li><p><code>xlim =</code>,<code>ylim =</code>: These set parameters for the graph that will be drawn.</p></li>
+<li><p><code>col =</code> : Designates a desired color for the lines, and points that will be drawn.</p></li>
+<li><p><code>pch =</code>: Point character, assigns shape for points drawn.</p></li>
+<li><p><code>points()</code>: Plot additional points on an existing graph with pre-defined graphical parameters</p></li>
+</ul>
+<p>-<code>cor()</code> - This function will return the correlation, or r, of an entire dataframe, or of specified variables.</p>
+<p>-<code>hist()</code> - This function will create a histogram of a given variable, displaying its frequencies.</p>
+<ul>
+<li><p><code>breaks =</code> - This argument allows you to specify a bin width of your choice.</p></li>
+<li><p><code>lm()</code> - This function allows you to create a linear model from which you can predict a variable, from another.</p></li>
+<li><p>the <code>~</code> is used to delinate between the predicting variable and the predictor variable.</p>
+<ul>
+<li>For example: <code>lm(x~y)</code> is different than <code>lm(y~x)</code>.</li>
+</ul></li>
+<li><p>When using <code>lm()</code>, it is common to name the model something that makes sense + <code>.mod.</code>.</p></li>
+</ul>
+<p>-<code>summary()</code> - This can be used on entire datasets to return the minimum, maximum, and median values.</p>
+<ul>
+<li>This can also be used to expand a linear model to give you values such as the coefficient of correlation, slope and intercept.</li>
+</ul>
+</div>
+<div id="syntax" class="section level2">
+<h2>Syntax</h2>
+<p>When using R-Studio, it is important that the math you do in the console follows the same rules as the math you would do on a calculator or a piece of paper.</p>
+<p>For example:</p>
+<p>I have a dataset with a <strong>mean</strong> of 10, and a <strong>standard deviation</strong> of 7. What is the probability of having a score of 18?</p>
+<p>We know the formula for this is the <strong>Z-Score</strong> formula: <span class="math display">\[z = \frac{x - M}{\sigma}\]</span> Depending on how you enter this data into R, you will get two different answers:</p>
+<pre class="r"><code>wrong = 18-10/7
+wrong</code></pre>
+<pre><code>## [1] 16.57143</code></pre>
+<pre class="r"><code>right = (18-10)/7
+right</code></pre>
+<pre><code>## [1] 1.142857</code></pre>
+<p><code>()</code> are very important to R, and your answers will either be incorrect or will not be ouput corectly if the <code>()</code> are misplaced/misused. Depending on how difficult you want to make your calculations, keeping track of your <code>()</code> placement is very important.</p>
+<p>The below equation will not render the correct answer:</p>
+<pre class="r"><code>incorrect = (100-200*300/4)/(300-120^2/4)*(220-320^2/4)
+correct = (100-(200*300/4)/(300-((120^2)/4)*(220-((320^2)/4))))
+incorrect</code></pre>
+<pre><code>## [1] -114594.5</code></pre>
+<pre class="r"><code>correct</code></pre>
+<pre><code>## [1] 99.99984</code></pre>
+<pre class="r"><code>diff = incorrect-correct
+diff</code></pre>
+<pre><code>## [1] -114694.5</code></pre>
+<p>Not too bad, we were <strong>only</strong> off by <em>one hundred and fourteen thousand six hundred nintey-four</em>.</p>
+</div>
+<div id="math-operators" class="section level2">
+<h2>Math Operators</h2>
+<p><code>()</code> matter, quite a lot. Additionally, here are the math operators you can use:</p>
+<p><code>+</code></p>
+<p><code>-</code></p>
+<p><code>*</code></p>
+<p><code>/</code></p>
+<p><code>^</code></p>
+<p><code>sqrt()</code></p>
+<pre class="r"><code>z=seq(-3,3,by=.1)
+dz=dnorm(z)
+plot(dz,type=&quot;l&quot;,xaxt=&quot;n&quot;,xlab=&quot;Z-Score&quot;)
+axis(1, at=which(dz == dnorm(0)), labels=c(0))
+axis(1, at=which(dz == dnorm(1)), labels=c(-1, 1))
+axis(1, at=which(dz == dnorm(2)), labels=c(-2, 2))</code></pre>
+<p><img src="Review-Sheet_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
 </div>
 
 
