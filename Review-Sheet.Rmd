@@ -6,13 +6,12 @@ output:
     number_sections: no
     toc_depth: 1
     toc_float: yes
-    css: style.css
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+<br>
 ###Exam 1 R-Review Sheet
 
 

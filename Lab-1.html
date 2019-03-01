@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p><br></p>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>Hello!</p>
+<p>Welcome to <strong>PSYC 3400: Statistical Methods in Behvioral Research</strong>. In this course, we will be using R-Studio in order to visualize and implement what you learn in lecture.</p>
+<p>In other statistics classes, students will be learning the same exact materials using a program called SPSS. The main difference between SPSS and R-Studio is usability and price. SPSS is a proprietary product, which means it costs a lot of money. R-Studio on the other hand is freeware–which, as the name suggests is free.</p>
+</div>
+<div id="r-studio" class="section level3">
+<h3>R-Studio</h3>
+<p>R-Studio, or R as we will refer to it going forwards, is by no means difficult, however, it does require that you learn a new way to think. It can be downloaded <a href="https://www.rstudio.com/products/rstudio/download">here</a></p>
+</div>
+<div id="simple-math-operations" class="section level3">
+<h3>Simple Math Operations</h3>
+<p>R can do simple math operations: (Addition, Subtraction, Division, Multiplication, Exponentiation)</p>
+<pre class="r"><code>2 + 2</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>4 - 1</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>10 / 2</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>3 * 3</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>6^2</code></pre>
+<pre><code>## [1] 36</code></pre>
+<p>Those same operations can be saved to a variable. Variables will hold that value when they are ‘called’ later.</p>
+<pre class="r"><code>x = 2 + 2
+x</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>y = (2+2)+(10/5)+(2*3)
+y</code></pre>
+<pre><code>## [1] 12</code></pre>
+</div>
+<div id="variables" class="section level3">
+<h3>Variables</h3>
+<p>We can take a value and assign it to a variable. We can also take two variables and perform math operations on them. When dealing with real data, it is important to assign understandable variable names.</p>
+<pre class="r"><code>x = 2
+y = 2
+x + y</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>mean_age = 26</code></pre>
+<p>In this class, we will often use data sets. Single numbers are important, but most, if not all tests in Psychology make use of a dataset consisting of several numbers. In order to make a dataset in R we have two options.</p>
+<ul>
+<li>We can upload a file to R and it will import accordingly</li>
+<li>We can manually create the dataset, using a function called concatenation.</li>
+</ul>
+<pre class="r"><code>x = c(1,2,3,4)
+x</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>ages = c(20,18,19,21,22,22,18,19,20,20,21)
+ages</code></pre>
+<pre><code>##  [1] 20 18 19 21 22 22 18 19 20 20 21</code></pre>
+</div>
+<div id="central-tendency" class="section level3">
+<h3>Central Tendency</h3>
+<ul>
+<li>Measures of Central Tendency
+<ul>
+<li>Mean - returns the average of the sample</li>
+<li>Median = returns the middle number of the sample when put in ascending order</li>
+<li>Range = returns the lowest and highest data points in the set</li>
+</ul></li>
+</ul>
+<pre class="r"><code>x = c(1,3,5,7,9,11)
+mean(x)</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>median(x)</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>range(x)</code></pre>
+<pre><code>## [1]  1 11</code></pre>
+<p>With the exception of the range, the mean and median tell us <em>something</em> about the data. They tell us that in this case, the mean for x is 6 and the median is <code>rmedian(x)</code>. When the median and the mean are the same it leads us to believe this is a fairly symmetrical dataset. In order to test this, we can plot a histogram. A histogram shows us frequency counts for every data point.</p>
+<pre class="r"><code>x = c(1,3,5,7,9,11)
+hist(x)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Between 0-1 there is exactly 1 point, between 2-4 there is exactly 1 point, etc. Let’s see what it looks like when there is some variation in the data.</p>
+<pre class="r"><code>x = c(1,3,2,5,7,8,6,3,4,4,5,5,5,5,2,1,6,8,10)
+hist(x)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>In this course, the data that we are dealing with will have different properties assigned to it. Doing this will allow you to attach meaning into your interpretation while also showing you how to not only visualize, but also organize the data. We will be adding two new functions here: main = “” and xlab = “”. The main function tells R what to label the plot, and the xlab function tells R what to label the x-axis.</p>
+<p>Consider the following:</p>
+<ul>
+<li>A psychologist is interested in whether or not the students in his class are Android users or iPhone users. More specifically, he is interested in whether or not students who use Android phones spend more time on it during class than iPhone users. He observes his statistics class and obtains the following data.</li>
+</ul>
+<pre class="r"><code>Android_Use = c(1,1,1,1,2,2,2,1,1,1,2,3,2,1)
+iPhone_Use = c(1,1,1,0,0,0,1,1,1,0,0,0,1,1)
+hist(Android_Use, main = &quot;Android Use&quot;, xlab = &quot;Phone Use in Minutes&quot;)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>hist(iPhone_Use, main = &quot;iPhone Use&quot;, xlab = &quot;Phone Use in Minutes&quot;)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<p>So far we have learned that R allows us to do simple math problems, create datasets, extract some descriptions from the dataset and visualize how the data is distributed.</p>
+<p>The next step is to look at data and see if there are any relationships present. Most of the data you collect or are given will have an established relationship. To start, let’s take a look at a dataset that is manufactured to have a somewhat perfect relationship.</p>
+<pre class="r"><code>x = c(1,2,3,4)
+y = c(2,4,6,8)
+plot(x~y)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>We can clearly see that the distance between each point is the same. Without any idea of what x and y represent all we can say is that it appears that there seems to be a relationship or a pattern.</p>
+<pre class="r"><code>x = c(1,2,3,4)
+y = c(2,4,6,8)
+plot(x~y, main = &quot;Pay Earned and Hours Worked&quot;, xlab = &quot;Hours Worked&quot;, ylab = &quot;Amount Paid&quot;)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Realistically, looking at this makes sense but are we to belive that working 4 hours yields a result of $2 pay? The data you look at should have context attached to it. Additionally, most data that you are working with will have more than 4 data points.</p>
+<p>So let’s see what a dataset of 20 does to our visualiztion.</p>
+<pre class="r"><code>Hours_Slept = round(rnorm(20,6.3),digits = 2)
+Hours_Watched_TV = round(rnorm(20,4),digits = 2)
+plot(Hours_Slept~Hours_Watched_TV, main = &quot;Hours of TV Watched vs. Hours Slept&quot;, xlab = &quot;Hours Slept&quot;, ylab =&quot;Hours of TV Watched&quot;)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The above data creation function is not important for you to know. But I want to make sure that anything I do, you can see so you understand where information is coming from.</p>
+<p>From this data set, we wouldn’t really be able to make any discernable, objective interpretation of this plot.</p>
+<p>Is there a relationship between hours of TV watched and hours slept? Maybe, but not in the data we collected! This is the important thing to note about this class, and most of science that you will see in your life. Just because you see a chart or a graph, does not mean that it is <em>right</em> or <em>true</em>. I am here to teach you how to use R-Studio to perform statistical calculations, but I am also here to be a proponent for scientific literacy.</p>
+</div>
+<div id="dataframes" class="section level3">
+<h3>Dataframes</h3>
+<p>Most of the data you will be dealing with in this class will be from a set. The examples in the beginning of class focused mainly on simple operations in R. A “real” dataset may have several variables.</p>
+<pre class="r"><code>age = c(10,13,13,15,14,13,12,14,13,15,11,12)
+test_score = c(50,77,85,90,64,87,90,100,83,85,81,70)
+absences = c(0,0,1,3,2,4,3,1,0,0,0,1)
+age_experiment&lt;-data.frame(age,test_score,absences)
+age_experiment</code></pre>
+<pre><code>##    age test_score absences
+## 1   10         50        0
+## 2   13         77        0
+## 3   13         85        1
+## 4   15         90        3
+## 5   14         64        2
+## 6   13         87        4
+## 7   12         90        3
+## 8   14        100        1
+## 9   13         83        0
+## 10  15         85        0
+## 11  11         81        0
+## 12  12         70        1</code></pre>
+<p>In this hypothetical, a researcher is interested in whether or not the number of absences a student has, has any effect on the grade that student receives on a test. In order to test this, we should probably make a plot of the different variables. We could simply just type out the vairables, but it is better to “call” them using a $.</p>
+<pre class="r"><code>plot(age_experiment$test_score~age_experiment$absences, main = &quot;Absences vs. Test Scores&quot;, xlab = &quot;Student Absences&quot;, ylab = &quot;Student Test Scores&quot;)</code></pre>
+<p><img src="Lab-1_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
