@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="probability" class="section level1">
+<h1>Probability</h1>
+<p>Before we can talk about inferential satistics we have to understand probability.</p>
+<p>We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail.</p>
+<pre class="r"><code>coin=c(&quot;head&quot;,&quot;tails&quot;)
+sample(coin,1)</code></pre>
+<pre><code>[1] &quot;head&quot;</code></pre>
+<p>By using the <code>sample()</code> function, we can tell R to randomly sample an event for us.</p>
+<p>We ‘tossed’ a coin, and it landed on heads. What is the probabiity of this happening?</p>
+<p>Probablity is written as:</p>
+<p><span class="math display">\[P(A) = \frac{1}{2} = .5000\]</span></p>
+<p>In other words, the number of possible outcomes favorable to A divided by the total number of possible outcomes.</p>
+<p>Let’s think about this in terms of playing cards:</p>
+<p>In a standard card deck, there are 52 total cards:</p>
+<ul>
+<li>Two Colors: Red and Black</li>
+<li>Four Suits: Clubs, Hearts, Spades, Diamonds</li>
+<li>2,3,4,5,6,7,8,9,10,J,Q,K,A</li>
+</ul>
+<p>What is the probability of picking a King of Hearts</p>
+<p><span class="math display">\[P(King of Hearts) = \frac{1}{52}= .0192\]</span></p>
+<p>What is the probability of picking a 10 of Hearts and a Nine of Hearts with replacement?</p>
+<p><span class="math display">\[P(10 of Hearts) - P(9 of Hearts) \frac{1}{52}X \frac{1}{52} = .01923X .01923 = .00037\]</span> What is the probability of picking a 10 of Hearts and a Nine of Hearts without replacement?</p>
+<pre class="r"><code>Ten_of_Hearts = 1/52
+Ten_of_Hearts</code></pre>
+<pre><code>[1] 0.01923077</code></pre>
+<pre class="r"><code>Nine_of_Hearts = 1/52
+Ten_of_Hearts*Nine_of_Hearts</code></pre>
+<pre><code>[1] 0.0003698225</code></pre>
+<p><span class="math display">\[P(10 of Hearts) - P(9 of Hearts) \frac{1}{52}X \frac{1}{51} = .01923X .01961 = .00037\]</span></p>
+<pre class="r"><code>Ten_of_Hearts = 1/52
+Ten_of_Hearts</code></pre>
+<pre><code>[1] 0.01923077</code></pre>
+<pre class="r"><code>Nine_of_Hearts = 1/51
+Nine_of_Hearts</code></pre>
+<pre><code>[1] 0.01960784</code></pre>
+<pre class="r"><code>Ten_of_Hearts*Nine_of_Hearts</code></pre>
+<pre><code>[1] 0.0003770739</code></pre>
+<p>In order to do work with some datasets, we need to know what they are composed of. So far we have many worked with numbers. If we were to look at string data. Also know as, character data, we can use a new command caled <code>which()</code>. Additionally we can also use a workaround using something new: <code>==</code>. Without getting into the details, there is a difference between <code>=</code> and <code>==</code>.</p>
+<p>There are two different ways we can break-up our data.</p>
+<p>We can use a command such as:</p>
+<pre class="r"><code>z=c(10,30,14,80,91,10) #Have my datset
+length(which(z == 10)) #Return the length of Z when &quot;10&quot; is present.</code></pre>
+<pre><code>[1] 2</code></pre>
+<pre class="r"><code>length(which(z&lt;91))#Return the length of Z when a score is less than `&lt;`</code></pre>
+<pre><code>[1] 5</code></pre>
+<pre class="r"><code>length(which(z&gt;91))#Return the length of Z when a score is less than `&lt;`</code></pre>
+<pre><code>[1] 0</code></pre>
+<div id="proportioning-data" class="section level2">
+<h2>Proportioning Data</h2>
+<p>The below code will allow you to take a set of data and see what proportion is accounted for given a certain criteria.</p>
+<p>For example: If I have a data set of 1’s and 0’s, how can I know how many I have of each. Additionally, how can I tell the proportion of each?</p>
+<p>To do this we need to use the <code>which()</code>command as well as how much od the data is made up of 1’s and 0’s.</p>
+<pre class="r"><code>x=c(0,0,0,0,1,1,0,0,1,1,1,1,0,0,1,0,1,0,1,0,1,1,1,0,1,0,1)
+x</code></pre>
+<pre><code> [1] 0 0 0 0 1 1 0 0 1 1 1 1 0 0 1 0 1 0 1 0 1 1 1 0 1 0 1</code></pre>
+<pre class="r"><code>one = length(which(x==1))
+one</code></pre>
+<pre><code>[1] 14</code></pre>
+<pre class="r"><code>zero = length(which(x==0))
+zero</code></pre>
+<pre><code>[1] 13</code></pre>
+<pre class="r"><code>length(x)</code></pre>
+<pre><code>[1] 27</code></pre>
+<pre class="r"><code>one + zero</code></pre>
+<pre><code>[1] 27</code></pre>
+<pre class="r"><code>one/length(x)</code></pre>
+<pre><code>[1] 0.5185185</code></pre>
+<pre class="r"><code>zero/length(x)</code></pre>
+<pre><code>[1] 0.4814815</code></pre>
+<p>We can see here that the amount of 1’s is pretty close to the amount of 0’s. Now let us try with a more involved example.</p>
+<pre class="r"><code>d=c(&quot;red&quot;,&quot;red&quot;, &quot;blue&quot;,&quot;orange&quot;, &quot;orange&quot;,&quot;orange&quot;) #Imaigine they are marbles
+x= rep(d,20) #Repeat this arrangement 20 times
+rl=length(x[x==&quot;red&quot;]) #What is the length of x that contains &quot;red&quot;
+rl</code></pre>
+<pre><code>[1] 40</code></pre>
+<pre class="r"><code>rb=length(x[x==&quot;blue&quot;])#What is the length of x that contains &quot;blue&quot;
+rb</code></pre>
+<pre><code>[1] 20</code></pre>
+<pre class="r"><code>ro=length(x[x==&quot;orange&quot;])#What is the length of x that contains &quot;orange&quot;
+ro</code></pre>
+<pre><code>[1] 60</code></pre>
+<pre class="r"><code>rl+rb+ro #How many colors do we have?</code></pre>
+<pre><code>[1] 120</code></pre>
+<pre class="r"><code>xl=length(x) #How many colors do we have(easy way)?
+xl</code></pre>
+<pre><code>[1] 120</code></pre>
+<pre class="r"><code>rp=rl/xl #What is the prportion of red compared to the entire dataset
+rp</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
+<pre class="r"><code>bp=rb/xl#What is the prportion of blue compared to the entire dataset
+bp</code></pre>
+<pre><code>[1] 0.1666667</code></pre>
+<pre class="r"><code>op=ro/xl#What is the prportion of orange compared to the entire dataset
+op</code></pre>
+<pre><code>[1] 0.5</code></pre>
+<pre class="r"><code>barplot(c(rp,bp,op),col=c(&quot;red&quot;,&quot;blue&quot;,&quot;orange&quot;),names.arg=c(&quot;Red&quot;,&quot;Blue&quot;, &quot;Orange&quot;))</code></pre>
+<p><img src="Lab-5_files/figure-html/unnamed-chunk-6-1.png" width="1152" /></p>
+<pre class="r"><code>#Draw a barplot with these different proportions</code></pre>
+<div id="rnorm" class="section level3">
+<h3><code>rnorm()</code></h3>
+<p>In most, if not all of my slides, you have seen me use the function <code>rnorm()</code>. In class, I’ve used this as a way to generate large sets of data with one line of text. There are a few arguments that are necessary in order to take this function and use it for the purposes of sampling.</p>
+<p><code>rnorm()</code> stands for “Random Normal”. Essentially, what <code>rnorm()</code> does it create a random set of numbers (specified by you) and generates data.</p>
+<p>Here are the arguments <code>rnorm()</code> accepts:</p>
+<ul>
+<li><p><code>n</code>: Specifies the number of data points you want to create.</p></li>
+<li><p><code>mean</code>: Specifies the mean you want your sample to have.</p></li>
+<li><p><code>sd</code>: Specifies the standard deviation you want your sample to have.</p></li>
+</ul>
+<p>Although not essential, a nice function to use is <code>round( digits = )</code></p>
+<ul>
+<li>This function makes your data look a little bit neater, you will see that when we create a sample from <code>rnorm()</code> the numbers are a little messy.</li>
+</ul>
+<p>So, let’s make a sample of 20 numbers with a mean of 12 and a standard deviation of 3.</p>
+<pre class="r"><code>x = rnorm(20,12,3)
+x</code></pre>
+<pre><code> [1] 13.097284 15.506223  3.880974 13.454414 10.355446  9.762859 12.940350
+ [8] 12.737303 10.744033 11.713643 14.068619 17.126588 15.664308  9.463079
+[15] 13.263097  9.466081 15.763571 13.006123  6.281570 12.017433</code></pre>
+<p>See how the numbers came out a little unwieldy? Let’s fix that:</p>
+<pre class="r"><code>x=round(rnorm(20,12,3),digits=2)
+x</code></pre>
+<pre><code> [1] 14.76 13.40 13.71 10.53 13.43 12.41 11.35  8.17 15.06 10.10  5.06
+[12] 11.58  8.97 13.29 12.76 12.84 10.26 13.45 16.24 10.07</code></pre>
+<p>Notice how the <code>digits=</code> command is preceded by a comma. This is because it is a part of the <code>round()</code> function but <em>not</em> a part of the <code>rnorm()</code> function.</p>
+<p>We can specify the mean and the standard deviation of the dataset, but does introducing the variability of the standard deviation make it harder for the mean to be exactly what we asked for? Let’s see!</p>
+<pre class="r"><code>x=rnorm(100,12,3)
+x = round(x, digits = 2)
+mean(x)</code></pre>
+<pre><code>[1] 12.1244</code></pre>
+</div>
+<div id="sampling" class="section level3">
+<h3>Sampling</h3>
+<p>We can have our dataset of 100 points, but if we take a sample of that data, how representative will it be if the <em>true</em> mean?</p>
+<p>Let’s take a look:</p>
+<pre class="r"><code>set.seed(11)
+x=round(rnorm(10000,10,10),digits = 2)
+s1=sample(x,1000)
+s2=sample(x,100)
+s3=sample(x,10)
+mean(s1)</code></pre>
+<pre><code>[1] 10.06748</code></pre>
+<pre class="r"><code>mean(s2)</code></pre>
+<pre><code>[1] 9.3609</code></pre>
+<pre class="r"><code>mean(s3)</code></pre>
+<pre><code>[1] 17.952</code></pre>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>[1] 10.11374</code></pre>
+<p>Do you see how it becomes difficult to tell a certain property of a random sample when you only have small sample to use?</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
