@@ -1,19 +1,27 @@
-name: "PSYC 3400"
+name: PSYC 3400
 navbar:
-  title: "PSYCH 3400"
+  title: PSYCH 3400
   left:
-    - text: "Home"
-      href: index.html
-    - text: "Lab 1"
-      href: Lab-1.html
-    - text: "Lab 2"
-      href: Lab-2.html
-    - text: "Lab 3"
-      href: Lab-3.html
-    - text: "Review Sheet 1"
-      href: Review-Sheet.html
-    - text: "Lab 4"
-      href: Lab-4.html
-    - text: "Lab 5"
-      href: Lab-5.html
-output_dir: "docs"
+  - text: Home
+    href: index.html
+  - text: Lab 1
+    href: Lab-1.html
+  - text: Lab 2
+    href: Lab-2.html
+  - text: Lab 3
+    href: Lab-3.html
+  - text: Review Sheet 1
+    href: Review-Sheet.html
+  - text: Lab 4
+    href: Lab-4.html
+  - text: Lab 5
+    href: Lab-5.html
+  - text: Lab 6
+    href: Lab-6.html
+    
+output_dir: docs
+output:
+  html_document:
+    lib_dir: site_libs
+    self_contained: no
+
