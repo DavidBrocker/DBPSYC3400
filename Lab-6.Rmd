@@ -1,0 +1,217 @@
+---
+author: "David Brocker, Frank Grasso, Ian Streiter"
+output: html_document
+---
+
+```{r global_options,echo=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
+```
+## Packages
+
+The wonderful thing about R, is that once you know to use it, you can use libraries that process *unlimited* numbers of statistics. In order to do this, one needs to learn a few commands in order to access these online libraries and use them. With Exercise 06, we introduce the downloading of the **BSDA** package. Within this package comes the functions `z.test()` and `SIGN.test()`.
+
+First, install the package: `install.packages(BSDA)`
+
+After installing it on your computer, you can use at anytime you want by telling R to use the package. You do this by:`library(BSDA)`
+
+###Z-Test
+
+In order to compute a Z-Test, you will need a dataset. This is a *single* column of numbers, or in R-Speak, a vector. 
+
+This will be compared against the known population mean $\mu$ `(mu)` and standard deviation $\sigma$ `(sigma.x)`. 
+
+The `z.test()` accepts the following arguments:
+
+`x` - a numeric vector
+
+`mu =` - A single number representing the mean.
+
+`sigma.x` - A single number representing the population standard deviation for `x`.
+
+`alternative = "two.sided","less","greater"` - Specification of the alternative hypothesis.
+
+So, in review, your use of the `z.test()` function should look like this:
+
+`z.test(x=,mu=, sigma.x=, alternative = "two.sided")`
+
+####Z-Test Example
+
+In order to perform a Z-Test, you need to have a specified $/sigma$ and $/mu$. 
+
+In order to find the Standard Error of the mean we need to do the following computation.
+
+$$\sigma_\bar{x} = \frac{s}{\sqrt{n}}$$
+We also need to find the mean of the sample:
+
+$$\bar{x{}} = \frac{\Sigma X}{n}$$
+
+Then we can plug that into the Z formula.
+
+$$z = \frac{\bar{x}-\mu}{\sigma_x}$$
+
+Let’s use this in an example.
+
+Dave knows that from his experience working with undergraduate participants on tasks related to attention that the population mean is 71 and the standard deviation is 2.4. He measures the attention scores of 13 participants and finds the following:
+
+71,74,73,71,78,73,72,71,73,72,74,72,75
+
+First, we can find the SEM. 
+
+$$\sigma_x = \frac{2.4}{\sqrt{13}} = .66$$
+
+Then we will need to find the mean:
+
+$$Xbar = \frac{71+74+73+71+78+73+72+71+73+72+74+72+75}{13} = 73 $$
+
+We can then plug that into the Z formula:
+
+$$Z_{obt} = \frac{73-71}{.66} = 3.03$$
+Then we can look in the Z-Table for the $Z_{crit} of .05 is 1.64. 
+
+Because $Z_{obt} > Z_{crit}$, we can reject the null hypothesis that there is no difference. 
+
+We can write this as:
+
+$Z_{obt}(13) = +3.03 < .05$
+
+Now we can see how R tackles the same problem. 
+
+```{r}
+library(BSDA)
+x=c(71,74,73,71,78,73,72,71,73,72,74,72,75)
+z.test(x,sigma.x=2.4,alternative="two.sided", mu=71)
+```
+The output that is given by the `z.test()` function gives us much more than we need for right now. Note that the Z value is slightly different, this is mainly due to how th computer parses the data. You will also see that this output gives an exact value for p. For right now, stick to indicating if your $Z_{obt}$ is > or < $\alpha{_.05}$.
+
+***
+
+###Sign Test
+
+For the sign test, we will be determining whether or not a difference is due to chance. The sign test uses the number of pluses + and minuses - to determine the strength of an effect. We will be using the `BSDA` package again, specifically the `SIGN.test()` function. 
+
+The `SIGN.test()` function accepts the following argments:
+
+`x` - a vector of difference scores
+
+`md = ` - This is your cut-off point. Unless specified, a common cut-off point is 0. If there was no effect, there would be a difference of 0 between 1 treatment and and another. 
+
+`alternative = ` - Much like the `z.test`, this can be either `two.sided`, `lesser` or `greater`. You can think of the latter two as being equal to one tailed negative and one tailed positive. 
+
+Your full `SIGN.test()`function should look something like this:
+
+`SIGN.test(x = , md = , alternative = " ")`
+
+#### Sign Test Example
+
+A researcher is interested to see whether his students respond perform better on tests when they listen to metal music playing while they study compared to when they study with  classical music. He takes 10 students and measures their scores on an exam after they listened to metal music while studying. He then later collects their scores on their tests while they listened to classical music, he then measures the difference. Using an $\alpha$ level of .05, what can he conclude?
+
+To visualize this, let us create this data. 
+
+```{r}
+set.seed(3)
+music_study<-data.frame(Metal=round(rnorm(10,85,5),digits = 0),Classical=round(rnorm(10,78,8),digits=0),Difference=c("+","+","+","-","+","+","+","+","-","+"))
+music_study
+```
+We cannot do any analyses on character data right now, so let's make sure to convert those values to numbers just so we can see. 
+```{r}
+set.seed(3)
+music_study<-data.frame(Metal=round(rnorm(10,85,5),digits = 0),Classical=round(rnorm(10,78,8),digits=0),Metal_Diff_Classical= c(8,15,14,-1,7  ,9,15,18,-9,11))
+music_study
+music_study
+```
+
+So we have two minuses and 8 pluses. What is the probability associated with this outcome with a sample of 10? In other words, think of this as $p(8)$ which necessaricly includes $p(9)$ and $p(10)$. 
+
+
+
+```{r}
+library(BSDA)
+SIGN.test(music_study$Metal_Diff_Classical,alternative = "greater",md=0)
+
+```
+
+The researcher can conclude that there appears to be no significant difference in test results from students who listen to metal music while studying compared to students who listened to classical music while studying. 
+
+We can see from the output that we are *just* shy of being significant. It will be good practice to be rather dichotomous, much like the sign test in saying you are either below your $\alpha$ level, or above it. 
+
+Now, let's go backwards a bit: When we calculated a z-test, we did it by "hand" and then by computer. Now let us peroform the same sign test by "hand".
+
+All we need to know is that we ended up with 8 pluses (+) and two minuses (-).
+
+We can look at the binomial table, in the column for .50 where n = 10.
+
+We will need to add the probabilities of $p(8)$,$p(9)$, and $p(10)$ to get our answer:
+
+$$p(8)+p(9)+p(10) = .0439 + .0098 + .0010 + = .0547 $$
+
+
+###Matrices and Dataframes and Indexing
+
+We have learned about vectors and dataframees. We will now learn about matrices. A matrix is a set of numbers that do sometihng. 
+
+#####Vector
+```{r}
+x = c(1,2,3,4,5)
+x
+```
+#####Dataframe
+```{r}
+x=1:10
+y=x
+xy<-data.frame(x,y)
+xy
+```
+#####Matrices
+
+
+When creating a matrix, you can define your number of columns and number of rows through the use of 
+
+`nrow=` and `ncol=`. 
+```{r}
+matrix(c(x=1:5,y=c(120,130,131,144,100)),nrow = 5,ncol = 2)
+```
+Once you have a matrix you can refer to a specific data point using `[,]`. The way this works is that anything inside of the left bracket (`[`) will refer to the row. Anything inside of thr right bracket (`]`) will refer to the column. 
+
+Let's try it out.
+
+```{r}
+xmat=matrix(c(x=1:5,y=c(120,130,131,144,100)),nrow = 5,ncol = 2)
+xmat[1,1]
+xmat[2,2]
+xmat[2,1]
+xmat[4,2]
+```
+
+
+###APA Style Statistical Reporting
+
+So far in this class, we have looked at datasets, and performed analsyes. The next step is to report these findings. 
+
+All of psychology uses APA stye writing. Within this writing style there is a special style to report results. 
+
+From this point forward, on your homeworks if you do any analyses and are asked to report your findings, you *must* use proper statistical formatting in order to get all of the points. 
+
+The Z-Test deals with significnce, as does the Sign Test. 
+
+In most cases, you will be reporting as follows:
+
+You will be reporting probabilities.
+
+*p = ns*
+
+or
+
+*p = .004*
+
+- Z-Test: $Z_{obt}(n) = (+/-)Score > < = \alpha$
+- Sign Test: $p = .four places$
+
+
+
+
+
+
+
+
+
+

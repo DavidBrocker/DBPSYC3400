@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="David Brocker, Frank Grasso, Ian Streiter" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="packages" class="section level2">
+<h2>Packages</h2>
+<p>The wonderful thing about R, is that once you know to use it, you can use libraries that process <em>unlimited</em> numbers of statistics. In order to do this, one needs to learn a few commands in order to access these online libraries and use them. With Exercise 06, we introduce the downloading of the <strong>BSDA</strong> package. Within this package comes the functions <code>z.test()</code> and <code>SIGN.test()</code>.</p>
+<p>First, install the package: <code>install.packages(BSDA)</code></p>
+<p>After installing it on your computer, you can use at anytime you want by telling R to use the package. You do this by:<code>library(BSDA)</code></p>
+<div id="z-test" class="section level3">
+<h3>Z-Test</h3>
+<p>In order to compute a Z-Test, you will need a dataset. This is a <em>single</em> column of numbers, or in R-Speak, a vector.</p>
+<p>This will be compared against the known population mean <span class="math inline">\(\mu\)</span> <code>(mu)</code> and standard deviation <span class="math inline">\(\sigma\)</span> <code>(sigma.x)</code>.</p>
+<p>The <code>z.test()</code> accepts the following arguments:</p>
+<p><code>x</code> - a numeric vector</p>
+<p><code>mu =</code> - A single number representing the mean.</p>
+<p><code>sigma.x</code> - A single number representing the population standard deviation for <code>x</code>.</p>
+<p><code>alternative = &quot;two.sided&quot;,&quot;less&quot;,&quot;greater&quot;</code> - Specification of the alternative hypothesis.</p>
+<p>So, in review, your use of the <code>z.test()</code> function should look like this:</p>
+<p><code>z.test(x=,mu=, sigma.x=, alternative = &quot;two.sided&quot;)</code></p>
+<div id="z-test-example" class="section level4">
+<h4>Z-Test Example</h4>
+<p>In order to perform a Z-Test, you need to have a specified <span class="math inline">\(/sigma\)</span> and <span class="math inline">\(/mu\)</span>.</p>
+<p>In order to find the Standard Error of the mean we need to do the following computation.</p>
+<p><span class="math display">\[\sigma_\bar{x} = \frac{s}{\sqrt{n}}\]</span> We also need to find the mean of the sample:</p>
+<p><span class="math display">\[\bar{x{}} = \frac{\Sigma X}{n}\]</span></p>
+<p>Then we can plug that into the Z formula.</p>
+<p><span class="math display">\[z = \frac{\bar{x}-\mu}{\sigma_x}\]</span></p>
+<p>Let’s use this in an example.</p>
+<p>Dave knows that from his experience working with undergraduate participants on tasks related to attention that the population mean is 71 and the standard deviation is 2.4. He measures the attention scores of 13 participants and finds the following:</p>
+<p>71,74,73,71,78,73,72,71,73,72,74,72,75</p>
+<p>First, we can find the SEM.</p>
+<p><span class="math display">\[\sigma_x = \frac{2.4}{\sqrt{13}} = .66\]</span></p>
+<p>Then we will need to find the mean:</p>
+<p><span class="math display">\[Xbar = \frac{71+74+73+71+78+73+72+71+73+72+74+72+75}{13} = 73 \]</span></p>
+<p>We can then plug that into the Z formula:</p>
+<p><span class="math display">\[Z_{obt} = \frac{73-71}{.66} = 3.03\]</span> Then we can look in the Z-Table for the $Z_{crit} of .05 is 1.64.</p>
+<p>Because <span class="math inline">\(Z_{obt} &gt; Z_{crit}\)</span>, we can reject the null hypothesis that there is no difference.</p>
+<p>We can write this as:</p>
+<p><span class="math inline">\(Z_{obt}(13) = +3.03 &lt; .05\)</span></p>
+<p>Now we can see how R tackles the same problem.</p>
+<pre class="r"><code>library(BSDA)</code></pre>
+<pre><code>Loading required package: lattice</code></pre>
+<pre><code>
+Attaching package: &#39;BSDA&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:datasets&#39;:
+
+    Orange</code></pre>
+<pre class="r"><code>x=c(71,74,73,71,78,73,72,71,73,72,74,72,75)
+z.test(x,sigma.x=2.4,alternative=&quot;two.sided&quot;, mu=71)</code></pre>
+<pre><code>
+    One-sample z-Test
+
+data:  x
+z = 3.0046, p-value = 0.002659
+alternative hypothesis: true mean is not equal to 71
+95 percent confidence interval:
+ 71.69537 74.30463
+sample estimates:
+mean of x 
+       73 </code></pre>
+<p>The output that is given by the <code>z.test()</code> function gives us much more than we need for right now. Note that the Z value is slightly different, this is mainly due to how th computer parses the data. You will also see that this output gives an exact value for p. For right now, stick to indicating if your <span class="math inline">\(Z_{obt}\)</span> is &gt; or &lt; <span class="math inline">\(\alpha{_.05}\)</span>.</p>
+<hr />
+</div>
+</div>
+<div id="sign-test" class="section level3">
+<h3>Sign Test</h3>
+<p>For the sign test, we will be determining whether or not a difference is due to chance. The sign test uses the number of pluses + and minuses - to determine the strength of an effect. We will be using the <code>BSDA</code> package again, specifically the <code>SIGN.test()</code> function.</p>
+<p>The <code>SIGN.test()</code> function accepts the following argments:</p>
+<p><code>x</code> - a vector of difference scores</p>
+<p><code>md =</code> - This is your cut-off point. Unless specified, a common cut-off point is 0. If there was no effect, there would be a difference of 0 between 1 treatment and and another.</p>
+<p><code>alternative =</code> - Much like the <code>z.test</code>, this can be either <code>two.sided</code>, <code>lesser</code> or <code>greater</code>. You can think of the latter two as being equal to one tailed negative and one tailed positive.</p>
+<p>Your full <code>SIGN.test()</code>function should look something like this:</p>
+<p><code>SIGN.test(x = , md = , alternative = &quot; &quot;)</code></p>
+<div id="sign-test-example" class="section level4">
+<h4>Sign Test Example</h4>
+<p>A researcher is interested to see whether his students respond perform better on tests when they listen to metal music playing while they study compared to when they study with classical music. He takes 10 students and measures their scores on an exam after they listened to metal music while studying. He then later collects their scores on their tests while they listened to classical music, he then measures the difference. Using an <span class="math inline">\(\alpha\)</span> level of .05, what can he conclude?</p>
+<p>To visualize this, let us create this data.</p>
+<pre class="r"><code>set.seed(3)
+music_study&lt;-data.frame(Metal=round(rnorm(10,85,5),digits = 0),Classical=round(rnorm(10,78,8),digits=0),Difference=c(&quot;+&quot;,&quot;+&quot;,&quot;+&quot;,&quot;-&quot;,&quot;+&quot;,&quot;+&quot;,&quot;+&quot;,&quot;+&quot;,&quot;-&quot;,&quot;+&quot;))
+music_study</code></pre>
+<pre><code>   Metal Classical Difference
+1     80        72          +
+2     84        69          +
+3     86        72          +
+4     79        80          -
+5     86        79          +
+6     85        76          +
+7     85        70          +
+8     91        73          +
+9     79        88          -
+10    91        80          +</code></pre>
+<p>We cannot do any analyses on character data right now, so let’s make sure to convert those values to numbers just so we can see.</p>
+<pre class="r"><code>set.seed(3)
+music_study&lt;-data.frame(Metal=round(rnorm(10,85,5),digits = 0),Classical=round(rnorm(10,78,8),digits=0),Metal_Diff_Classical= c(8,15,14,-1,7  ,9,15,18,-9,11))
+music_study</code></pre>
+<pre><code>   Metal Classical Metal_Diff_Classical
+1     80        72                    8
+2     84        69                   15
+3     86        72                   14
+4     79        80                   -1
+5     86        79                    7
+6     85        76                    9
+7     85        70                   15
+8     91        73                   18
+9     79        88                   -9
+10    91        80                   11</code></pre>
+<pre class="r"><code>music_study</code></pre>
+<pre><code>   Metal Classical Metal_Diff_Classical
+1     80        72                    8
+2     84        69                   15
+3     86        72                   14
+4     79        80                   -1
+5     86        79                    7
+6     85        76                    9
+7     85        70                   15
+8     91        73                   18
+9     79        88                   -9
+10    91        80                   11</code></pre>
+<p>So we have two minuses and 8 pluses. What is the probability associated with this outcome with a sample of 10? In other words, think of this as <span class="math inline">\(p(8)\)</span> which necessaricly includes <span class="math inline">\(p(9)\)</span> and <span class="math inline">\(p(10)\)</span>.</p>
+<pre class="r"><code>library(BSDA)
+SIGN.test(music_study$Metal_Diff_Classical,alternative = &quot;greater&quot;,md=0)</code></pre>
+<pre><code>
+    One-sample Sign-Test
+
+data:  music_study$Metal_Diff_Classical
+s = 8, p-value = 0.05469
+alternative hypothesis: true median is greater than 0
+95 percent confidence interval:
+ 6.146667      Inf
+sample estimates:
+median of x 
+         10 
+
+Achieved and Interpolated Confidence Intervals: 
+
+                  Conf.Level  L.E.pt U.E.pt
+Lower Achieved CI     0.9453  7.0000    Inf
+Interpolated CI       0.9500  6.1467    Inf
+Upper Achieved CI     0.9893 -1.0000    Inf</code></pre>
+<p>The researcher can conclude that there appears to be no significant difference in test results from students who listen to metal music while studying compared to students who listened to classical music while studying.</p>
+<p>We can see from the output that we are <em>just</em> shy of being significant. It will be good practice to be rather dichotomous, much like the sign test in saying you are either below your <span class="math inline">\(\alpha\)</span> level, or above it.</p>
+<p>Now, let’s go backwards a bit: When we calculated a z-test, we did it by “hand” and then by computer. Now let us peroform the same sign test by “hand”.</p>
+<p>All we need to know is that we ended up with 8 pluses (+) and two minuses (-).</p>
+<p>We can look at the binomial table, in the column for .50 where n = 10.</p>
+<p>We will need to add the probabilities of <span class="math inline">\(p(8)\)</span>,<span class="math inline">\(p(9)\)</span>, and <span class="math inline">\(p(10)\)</span> to get our answer:</p>
+<p><span class="math display">\[p(8)+p(9)+p(10) = .0439 + .0098 + .0010 + = .0547 \]</span></p>
+</div>
+</div>
+<div id="matrices-and-dataframes-and-indexing" class="section level3">
+<h3>Matrices and Dataframes and Indexing</h3>
+<p>We have learned about vectors and dataframees. We will now learn about matrices. A matrix is a set of numbers that do sometihng.</p>
+<div id="vector" class="section level5">
+<h5>Vector</h5>
+<pre class="r"><code>x = c(1,2,3,4,5)
+x</code></pre>
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+<div id="dataframe" class="section level5">
+<h5>Dataframe</h5>
+<pre class="r"><code>x=1:10
+y=x
+xy&lt;-data.frame(x,y)
+xy</code></pre>
+<pre><code>    x  y
+1   1  1
+2   2  2
+3   3  3
+4   4  4
+5   5  5
+6   6  6
+7   7  7
+8   8  8
+9   9  9
+10 10 10</code></pre>
+</div>
+<div id="matrices" class="section level5">
+<h5>Matrices</h5>
+<p>When creating a matrix, you can define your number of columns and number of rows through the use of</p>
+<p><code>nrow=</code> and <code>ncol=</code>.</p>
+<pre class="r"><code>matrix(c(x=1:5,y=c(120,130,131,144,100)),nrow = 5,ncol = 2)</code></pre>
+<pre><code>     [,1] [,2]
+[1,]    1  120
+[2,]    2  130
+[3,]    3  131
+[4,]    4  144
+[5,]    5  100</code></pre>
+<p>Once you have a matrix you can refer to a specific data point using <code>[,]</code>. The way this works is that anything inside of the left bracket (<code>[</code>) will refer to the row. Anything inside of thr right bracket (<code>]</code>) will refer to the column.</p>
+<p>Let’s try it out.</p>
+<pre class="r"><code>xmat=matrix(c(x=1:5,y=c(120,130,131,144,100)),nrow = 5,ncol = 2)
+xmat[1,1]</code></pre>
+<pre><code>[1] 1</code></pre>
+<pre class="r"><code>xmat[2,2]</code></pre>
+<pre><code>[1] 130</code></pre>
+<pre class="r"><code>xmat[2,1]</code></pre>
+<pre><code>[1] 2</code></pre>
+<pre class="r"><code>xmat[4,2]</code></pre>
+<pre><code>[1] 144</code></pre>
+</div>
+</div>
+<div id="apa-style-statistical-reporting" class="section level3">
+<h3>APA Style Statistical Reporting</h3>
+<p>So far in this class, we have looked at datasets, and performed analsyes. The next step is to report these findings.</p>
+<p>All of psychology uses APA stye writing. Within this writing style there is a special style to report results.</p>
+<p>From this point forward, on your homeworks if you do any analyses and are asked to report your findings, you <em>must</em> use proper statistical formatting in order to get all of the points.</p>
+<p>The Z-Test deals with significnce, as does the Sign Test.</p>
+<p>In most cases, you will be reporting as follows:</p>
+<p>You will be reporting probabilities.</p>
+<p><em>p = ns</em></p>
+<p>or</p>
+<p><em>p = .004</em></p>
+<ul>
+<li>Z-Test: <span class="math inline">\(Z_{obt}(n) = (+/-)Score &gt; &lt; = \alpha\)</span></li>
+<li>Sign Test: <span class="math inline">\(p = .four places\)</span></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
