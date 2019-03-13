@@ -1,0 +1,116 @@
+---
+output: html_document
+---
+
+```{r global_options,echo=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
+```
+
+# Hypothesis Testing
+
+Truth Table:
+
+|              | $H_0$ True                         |  $H_0$ Not True                        |   |   |
+|--------------|------------------------------------|----------------------------------------|---|---|
+| Accept $H_0$ | True Accept (1-$\alpha$)           | False Accept Type II Error $\beta$     |   |   |
+| Reject $H_0$ | False Reject Type I error $\alpha$ | True Reject Power (1-$\beta$)          |   |   |
+|              |                                    |                                        |   |   |
+
+
+#### Important Terms
+
+$\alpha$ level - This is what you choose *a priori* (before the experiment).
+               - The probability of rejecting the null hypothesis when the null hypothesis is true
+               - How much of your result is due to chance?
+               - The most common alpha level you will see is .05.
+               - Depending on how strict you want your results to be, you may also see values such as .01 and.001.
+
+Degrees of Freedom ($df$) - The number of scores that are free to vary in calculating that statistic
+Only need to know N to calculate
+
+$df = N - 1$
+
+Critical Values - Cut-off values that define regions where the test statistic is unlikely to lie
+                - Critical values in Table D: Critical Values of Student’s t distribution
+                - Need to know alpha level and df to use the table.
+                
+## T.Test
+
+The T-test, as you will come to see, is quite similar to the z-test. The main differences are where the information is coming from.
+
+If you remember, the z-test takes information from the population such as the mean $\mu$ and standard deviation $\sigma$.
+
+The t-test takes information from the sample instead.
+
+You will notice the formulas are set-up the same way, they just have different numbers.
+
+###Z-Test and T-Test Comparison
+
+$Z = \frac{\bar{X}-\mu}{\sigma_\bar{X}}$ and $t = \frac{\bar{X}-\mu}{\sigma_\bar{X}}$
+
+
+#### Types of T-Tests
+
+There are three types of T-Tests, but we will only be learning one for today.
+
+- T-Test for single samples  
+- T-Test for paired samples  
+- T-Test for independent samples  
+
+##### T-Test Example (R-Calculation)
+
+Let us start off with a sample of 20 scores:
+
+```{r}
+set.seed(123)
+Reaction_Time = round(rnorm(20,550,10.5),digits=2)
+null_mu = 670
+t.test(Reaction_Time,mu=null_mu)
+```
+
+###### Writing our results
+
+As we discussed in the previous lecture, we will need to make sure to report our findings in proper statistical formats. 
+
+Specifically, when we report the results of a t-test it should look like this:
+
+$$t = -51.897, p <.001$$
+
+##### T-Test Example (Hand-Calculation)
+
+$$t = \frac{\bar{X}-\mu}{\sigma_\bar{X}}$$
+Let us imagine we have 10 numbers:
+
+{111.66,117.50,104.82,146.03,134.50,106.52,115.17,114.40,129.36,119.00}
+
+These numbers have a standard deviation of 12.99.
+
+First, we will need to take the mean:
+
+$$\frac{111.66+117.50+104.82+146.03+134.50+106.52+115.17+114.40+129.36+119.00}{10} = 119.896$$
+
+We want to see if this mean is different from the population mean ($\mu$), 126.42.
+
+We will also need to solve for the standard error of the mean ($s_\bar{X}$)
+
+Remember that $s_\bar{X} = \frac{s}{\sqrt{n}}$
+
+$s_\bar{X} = \frac{12.99}{\sqrt{10}} = 4.107$
+
+Our new equation should look something like this: 
+
+$t = \frac{119.896-126.42}{4.107} = -1.588$
+
+$t = -1.588$
+
+You'll notice that when we did the t-test in R we were given a p-value. When you calculate the value by hand, there is no such luck! So, you will have to check for a critical value to see if the value you've calculated is past the rejection zone. 
+
+
+
+Let's make sure this works in R as well:
+
+```{r}
+x=c(111.66,117.50,104.82,146.03,134.50,106.52,115.17,114.40,129.36,119.00)
+t.test(x,mu=126.42)
+```
+

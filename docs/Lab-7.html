@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="hypothesis-testing" class="section level1">
+<h1>Hypothesis Testing</h1>
+<p>Truth Table:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span> True</th>
+<th><span class="math inline">\(H_0\)</span> Not True</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accept <span class="math inline">\(H_0\)</span></td>
+<td>True Accept (1-<span class="math inline">\(\alpha\)</span>)</td>
+<td>False Accept Type II Error <span class="math inline">\(\beta\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td>False Reject Type I error <span class="math inline">\(\alpha\)</span></td>
+<td>True Reject Power (1-<span class="math inline">\(\beta\)</span>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div id="important-terms" class="section level4">
+<h4>Important Terms</h4>
+<p><span class="math inline">\(\alpha\)</span> level - This is what you choose <em>a priori</em> (before the experiment). - The probability of rejecting the null hypothesis when the null hypothesis is true - How much of your result is due to chance? - The most common alpha level you will see is .05. - Depending on how strict you want your results to be, you may also see values such as .01 and.001.</p>
+<p>Degrees of Freedom (<span class="math inline">\(df\)</span>) - The number of scores that are free to vary in calculating that statistic Only need to know N to calculate</p>
+<p><span class="math inline">\(df = N - 1\)</span></p>
+<p>Critical Values - Cut-off values that define regions where the test statistic is unlikely to lie - Critical values in Table D: Critical Values of Student’s t distribution - Need to know alpha level and df to use the table.</p>
+</div>
+<div id="t.test" class="section level2">
+<h2>T.Test</h2>
+<p>The T-test, as you will come to see, is quite similar to the z-test. The main differences are where the information is coming from.</p>
+<p>If you remember, the z-test takes information from the population such as the mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p>The t-test takes information from the sample instead.</p>
+<p>You will notice the formulas are set-up the same way, they just have different numbers.</p>
+<div id="z-test-and-t-test-comparison" class="section level3">
+<h3>Z-Test and T-Test Comparison</h3>
+<p><span class="math inline">\(Z = \frac{\bar{X}-\mu}{\sigma_\bar{X}}\)</span> and <span class="math inline">\(t = \frac{\bar{X}-\mu}{\sigma_\bar{X}}\)</span></p>
+<div id="types-of-t-tests" class="section level4">
+<h4>Types of T-Tests</h4>
+<p>There are three types of T-Tests, but we will only be learning one for today.</p>
+<ul>
+<li>T-Test for single samples<br />
+</li>
+<li>T-Test for paired samples<br />
+</li>
+<li>T-Test for independent samples</li>
+</ul>
+<div id="t-test-example-r-calculation" class="section level5">
+<h5>T-Test Example (R-Calculation)</h5>
+<p>Let us start off with a sample of 20 scores:</p>
+<pre class="r"><code>set.seed(123)
+Reaction_Time = round(rnorm(20,550,10.5),digits=2)
+null_mu = 670
+t.test(Reaction_Time,mu=null_mu)</code></pre>
+<pre><code>
+    One Sample t-test
+
+data:  Reaction_Time
+t = -51.897, df = 19, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 670
+95 percent confidence interval:
+ 546.7078 556.2672
+sample estimates:
+mean of x 
+ 551.4875 </code></pre>
+<div id="writing-our-results" class="section level6">
+<h6>Writing our results</h6>
+<p>As we discussed in the previous lecture, we will need to make sure to report our findings in proper statistical formats.</p>
+<p>Specifically, when we report the results of a t-test it should look like this:</p>
+<p><span class="math display">\[t = -51.897, p &lt;.001\]</span></p>
+</div>
+</div>
+<div id="t-test-example-hand-calculation" class="section level5">
+<h5>T-Test Example (Hand-Calculation)</h5>
+<p><span class="math display">\[t = \frac{\bar{X}-\mu}{\sigma_\bar{X}}\]</span> Let us imagine we have 10 numbers:</p>
+<p>{111.66,117.50,104.82,146.03,134.50,106.52,115.17,114.40,129.36,119.00}</p>
+<p>These numbers have a standard deviation of 12.99.</p>
+<p>First, we will need to take the mean:</p>
+<p><span class="math display">\[\frac{111.66+117.50+104.82+146.03+134.50+106.52+115.17+114.40+129.36+119.00}{10} = 119.896\]</span></p>
+<p>We want to see if this mean is different from the population mean (<span class="math inline">\(\mu\)</span>), 126.42.</p>
+<p>We will also need to solve for the standard error of the mean (<span class="math inline">\(s_\bar{X}\)</span>)</p>
+<p>Remember that <span class="math inline">\(s_\bar{X} = \frac{s}{\sqrt{n}}\)</span></p>
+<p><span class="math inline">\(s_\bar{X} = \frac{12.99}{\sqrt{10}} = 4.107\)</span></p>
+<p>Our new equation should look something like this:</p>
+<p><span class="math inline">\(t = \frac{119.896-126.42}{4.107} = -1.588\)</span></p>
+<p><span class="math inline">\(t = -1.588\)</span></p>
+<p>You’ll notice that when we did the t-test in R we were given a p-value. When you calculate the value by hand, there is no such luck! So, you will have to check for a critical value to see if the value you’ve calculated is past the rejection zone.</p>
+<p>Let’s make sure this works in R as well:</p>
+<pre class="r"><code>x=c(111.66,117.50,104.82,146.03,134.50,106.52,115.17,114.40,129.36,119.00)
+t.test(x,mu=126.42)</code></pre>
+<pre><code>
+    One Sample t-test
+
+data:  x
+t = -1.588, df = 9, p-value = 0.1467
+alternative hypothesis: true mean is not equal to 126.42
+95 percent confidence interval:
+ 110.6026 129.1894
+sample estimates:
+mean of x 
+  119.896 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
