@@ -69,3 +69,13 @@ Kim_Garden[Kim_Garden <1] <- 1
 Kim_Garden[Kim_Garden > 5] <-5
 t.test(Gaby_Garden,Kim_Garden,var.equal = TRUE,alternative = "greater")
 ```
+
+###Boxplot
+
+We have used scatterplots to show relationships, and we have used barplot to visualize differences. When it comes to paired samples, it is best to use a boxplot to represent the differences between paired samples. A boxplot shows the median for a sample.
+
+```{r}
+x<-data.frame(note_taking = rnorm(20,84,3),digital_note = rnorm(20,94,5))
+boxplot(x$note_taking,x$digital_note,names = c("Note Taking", "Digital Note Taking"))
+```
+

@@ -285,6 +285,13 @@ sample estimates:
 mean of x mean of y 
      4.24      3.08 </code></pre>
 </div>
+<div id="boxplot" class="section level3">
+<h3>Boxplot</h3>
+<p>We have used scatterplots to show relationships, and we have used barplot to visualize differences. When it comes to paired samples, it is best to use a boxplot to represent the differences between paired samples. A boxplot shows the median for a sample.</p>
+<pre class="r"><code>x&lt;-data.frame(note_taking = rnorm(20,84,3),digital_note = rnorm(20,94,5))
+boxplot(x$note_taking,x$digital_note,names = c(&quot;Note Taking&quot;, &quot;Digital Note Taking&quot;))</code></pre>
+<p><img src="Lab-8_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
 </div>
 </div>
 
