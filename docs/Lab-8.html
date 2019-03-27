@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Lab 8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Review-Sheet-2.html">Review Sheet 2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lab 8</h1>
+
+</div>
+
+
+<div id="t-test-for-paired-samples" class="section level1">
+<h1>T-Test for paired Samples</h1>
+<p>The t-test for paired samples may also be referred to as the t-test for correlated groups. In both cases, the subjects are measured twice. This can be actualized in a pre-treatment, post-treatment design where participants are measured on some aspect, given a treatment, and then measured again. The <span class="math display">\[H_0\]</span> for these t-tests are that the mean difference is 0. The <span class="math display">\[H_1\]</span> then becomes that the difference is greater than 0 or less than 0.</p>
+<p>When we performed a sign test, we needed to supply R with the difference vector. When we do a paired t-test, we can provide both vectors and R will do the rest for us!</p>
+<div id="t-test-example" class="section level2">
+<h2>T-Test Example</h2>
+<ol style="list-style-type: decimal">
+<li>First, create a distribution we can use for reproducibility using <code>set.seed()</code>.</li>
+<li>Extract and compute the important information from the example you are given.</li>
+<li>Create both of your vectors first, then combine them into a data frame. It is entirely possible to do all of this in one line, but syntax errors can run rampant when you have multiple arguments being passed at the same time!</li>
+<li>Recall that the arguments for <code>t.test()</code> when you are using a single sample will not work when you are working with paired samples.</li>
+<li>The arguments are as follows:</li>
+<li><code>y1,y2</code> where <code>y1</code> and <code>y2</code> are both numeric vectors of the <em>same</em> length.</li>
+<li><code>paired = TRUE``&quot;</code> This tells R that we are performing a paired t-test.</li>
+<li><code>var.equal = TRUE</code> This tells R that you are assuming the variances of both vectors are the same, by doing this you compute a certain kind of test. More on this later in the semester.</li>
+<li>Making the full function look like this: <code>t.test(y1, y2, paired = TRUE, var.equal = TRUE)</code>.</li>
+</ol>
+<p>With this in mind, compute the t.test for the following example:</p>
+<blockquote>
+<p>A researcher is interested in whether students will perform better when they are allowed to use a computer to take notes compared to when they are only allowed to use pen and paper. He has 15 students take notes with pen and paper and then tests them. He then has them take notes with a computer and then tests them. Are the pen and paper test scores worse than the computer test scores? Compute the appropriate test for this design at an <span class="math inline">\(\alpha\)</span> level of .05.</p>
+</blockquote>
+<p>Use a seed of 3400 to create two samples of 15 students. Our prediction is that the students who use pen and paper to take notes will perform worse on the test compared to the students who use a computer to take notes. Choose means that will be appropriate for our prediction to be supported (without making the differences <em>too</em>…different!)</p>
+<p>Calculate the t value for the experiment and report whether or not there is a significance, and if so, what that significance means.</p>
+<p><strong>Remember that when reporting to follow the proper format:</strong> <span class="math display">\[t(df) = t_{obt}, p =\]</span></p>
+<p>After you have your answers, tell me your <span class="math display">\[t_{obt}\]</span> and we will create a vector to show the different values we get.</p>
+<div id="t-test-for-independent-samples" class="section level3">
+<h3>T-Test for Independent Samples</h3>
+<p>Remember that the t-test for paired samples is also called the t-test for correlated groups. In this sense, they are related. The t-test for independent samples are for unrelated samples.</p>
+<p>We have looked at differences between a calculated sample, and the population mean. We have also looked at differences between two samples in which the participants are the same in order to see if there is a difference less than or greater than zero.</p>
+<p>Using an independent t-test will allow us to see if there are differences among groups.</p>
+<p>Do women interpret emotions better than men?</p>
+<p>Do religious individuals give more to charity than their non-religious counterparts?</p>
+<p>Do people rate violent actors as more angering than racist actors?</p>
+<p>As you can see, it is quite easy to populate this list with more and more hypotheses.</p>
+<p>Consider the following example:</p>
+<blockquote>
+<p>Gaby has the prettiest garden in all of Long Island. She gets the mots compliments and most pictures taken in her garden. Meanwhile, Kim has just an OK garden; it garners some attention for visitors and gets a few compliments here and there. Gaby would like to see if her garden is quantitatively different from Kim’s garden. An independent researcher, David, has vistor services hand a form to all of the patrons that come to the gardens on a particular day. He divides the garden walkways so that some people will only pass by her garden, and some people will only pass Kim’s garden. Patrons fill out on the form a rating from 1-5 ranging from attributes such as cleanliness, presentability, attractiveness, and awe-inspiring. These scores are then averaged into a single number. David aims to compare these ratings and see if Gaby’s garden is indeed ‘better’. He uses an <span class="math inline">\(\alpha\)</span> of .05. What can he conclude?</p>
+</blockquote>
+<pre class="r"><code>set.seed(5307)
+Gaby_Garden &lt;-round(rnorm(25,4.7,2),digits=0)
+Gaby_Garden[Gaby_Garden &lt;1] &lt;- 1
+Gaby_Garden[Gaby_Garden &gt; 5] &lt;-5
+Kim_Garden &lt;-round(rnorm(25,3.1,4),digits=0)
+Kim_Garden[Kim_Garden &lt;1] &lt;- 1
+Kim_Garden[Kim_Garden &gt; 5] &lt;-5
+t.test(Gaby_Garden,Kim_Garden,var.equal = TRUE,alternative = &quot;greater&quot;)</code></pre>
+<pre><code>
+    Two Sample t-test
+
+data:  Gaby_Garden and Kim_Garden
+t = 2.7809, df = 48, p-value = 0.003861
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.4603743       Inf
+sample estimates:
+mean of x mean of y 
+     4.24      3.08 </code></pre>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

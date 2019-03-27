@@ -204,6 +204,12 @@ $(document).ready(function () {
 <li>
   <a href="Lab-7.html">Lab 7</a>
 </li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Review-Sheet-2.html">Review Sheet 2</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -343,37 +349,10 @@ mean of x
 </div>
 </div>
 </div>
-</div>
-<div id="t-test-for-paired-samples" class="section level1">
-<h1>T-Test for paired Samples</h1>
-<p>The t-test for paired samples may also be referred to as the t-test for correlated groups. In both cases, the subjects are measured twice. This can be actualized in a pre-treatment, post-treatment design where participants are measured on some aspect, given a treatment, and then measured again. The <span class="math display">\[H_0\]</span> for these t-tests are that the mean difference is 0. The <span class="math display">\[H_1\]</span> then becomes that the difference is greater than 0 or less than 0.</p>
-<p>When we performed a sign test, we needed to supply R with the difference vector. When we do a paired t-test, we can provide both vectors and R will do the rest for us!</p>
-<div id="t-test-example" class="section level2">
-<h2>T-Test Example</h2>
-<ol style="list-style-type: decimal">
-<li>First, create a distribution we can use for reproducibility using <code>set.seed()</code>.</li>
-<li>Extract and compute the important information from the example you are given.</li>
-<li>Create both of your vectors first, then combine them into a data frame. It is entirely possible to do all of this in one line, but syntax errors can run rampant when you have multiple arguments being passed at the same time!</li>
-<li>Recall that the arguments for <code>t.test()</code> when you are using a single sample will not work when you are working with paired samples.</li>
-<li>The arguments are as follows:</li>
-<li><code>y1,y2</code> where <code>y1</code> and <code>y2</code> are both numeric vectors of the <em>same</em> length.</li>
-<li><code>paired = TRUE``&quot;</code> This tells R that we are performing a paired t-test.</li>
-<li><code>var.equal = TRUE</code> This tells R that you are assuming the variances of both vectors are the same, by doing this you compute a certain kind of test. More on this later in the semester.</li>
-<li>Making the full function look like this: <code>t.test(y1, y2, paired = TRUE, var.equal = TRUE)</code>.</li>
-</ol>
-<p>With this in mind, compute the t.test for the following example:</p>
-<blockquote>
-<p>A researcher is interested in whether students will perform better when they are allowed to use a computer to take notes compared to when they are only allowed to use pen and paper. He has 15 students take notes with pen and paper and then tests them. He then has them take notes with a computer and then tests them. Are the pen and paper test scores worse than the computer test scores? Compute the appropriate test for this design at an <span class="math inline">\(\alpha\)</span> level of .05.</p>
-</blockquote>
-<p>Use a seed of 3400 to create two samples of 15 students. Our prediction is that the students who use pen and paper to take notes will perform worse on the test compared to the students who use a computer to take notes. Choose means that will be appropriate for our prediction to be supported (without making the differences <em>too</em>…different!)</p>
-<p>Calculate the t value for the experiment and report whether or not there is a significance, and if so, what that significance means.</p>
-<p><strong>Remember that when reporting to follow the proper format:</strong> <span class="math display">\[t(df) = t_{obt}, p =\]</span></p>
-<p>After you have your answers, tell me your <span class="math display">\[t_{obt}\]</span> and we will create a vector to show the different values we get.</p>
-</div>
 <div id="power" class="section level2">
 <h2>Power</h2>
 <p>When we talk about power in the context of an experiment, we are referring to the probability of detecting an effect <em>if</em> the effect exists in nature. Power is an important part of experimental design. One of its many uses is in the realm of grant proposals. Let’s imagine you want to run an experiment and you would also like a grant so you can fund the study. When you propose the study, the board that will be reviewing your claim will want to know if it is likely to work. If you can show them that your experiment has high power, you will need fewer participants to find the effect (if it exists), and will cost less money!</p>
-<p>There are several ways to compute power, however, we will focus on the computer assisted method, using a program called G-Power. You will <em>not</em> be required to know how to use the program intricately, rather, you will just have to know how to interpret the output of the program as well as input one or two parameters.</p>
+<p>There are several ways to compute power, however, we will focus on the computer assisted method, using a program called <a href="http://www.gpower.hhu.de/">G-Power</a>. You will <em>not</em> be required to know how to use the program intricately, rather, you will just have to know how to interpret the output of the program as well as input one or two parameters.</p>
 <div class="figure">
 <img src="images/1_gplot.png" />
 
@@ -394,39 +373,6 @@ mean of x
 <div class="figure">
 <img src="images/7_gplot.png" />
 
-</div>
-<div id="t-test-for-independent-samples" class="section level3">
-<h3>T-Test for Independent Samples</h3>
-<p>Remember that the t-test for paired samples is also called the t-test for correlated groups. In this sense, they are related. The t-test for independent samples are for unrelated samples.</p>
-<p>We have looked at differences between a calculated sample, and the population mean. We have also looked at differences between two samples in which the participants are the same in order to see if there is a difference less than or greater than zero.</p>
-<p>Using an independent t-test will allow us to see if there are differences among groups.</p>
-<p>Do women interpret emotions better than men?</p>
-<p>Do religious individuals give more to charity than their non-religious counterparts?</p>
-<p>Do people rate violent actors as more angering than racist actors?</p>
-<p>As you can see, it is quite easy to populate this list with more and more hypotheses.</p>
-<p>Consider the following example:</p>
-<blockquote>
-<p>Gaby has the prettiest garden in all of Long Island. She gets the mots compliments and most pictures taken in her garden. Meanwhile, Kim has just an OK garden; it garners some attention for visitors and gets a few compliments here and there. Gaby would like to see if her garden is quantitatively different from Kim’s garden. An independent researcher, David, has vistor services hand a form to all of the patrons that come to the gardens on a particular day. He divides the garden walkways so that some people will only pass by her garden, and some people will only pass Kim’s garden. Patrons fill out on the form a rating from 1-5 ranging from attributes such as cleanliness, presentability, attractiveness, and awe-inspiring. These scores are then averaged into a single number. David aims to compare these ratings and see if Gaby’s garden is indeed ‘better’. He uses an <span class="math inline">\(\alpha\)</span> of .05. What can he conclude?</p>
-</blockquote>
-<pre class="r"><code>set.seed(5307)
-Gaby_Garden &lt;-round(rnorm(25,4.7,2),digits=0)
-Gaby_Garden[Gaby_Garden &lt;1] &lt;- 1
-Gaby_Garden[Gaby_Garden &gt; 5] &lt;-5
-Kim_Garden &lt;-round(rnorm(25,3.1,4),digits=0)
-Kim_Garden[Kim_Garden &lt;1] &lt;- 1
-Kim_Garden[Kim_Garden &gt; 5] &lt;-5
-t.test(Gaby_Garden,Kim_Garden,var.equal = TRUE,alternative = &quot;greater&quot;)</code></pre>
-<pre><code>
-    Two Sample t-test
-
-data:  Gaby_Garden and Kim_Garden
-t = 2.7809, df = 48, p-value = 0.003861
-alternative hypothesis: true difference in means is greater than 0
-95 percent confidence interval:
- 0.4603743       Inf
-sample estimates:
-mean of x mean of y 
-     4.24      3.08 </code></pre>
 </div>
 </div>
 </div>

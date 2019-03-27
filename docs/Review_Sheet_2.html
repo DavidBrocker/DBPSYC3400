@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Review Sheet 2</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Review-Sheet-2.html">Review Sheet 2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Review Sheet 2</h1>
+
+</div>
+
+
+<div id="review-sheet-2" class="section level1">
+<h1>Review Sheet 2</h1>
+<p><code>barplot</code> - This is the overall function for creating a bar graph. It has several functions that go along with it.</p>
+<p><code>col</code> - This is the same idea from the color argument used in a scatter plot, however, with bar plots you need to add a concatenation if you are looking to plot more than one bar (which you should!).</p>
+<pre><code>`col=c(``&quot;``white``&quot;``,``&quot;``red``&quot;``,``&quot;``blue``&quot;``)`
+    `names.arg` - This is similar to `xlab`,     however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.</code></pre>
+<p><code>names.arg=c(``&quot;``Experimental``&quot;``,``&quot;``Control``&quot;``)</code></p>
+<p><strong>Data Generation</strong></p>
+<p><code>set.seed()</code> - This function specifies a ‘seed’ of your choice. By choosing a ‘seed’ you are ensuring the ability of the data you produce to be replicable either for the use of a problem set, or for troubleshooting.</p>
+<p><code>sample</code> - This function allows you to create a sample from an existing vector. It has two arguments.</p>
+<p><code>x</code> - The vector that you will be sampling from. It is important that whatever you decide to sample from x <em>cannot</em> be larger than the length of x.</p>
+<p><code>n</code> - This specifies how many items you want to sample from <code>x</code>.</p>
+<pre><code>*Sampling Example* 
+`sample(x, 10)`</code></pre>
+<p><code>rnorm</code> - This function returns whatever size you specify as a vector from the normal distribution.</p>
+<p><code>N</code> - This is the size of the vector that you would like.</p>
+<p><code>mean</code> - This is what you would like the mean of the data returned to be.</p>
+<p><code>sd</code> - This is what you would like the standard deviation of the data returned to be.</p>
+<pre><code>*Example of rnorm* 
+`rnorm(100, 120, 10)`</code></pre>
+<p><code>library()</code> - This function loads a package outside of the ones native to R. So far, the only package we will be using is <code>BSDA</code>.</p>
+<p><strong>BSDA</strong></p>
+<p><code>z.test()</code> - This is the function you will use to perform a z test. It contains several arguments.</p>
+<p><code>x</code> - This will be your vector that continues the data you will be comparing to <span class="math display">\[\mu\]</span> and <span class="math display">\[\sigma\]</span>.</p>
+<p><code>sigma.x</code> - This will be the population standard deviation, <span class="math display">\[\sigma\]</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>mu</code> - This will be the population mean, <span class="math display">\[\mu\]</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<pre><code>`two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+
+
+`lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+
+
+`greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.</code></pre>
+<p>Here is what a full z.test function could look like:</p>
+<p><code>z.test(x, mu = 12, sigma.x = 3.12, alternative =</code> <code>&quot;``two.sided``&quot;``)</code></p>
+<p><code>SIGN.test()</code> - This is the function you will use to perform a sign test. It contains several arguments.</p>
+<p><code>x</code> - This will be your vector that continues the data that is the <em>difference</em> between the first group and second group.</p>
+<p><code>md</code> - This will rarely be given, but implied. The sign test will test against the <span class="math display">\[H_0\]</span>, which states that no difference exists, so 0 should be the default value.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<pre><code>`two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+
+
+`lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+
+
+`greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.</code></pre>
+<p>Here is what a full sign test function could look like:</p>
+<p><code>SIGN.test(x, md = 0, alternative = &quot;two.sided&quot;)</code></p>
+<p><strong>T-Test: One-Sample, Paired, Independent</strong></p>
+<p><code>t.test</code> - This function contains several arguments, the results, as well as the type of test that is run will be determined on which you specify.</p>
+<p><code>x</code> - This is a vector that you be comparing against the population mean, <span class="math display">\[\mu\]</span>.</p>
+<p><code>y1, y2</code> - These arguments specify two distinct vectors of the same length to be compared.</p>
+<p><code>mu</code> - This will be the population mean, <span class="math display">\[\mu\]</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<pre><code>`two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+
+`lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+
+`greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.</code></pre>
+<p><code>var.equal = TRUE</code> - This argument specifies that the variances are assumed to be equal.</p>
+<p><code>paired = TRUE</code> - If specified, this will result in R assuming the sample(s) are to be paired.</p>
+<p><strong>Determining which Test will be run:</strong></p>
+<p><em>Single Sample T-Test</em></p>
+<p><code>t.test(x, mu = 23, alternative =</code> <code>&quot;``lesser``&quot;``)</code></p>
+<p><em>Paired Sample T-Test</em></p>
+<p><code>t.test(y1, y2, paired = TRUE, var.equal= TRUE, alternative = &quot;greater&quot;)</code></p>
+<p><em>Independent T-Test</em></p>
+<p><code>t.test(y1, y2, var.equal= TRUE, alternative = &quot;two.sided&quot;)</code></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
