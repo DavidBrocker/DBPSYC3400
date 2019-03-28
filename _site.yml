@@ -23,7 +23,7 @@ navbar:
   - text: Lab 8
     href: Lab-8.html
   - text: Review Sheet 2
-    href: Review-Sheet-2.html
+    href: Review_Sheet_2.html
     
 output_dir: docs
 output:

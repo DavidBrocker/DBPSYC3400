@@ -13,9 +13,9 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   
   `col` - This is the same idea from the color argument used in a scatter plot, however, with bar plots you need to add a concatenation if you are looking to plot more than one bar (which you should!).
       
-    `col=c(``"``white``"``,``"``red``"``,``"``blue``"``)`
+    `col=c("white","red","blue")`
         `names.arg` - This is similar to `xlab`,     however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.
-  `names.arg=c(``"``Experimental``"``,``"``Control``"``)`
+  `names.arg=c("Experimental","Control")`
 
 **Data Generation**
 
@@ -79,7 +79,7 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   Here is what a full z.test function could look like:
 
 
-  `z.test(x, mu = 12, sigma.x = 3.12, alternative =` `"``two.sided``"``)`
+  `z.test(x, mu = 12, sigma.x = 3.12, alternative ="two.sided")`
 
 `SIGN.test()` -  This is the function you will use to perform a sign test. It contains several arguments.
 
@@ -140,7 +140,7 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 
 *Single Sample T-Test*
 
-`t.test(x, mu = 23, alternative =` `"``lesser``"``)`
+`t.test(x, mu = 23, alternative ="lesser")`
 
 *Paired Sample T-Test*
 
