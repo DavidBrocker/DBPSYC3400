@@ -26,7 +26,6 @@ navbar:
     href: Lab-9.html
   - text: Review Sheet 2
     href: Review_Sheet_2.html
-    
 output_dir: docs
 output:
   html_document:

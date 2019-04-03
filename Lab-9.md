@@ -37,12 +37,12 @@ We we have yet to discuss what this experiment *actually* is trying to answer, b
 Here is what an ANOVA might look like:
 
 
-    {r}
+```{r}
     Condition=c(rep(“control”,10),rep(“Treatment 1”, 10), rep(“Treatment 2”, 10)
     Scores = rnorm(30, 18, 10)
     anova_example <- data.frame(Conditions, Scores)
     anova_example
-
+```
 As you can see, we still have two columns, but the main difference is that what used to be a condition two separate samples has become one single sample, separated by the various conditions.
 
 Herein lies the main difference between t-tests and the ANOVA, the amount of independent variables present.
