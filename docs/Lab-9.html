@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Lab_9</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Lab-9.html">Lab 9</a>
+</li>
+<li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lab_9</h1>
+
+</div>
+
+
+<div id="lab-9" class="section level1">
+<h1>Lab 9</h1>
+<div id="analysis-of-variance-anova" class="section level2">
+<h2>Analysis Of Variance (ANOVA)</h2>
+<p>Before we dive into a new test, let us take a second to look back at the tests we have already covered and remember what those tests allowed us to do, and what the data for those tests looked like:</p>
+<p><strong>Z-Test</strong></p>
+<ul>
+<li>What does it do - The Z-test allows us to see if the scores from one population differ from another.</li>
+<li>What does our data look like - In order perform a Z-test, we need to have large enough sample to work with (N&gt;30) and we need to know <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</li>
+</ul>
+<p><strong>T-Test</strong></p>
+<ul>
+<li>What does it do - The T-test allows us to compare a sample to :
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\mu\)</span> when it is given, and when <span class="math inline">\(\sigma\)</span> is not.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>another sample with paired values.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>another sample with uncorrelated values</li>
+</ol></li>
+</ul></li>
+<li>What does our data look like - In order to perform a T-test, we need to have a sample that we are comparing to either, <span class="math inline">\(\mu\)</span>, paired values, or a sample of (hopefully) equal length.</li>
+</ul>
+<p><strong>Why is ANOVA different?</strong></p>
+<p>Here is what t-test for independent samples might look like:</p>
+<pre class="r"><code>    control = rnorm(20,4.5,2)
+    experimental = rnorm(20,6.8,1)
+    t_test_ex &lt;-data.frame(control, experimental)
+    t_test_ex</code></pre>
+<pre><code>    control experimental
+1  3.754906     6.808382
+2  7.389271     7.956203
+3  8.365136     6.437727
+4  3.806689     6.542073
+5  6.603090     4.723796
+6  5.744958     5.951253
+7  7.851548     7.040809
+8  1.637994     7.126070
+9  2.596960     5.253820
+10 3.923568     6.740366
+11 4.883509     5.837033
+12 4.259951     6.006551
+13 6.080465     6.576601
+14 3.362435     5.045794
+15 3.602458     5.915300
+16 5.056833     8.316844
+17 6.494460     6.075228
+18 5.005776     6.250811
+19 5.898055     6.195952
+20 4.538331     4.601158</code></pre>
+<p>You will notice that there are two columns, one for a condition of control and one for a condition of experimental.</p>
+<p>We we have yet to discuss what this experiment <em>actually</em> is trying to answer, but, we can tell from looking at the data that whatever experimental is—it’s mean is higher than control and may be a significant difference.</p>
+<p>Here is what an ANOVA might look like:</p>
+<pre class="r"><code>    Condition=c(rep(&quot;control&quot;,10),rep(&quot;Treatment 1&quot;, 10), rep(&quot;Treatment 2&quot;, 10))
+    Scores = rnorm(30, 18, 10)
+    anova_example &lt;- data.frame(Condition, Scores)
+    anova_example</code></pre>
+<pre><code>     Condition     Scores
+1      control -0.9689048
+2      control 26.6273471
+3      control 30.2080579
+4      control 15.9674795
+5      control 10.6720467
+6      control 14.4474183
+7      control  3.3724806
+8      control 13.5926203
+9      control 29.0388862
+10     control 28.7153238
+11 Treatment 1 22.1216564
+12 Treatment 1 35.4177689
+13 Treatment 1  3.8963550
+14 Treatment 1 17.8014222
+15 Treatment 1 19.3182562
+16 Treatment 1 29.4222719
+17 Treatment 1 30.8034988
+18 Treatment 1 14.2926043
+19 Treatment 1 36.0051646
+20 Treatment 1 27.1696292
+21 Treatment 2 22.8969475
+22 Treatment 2  4.0449779
+23 Treatment 2 28.7262779
+24 Treatment 2 31.1518134
+25 Treatment 2 23.4820982
+26 Treatment 2 35.8090498
+27 Treatment 2 23.6293282
+28 Treatment 2 21.5468760
+29 Treatment 2  8.2093041
+30 Treatment 2 37.2451531</code></pre>
+<p>As you can see, we still have two columns, but the main difference is that what used to be a condition two separate samples has become one single sample, separated by the various conditions.</p>
+<p>Herein lies the main difference between t-tests and ANOVAs: the amount of conditions (samples) that can be compared.</p>
+<p>t-tests can only compare two conditions, while ANOVAs can compare more than two conditions.</p>
+<p>There are several notes to make when dealing with data in the format of an ANOVA.</p>
+<p>It becomes essential that you understand the differences between an independent variable and a dependent variable.</p>
+<p>When you are dealing with 3 or more conditions, you need to convert them into factors if they are not already.</p>
+<p>factors are a type of data that tell R which subjects are in which condition.</p>
+<p>You can check if a vector is a <code>factor</code> by running the <code>is.factor()</code> function.</p>
+<p>We we will go through some examples to see what it looks like when <code>R</code> recognizes a vector as a <code>factor</code> and when it does not.</p>
+<p>The following example shows a vector of conditions. However, R does not know that these are conditions until we tell it that they are factors. If we are unsure if R knows if a vector is a factor, we can test it using <code>is.factor</code> :</p>
+<pre class="r"><code>example &lt;- c(&quot;Control&quot;,&quot;Control&quot;,&quot;Placebo&quot;,&quot;Placebo&quot;,&quot;Drug&quot;,&quot;Drug&quot;)
+is.factor(example)</code></pre>
+<pre><code>[1] FALSE</code></pre>
+<p>Now that we know that R does not consider this vector to be a factor, we can manually tell R to make it a factor.</p>
+<pre class="r"><code>  factor(example)</code></pre>
+<pre><code>[1] Control Control Placebo Placebo Drug    Drug   
+Levels: Control Drug Placebo</code></pre>
+<p>Now R, will recognize <code>example</code> as a factor.</p>
+<pre class="r"><code>aov.test.mod&lt;-aov(anova_example$Scores ~ anova_example$Condition)
+summary(aov.test.mod)</code></pre>
+<pre><code>                        Df Sum Sq Mean Sq F value Pr(&gt;F)
+anova_example$Condition  2  280.1   140.1   1.228  0.309
+Residuals               27 3080.4   114.1               </code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
