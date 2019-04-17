@@ -6,7 +6,11 @@ output: html_document
 ```{r global_options,echo=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 ```
+<br>
+
 ## Packages
+
+<br>
 
 The wonderful thing about R, is that once you know to use it, you can use libraries that process *unlimited* numbers of statistics. In order to do this, one needs to learn a few commands in order to access these online libraries and use them. With Exercise 06, we introduce the downloading of the **BSDA** package. Within this package comes the functions `z.test()` and `SIGN.test()`.
 

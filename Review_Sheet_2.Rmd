@@ -4,9 +4,12 @@ output: html_document
 ```{r global_options,echo=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 ```
-
+<br>
 
 # Review Sheet 2
+
+<br>
+
 `barplot` - This is the overall function for creating a bar graph. It has several functions that go along with it.
 
   

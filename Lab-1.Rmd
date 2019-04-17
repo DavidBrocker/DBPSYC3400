@@ -15,8 +15,10 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 <br>
 
-
 ### Introduction
+
+<br>
+
 Hello!
 
 Welcome to **PSYC 3400: Statistical Methods in Behvioral Research**. In this course, we will be using R-Studio in order to visualize and implement what you learn in lecture. 

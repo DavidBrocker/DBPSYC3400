@@ -5,8 +5,12 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
+<br>
 
 # T-Test for paired Samples 
+
+<br>
+
 The t-test for paired samples may also be referred to as the t-test for correlated groups. In both cases, the subjects are measured twice. This can be actualized in a pre-treatment, post-treatment design where participants are measured on some aspect, given a treatment, and then measured again. The $$H_0$$ for these t-tests are that the mean difference is 0. The $$H_1$$ then becomes that the difference is greater than 0 or less than 0. 
 
 When we performed a sign test, we needed to supply R with the difference vector. When we do a paired t-test, we can provide both vectors and R will do the rest for us! 

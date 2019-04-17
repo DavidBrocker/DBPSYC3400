@@ -16,6 +16,8 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
 
 ### Probability 
 
+<br>
+
 Before we can talk about inferential satistics we have to understand probability. 
 
 We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail. 

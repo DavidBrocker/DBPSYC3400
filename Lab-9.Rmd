@@ -5,9 +5,11 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
-
+<br>
 
 ## Analysis Of Variance (ANOVA)
+
+<br>
 
 Before we dive into a new test, let us take a second to look back at the tests we have already covered and remember what those tests allowed us to do, and what the data for those tests looked like:
 

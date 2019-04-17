@@ -440,11 +440,12 @@ div.tocify {
 <p><br></p>
 <div id="probability" class="section level3">
 <h3>Probability</h3>
+<p><br></p>
 <p>Before we can talk about inferential satistics we have to understand probability.</p>
 <p>We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail.</p>
 <pre class="r"><code>coin=c(&quot;head&quot;,&quot;tails&quot;)
 sample(coin,1)</code></pre>
-<pre><code>[1] &quot;tails&quot;</code></pre>
+<pre><code>[1] &quot;head&quot;</code></pre>
 <p>By using the <code>sample()</code> function, we can tell R to randomly sample an event for us.</p>
 <p>We ‘tossed’ a coin, and it landed on heads. What is the probabiity of this happening?</p>
 <p>Probablity is written as:</p>
@@ -555,20 +556,20 @@ op</code></pre>
 <p>So, let’s make a sample of 20 numbers with a mean of 12 and a standard deviation of 3.</p>
 <pre class="r"><code>x = rnorm(20,12,3)
 x</code></pre>
-<pre><code> [1]  9.590313 18.247746 15.996434 13.067731 12.219206 13.069325  9.935969
- [8] 12.155760 10.080002 11.667873 11.729901 10.444642 12.713615  8.725700
-[15] 13.927560  6.271804  9.261975 12.850326 11.323334 15.082801</code></pre>
+<pre><code> [1]  9.141047 15.232532 12.750926 12.781502  6.153670 12.862467 16.984586
+ [8] 13.150531 11.635898 18.572237  9.073166  8.807740 10.090668 14.395364
+[15] 13.434911 14.556876  6.883176 14.973939 16.127786 11.958733</code></pre>
 <p>See how the numbers came out a little unwieldy? Let’s fix that:</p>
 <pre class="r"><code>x=round(rnorm(20,12,3),digits=2)
 x</code></pre>
-<pre><code> [1] 13.73 12.39 14.15 10.58  9.36 10.66 15.74  8.39 13.29 12.81  8.54
-[12] 14.60 12.03 19.50 13.51 13.52 12.14 11.26 12.74 14.82</code></pre>
+<pre><code> [1]  7.99  7.50 12.87 11.26  6.94 10.39 12.60 17.32 12.46 14.65 17.45
+[12] 12.46 11.32 11.68 15.02 13.96  9.66 11.57 11.94 11.77</code></pre>
 <p>Notice how the <code>digits=</code> command is preceded by a comma. This is because it is a part of the <code>round()</code> function but <em>not</em> a part of the <code>rnorm()</code> function.</p>
 <p>We can specify the mean and the standard deviation of the dataset, but does introducing the variability of the standard deviation make it harder for the mean to be exactly what we asked for? Let’s see!</p>
 <pre class="r"><code>x=rnorm(100,12,3)
 x = round(x, digits = 2)
 mean(x)</code></pre>
-<pre><code>[1] 12.3263</code></pre>
+<pre><code>[1] 12.1004</code></pre>
 </div>
 <div id="sampling" class="section level3">
 <h3>Sampling</h3>

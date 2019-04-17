@@ -5,12 +5,15 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
+<br>
 
 ## One-Way ANOVA: Post-Hoc Tests and Review
 
 <br>
 
 ### Reminders
+
+<br>
 
 
 ANOVA's are used when the sample data consists of a dependent measure and more than two indpendent variables. 

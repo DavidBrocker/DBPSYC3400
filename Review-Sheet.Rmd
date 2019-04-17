@@ -11,6 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 <br>
+
 ### Exam 1 R-Review Sheet
 
 
