@@ -1,0 +1,25 @@
+---
+title: "Lab_10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+# Lab 10
+
+## Analysis Of Variance (ANOVA) Review
+
+
+
+```{r}
+    Condition=c(rep("control",10),rep("Treatment 1", 10), rep("Treatment 2", 10))
+    Scores = rnorm(30, 18, 10)
+    anova_example <- data.frame(Condition, Scores)
+    anova_example
+```
+
+
+
+
