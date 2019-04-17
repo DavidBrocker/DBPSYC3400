@@ -12,7 +12,7 @@
 <meta name="author" content="David Brocker, Frank Grasso, Ian Streiter" />
 
 
-<title></title>
+<title>Lab-6.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,9 +70,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -91,8 +89,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -108,7 +112,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -128,6 +131,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -149,19 +189,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -206,13 +312,16 @@ $(document).ready(function () {
   <a href="Lab-7.html">Lab 7</a>
 </li>
 <li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
   <a href="Lab-8.html">Lab 8</a>
 </li>
 <li>
   <a href="Lab-9.html">Lab 9</a>
 </li>
 <li>
-  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+  <a href="Lab-10.html">Lab 10</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -235,8 +344,7 @@ $(document).ready(function () {
 <p>The wonderful thing about R, is that once you know to use it, you can use libraries that process <em>unlimited</em> numbers of statistics. In order to do this, one needs to learn a few commands in order to access these online libraries and use them. With Exercise 06, we introduce the downloading of the <strong>BSDA</strong> package. Within this package comes the functions <code>z.test()</code> and <code>SIGN.test()</code>.</p>
 <p>First, install the package: <code>install.packages(BSDA)</code></p>
 <p>After installing it on your computer, you can use at anytime you want by telling R to use the package. You do this by:<code>library(BSDA)</code></p>
-<div id="z-test" class="section level3">
-<h3>Z-Test</h3>
+<p>###Z-Test</p>
 <p>In order to compute a Z-Test, you will need a dataset. This is a <em>single</em> column of numbers, or in R-Speak, a vector.</p>
 <p>This will be compared against the known population mean <span class="math inline">\(\mu\)</span> <code>(mu)</code> and standard deviation <span class="math inline">\(\sigma\)</span> <code>(sigma.x)</code>.</p>
 <p>The <code>z.test()</code> accepts the following arguments:</p>
@@ -246,8 +354,7 @@ $(document).ready(function () {
 <p><code>alternative = &quot;two.sided&quot;,&quot;less&quot;,&quot;greater&quot;</code> - Specification of the alternative hypothesis.</p>
 <p>So, in review, your use of the <code>z.test()</code> function should look like this:</p>
 <p><code>z.test(x=,mu=, sigma.x=, alternative = &quot;two.sided&quot;)</code></p>
-<div id="z-test-example" class="section level4">
-<h4>Z-Test Example</h4>
+<p>####Z-Test Example</p>
 <p>In order to perform a Z-Test, you need to have a specified <span class="math inline">\(/sigma\)</span> and <span class="math inline">\(/mu\)</span>.</p>
 <p>In order to find the Standard Error of the mean we need to do the following computation.</p>
 <p><span class="math display">\[\sigma_\bar{x} = \frac{s}{\sqrt{n}}\]</span> We also need to find the mean of the sample:</p>
@@ -289,10 +396,7 @@ mean of x
        73 </code></pre>
 <p>The output that is given by the <code>z.test()</code> function gives us much more than we need for right now. Note that the Z value is slightly different, this is mainly due to how th computer parses the data. You will also see that this output gives an exact value for p. For right now, stick to indicating if your <span class="math inline">\(Z_{obt}\)</span> is &gt; or &lt; <span class="math inline">\(\alpha{_.05}\)</span>.</p>
 <hr />
-</div>
-</div>
-<div id="sign-test" class="section level3">
-<h3>Sign Test</h3>
+<p>###Sign Test</p>
 <p>For the sign test, we will be determining whether or not a difference is due to chance. The sign test uses the number of pluses + and minuses - to determine the strength of an effect. We will be using the <code>BSDA</code> package again, specifically the <code>SIGN.test()</code> function.</p>
 <p>The <code>SIGN.test()</code> function accepts the following argments:</p>
 <p><code>x</code> - a vector of difference scores</p>
@@ -373,19 +477,13 @@ Upper Achieved CI     0.9893 -1.0000    Inf</code></pre>
 <p>We can look at the binomial table, in the column for .50 where n = 10.</p>
 <p>We will need to add the probabilities of <span class="math inline">\(p(8)\)</span>,<span class="math inline">\(p(9)\)</span>, and <span class="math inline">\(p(10)\)</span> to get our answer:</p>
 <p><span class="math display">\[p(8)+p(9)+p(10) = .0439 + .0098 + .0010 + = .0547 \]</span></p>
-</div>
-</div>
-<div id="matrices-and-dataframes-and-indexing" class="section level3">
-<h3>Matrices and Dataframes and Indexing</h3>
+<p>###Matrices and Dataframes and Indexing</p>
 <p>We have learned about vectors and dataframees. We will now learn about matrices. A matrix is a set of numbers that do sometihng.</p>
-<div id="vector" class="section level5">
-<h5>Vector</h5>
+<p>#####Vector</p>
 <pre class="r"><code>x = c(1,2,3,4,5)
 x</code></pre>
 <pre><code>[1] 1 2 3 4 5</code></pre>
-</div>
-<div id="dataframe" class="section level5">
-<h5>Dataframe</h5>
+<p>#####Dataframe</p>
 <pre class="r"><code>x=1:10
 y=x
 xy&lt;-data.frame(x,y)
@@ -401,9 +499,7 @@ xy</code></pre>
 8   8  8
 9   9  9
 10 10 10</code></pre>
-</div>
-<div id="matrices" class="section level5">
-<h5>Matrices</h5>
+<p>#####Matrices</p>
 <p>When creating a matrix, you can define your number of columns and number of rows through the use of</p>
 <p><code>nrow=</code> and <code>ncol=</code>.</p>
 <pre class="r"><code>matrix(c(x=1:5,y=c(120,130,131,144,100)),nrow = 5,ncol = 2)</code></pre>
@@ -424,10 +520,7 @@ xmat[1,1]</code></pre>
 <pre><code>[1] 2</code></pre>
 <pre class="r"><code>xmat[4,2]</code></pre>
 <pre><code>[1] 144</code></pre>
-</div>
-</div>
-<div id="apa-style-statistical-reporting" class="section level3">
-<h3>APA Style Statistical Reporting</h3>
+<p>###APA Style Statistical Reporting</p>
 <p>So far in this class, we have looked at datasets, and performed analsyes. The next step is to report these findings.</p>
 <p>All of psychology uses APA stye writing. Within this writing style there is a special style to report results.</p>
 <p>From this point forward, on your homeworks if you do any analyses and are asked to report your findings, you <em>must</em> use proper statistical formatting in order to get all of the points.</p>

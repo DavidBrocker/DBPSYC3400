@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>Lab-7.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,9 +69,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -90,8 +88,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -107,7 +111,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -127,6 +130,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -148,19 +188,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -205,13 +311,16 @@ $(document).ready(function () {
   <a href="Lab-7.html">Lab 7</a>
 </li>
 <li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
   <a href="Lab-8.html">Lab 8</a>
 </li>
 <li>
   <a href="Lab-9.html">Lab 9</a>
 </li>
 <li>
-  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+  <a href="Lab-10.html">Lab 10</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -279,8 +388,7 @@ $(document).ready(function () {
 <p>If you remember, the z-test takes information from the population such as the mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p>
 <p>The t-test takes information from the sample instead.</p>
 <p>You will notice the formulas are set-up the same way, they just have different numbers.</p>
-<div id="z-test-and-t-test-comparison" class="section level3">
-<h3>Z-Test and T-Test Comparison</h3>
+<p>###Z-Test and T-Test Comparison</p>
 <p><span class="math inline">\(Z = \frac{\bar{X}-\mu}{\sigma_\bar{X}}\)</span> and <span class="math inline">\(t = \frac{\bar{X}-\mu}{\sigma_\bar{X}}\)</span></p>
 <div id="types-of-t-tests" class="section level4">
 <h4>Types of T-Tests</h4>
@@ -351,32 +459,16 @@ mean of x
 </div>
 </div>
 </div>
-</div>
 <div id="power" class="section level2">
 <h2>Power</h2>
 <p>When we talk about power in the context of an experiment, we are referring to the probability of detecting an effect <em>if</em> the effect exists in nature. Power is an important part of experimental design. One of its many uses is in the realm of grant proposals. Let’s imagine you want to run an experiment and you would also like a grant so you can fund the study. When you propose the study, the board that will be reviewing your claim will want to know if it is likely to work. If you can show them that your experiment has high power, you will need fewer participants to find the effect (if it exists), and will cost less money!</p>
 <p>There are several ways to compute power, however, we will focus on the computer assisted method, using a program called <a href="http://www.gpower.hhu.de/">G-Power</a>. You will <em>not</em> be required to know how to use the program intricately, rather, you will just have to know how to interpret the output of the program as well as input one or two parameters.</p>
-<div class="figure">
-<img src="images/1_gplot.png" />
-
-</div>
+<p><img src="images/1_gplot.png" /></p>
 <p><img src="images/2_gplot.png" /> <img src="images/3_gplot.png" /></p>
-<div class="figure">
-<img src="images/4_gplot.png" />
-
-</div>
-<div class="figure">
-<img src="images/5_gplot.png" />
-
-</div>
-<div class="figure">
-<img src="images/6_gplot.png" />
-
-</div>
-<div class="figure">
-<img src="images/7_gplot.png" />
-
-</div>
+<p><img src="images/4_gplot.png" /></p>
+<p><img src="images/5_gplot.png" /></p>
+<p><img src="images/6_gplot.png" /></p>
+<p><img src="images/7_gplot.png" /></p>
 </div>
 </div>
 

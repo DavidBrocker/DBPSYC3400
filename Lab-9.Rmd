@@ -1,5 +1,4 @@
 ---
-title: "Lab_9"
 output: html_document
 ---
 
@@ -7,7 +6,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-# Lab 9
 
 ## Analysis Of Variance (ANOVA)
 

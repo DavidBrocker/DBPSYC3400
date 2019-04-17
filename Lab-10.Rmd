@@ -1,6 +1,4 @@
 ---
-title: "Lab_10"
-title: 'Lab-10'
 output: html_document
 ---
 
@@ -8,10 +6,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-# Lab 10
 ## One-Way ANOVA: Post-Hoc Tests and Review
 
-## Analysis Of Variance (ANOVA) Review
 ### Reminders
 
 
