@@ -5,8 +5,11 @@ output: html_document
 ```{r global_options,echo=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 ```
+<br>
 
 # Hypothesis Testing
+
+<br>
 
 Truth Table:
 

@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>Lab-5.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +72,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -93,8 +91,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -110,7 +114,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -130,6 +133,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -151,18 +191,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -251,6 +348,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -303,13 +410,16 @@ div.tocify {
   <a href="Lab-7.html">Lab 7</a>
 </li>
 <li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
   <a href="Lab-8.html">Lab 8</a>
 </li>
 <li>
   <a href="Lab-9.html">Lab 9</a>
 </li>
 <li>
-  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+  <a href="Lab-10.html">Lab 10</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -327,7 +437,10 @@ div.tocify {
 </div>
 
 
-<p><br> ###Probability</p>
+<p><br></p>
+<div id="probability" class="section level3">
+<h3>Probability</h3>
+<p><br></p>
 <p>Before we can talk about inferential satistics we have to understand probability.</p>
 <p>We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail.</p>
 <pre class="r"><code>coin=c(&quot;head&quot;,&quot;tails&quot;)
@@ -374,6 +487,7 @@ length(which(z == 10)) #Return the length of Z when &quot;10&quot; is present.</
 <pre><code>[1] 5</code></pre>
 <pre class="r"><code>length(which(z&gt;91))#Return the length of Z when a score is less than `&lt;`</code></pre>
 <pre><code>[1] 0</code></pre>
+</div>
 <div id="proportioning-data" class="section level2">
 <h2>Proportioning Data</h2>
 <p>The below code will allow you to take a set of data and see what proportion is accounted for given a certain criteria.</p>
@@ -442,20 +556,20 @@ op</code></pre>
 <p>So, let’s make a sample of 20 numbers with a mean of 12 and a standard deviation of 3.</p>
 <pre class="r"><code>x = rnorm(20,12,3)
 x</code></pre>
-<pre><code> [1]  4.772241 12.669913 13.647396 11.097458 14.711718 10.953515 11.231921
- [8]  8.700693  9.439912 12.662757 12.629698 20.544733 10.058838 11.090353
-[15] 17.406570 12.610658  9.518459 14.033584 13.947719 16.284123</code></pre>
+<pre><code> [1]  9.141047 15.232532 12.750926 12.781502  6.153670 12.862467 16.984586
+ [8] 13.150531 11.635898 18.572237  9.073166  8.807740 10.090668 14.395364
+[15] 13.434911 14.556876  6.883176 14.973939 16.127786 11.958733</code></pre>
 <p>See how the numbers came out a little unwieldy? Let’s fix that:</p>
 <pre class="r"><code>x=round(rnorm(20,12,3),digits=2)
 x</code></pre>
-<pre><code> [1] 14.18  8.46  8.72 15.05 14.63 17.98 13.16 11.83 14.64 13.82 10.34
-[12] 10.23 13.05 10.94 17.16 10.99  7.87 11.84 10.55  7.66</code></pre>
+<pre><code> [1]  7.99  7.50 12.87 11.26  6.94 10.39 12.60 17.32 12.46 14.65 17.45
+[12] 12.46 11.32 11.68 15.02 13.96  9.66 11.57 11.94 11.77</code></pre>
 <p>Notice how the <code>digits=</code> command is preceded by a comma. This is because it is a part of the <code>round()</code> function but <em>not</em> a part of the <code>rnorm()</code> function.</p>
 <p>We can specify the mean and the standard deviation of the dataset, but does introducing the variability of the standard deviation make it harder for the mean to be exactly what we asked for? Let’s see!</p>
 <pre class="r"><code>x=rnorm(100,12,3)
 x = round(x, digits = 2)
 mean(x)</code></pre>
-<pre><code>[1] 12.3841</code></pre>
+<pre><code>[1] 12.1004</code></pre>
 </div>
 <div id="sampling" class="section level3">
 <h3>Sampling</h3>

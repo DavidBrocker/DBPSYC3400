@@ -6,7 +6,11 @@ output: html_document
 ```{r global_options,echo=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 ```
+<br>
+
 ## Packages
+
+<br>
 
 The wonderful thing about R, is that once you know to use it, you can use libraries that process *unlimited* numbers of statistics. In order to do this, one needs to learn a few commands in order to access these online libraries and use them. With Exercise 06, we introduce the downloading of the **BSDA** package. Within this package comes the functions `z.test()` and `SIGN.test()`.
 
@@ -66,7 +70,7 @@ $$Xbar = \frac{71+74+73+71+78+73+72+71+73+72+74+72+75}{13} = 73 $$
 We can then plug that into the Z formula:
 
 $$Z_{obt} = \frac{73-71}{.66} = 3.03$$
-Then we can look in the Z-Table for the $Z_{crit} of .05 is 1.64. 
+Then we can look in the Z-Table for the $Z_{crit}$ of .05 is 1.64. 
 
 Because $Z_{obt} > Z_{crit}$, we can reject the null hypothesis that there is no difference. 
 

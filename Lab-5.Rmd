@@ -1,5 +1,4 @@
 ---
-title: " "
 output:
   html_document:
     toc: true
@@ -14,7 +13,10 @@ output:
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
 ```
 <br>
-###Probability 
+
+### Probability 
+
+<br>
 
 Before we can talk about inferential satistics we have to understand probability. 
 
@@ -79,7 +81,7 @@ length(which(z == 10)) #Return the length of Z when "10" is present.
 length(which(z<91))#Return the length of Z when a score is less than `<`
 length(which(z>91))#Return the length of Z when a score is less than `<`
 ```
-##Proportioning Data 
+## Proportioning Data 
 
 The below code will allow you to take a set of data and see what proportion is accounted for given a certain criteria. 
 

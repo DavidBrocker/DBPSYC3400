@@ -1,6 +1,0 @@
----
-title: ''
-output: html_document
----
-
-# Can't Teach an Old Dog New Tricks: Reform Possibiity Higher for Violent Actor compared to Disgust Actor

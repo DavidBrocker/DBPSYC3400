@@ -1,5 +1,4 @@
 ---
-title: "Lab_10"
 output: html_document
 ---
 
@@ -7,9 +6,130 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-# Lab 9
+
+# Lab 10
 
 ## Analysis Of Variance (ANOVA)
+
+<br>
+
+## One-Way ANOVA: Post-Hoc Tests and Review
+
+<br>
+
+### Reminders
+
+<br>
+
+
+ANOVA's are used when the sample data consists of a dependent measure and more than two indpendent variables. 
+
+The sample data you have will have a dependent variable, and a grouping variable. This grouping variable needs to be made into a `factor`. 
+
+In order to do this, we need to use the `factor()` function. 
+
+When R imports a csv file, there is an option to automatically import any string data as a `factor`. 
+
+Computing the ANOVA in R is very similar to computing a linear regression:
+
+```{r}
+set.seed(122)
+groups<-rep(c("ctrl","trt1","trt2","trt3"),each=10)
+dv<-c(rnorm(10,3,5),rnorm(10,9,5),rnorm(10,18,5),rnorm(10,36,5))
+aovex<-data.frame(groups,dv)
+
+summary(aov(dv~groups,data=aovex))
+
+summary(lm(dv~groups,data=aovex))
+```
+You should notice that the two outputs share certain values. The F statistic is the same in both cases, as is the p-value. Additionally, the linear
+regression has the same two degrees of freedom: 3 and 36. 
+
+
+When you are creating your ANOVA output, it is good practice to name the ANOVA as being a `something.mod`. This is helpful because you will 
+be able to use this model name in other instances. 
+
+### Post-Hoc Tests
+
+Post-Hoc tests are useful because they allow us to see *where* the difference is in our data. If we have a One-Way ANOVA with
+five groups and we have a significant F value, we have no idea which groups are different. 
+
+We will be using two Post-Hoc tests: the `TukeyHSD` and the `SNK.Test` (Student Newman Keuls). 
+
+We will use the same data from before and try to find out where the difference is, or rather, which combinations of data are significantly different. 
+
+#### Tukey HSD
+
+The `TukeyHSD` test stands for "Honestly-Significantly-Different". 
+
+```{r}
+set.seed(122)
+groups<-rep(c("ctrl","trt1","trt2","trt3"),each=10)
+dv<-c(rnorm(10,3,5),rnorm(10,9,5),rnorm(10,18,5),rnorm(10,36,5))
+aovex<-data.frame(groups,dv)
+aovex.mod<-aov(dv~groups, data = aovex)
+TukeyHSD(aovex.mod)
+```
+
+From this output we can see that the `p adj` value corresponds to whether or not the specific comparison is significant. 
+
+We can see that there is a difference between the following groups: 
+
+Treatment 2 and Control, Treatment 3 and Control, Treatment 2 and Treatment 1, Treatment 3 and Treatment 1, and Treatment 3 and Treatment 2. 
+
+There is not a significant difference between Treatment 1 and Control. 
+
+If you look at the columns labeled `lwr` and `upr`, these are the confidence intervals for this specific comparison. If the confidence intervals include 0, the comparison will not be significant. 
+
+To test this, if you notice, the comparison between Treatment and Control is the only comparison with a negative lower interval. The range of -2.32 -> 11.36 includes 0 so we can determine it is not significant. 
+
+These results can also be visualized in the form of a plot. 
+
+#### Plotting the Tukey Test
+
+In order to plot the Tukey Test results you will need to pass the output of the Tukey Test into the `plot()` function. 
+
+```{r}
+tukey.test<-TukeyHSD(aovex.mod)
+plot(tukey.test)
+```
+As you can see from the graph, there are dashed lines to demarcate the line at 0. The only interval that crosses this range is the Treatment 1 and Control.
+
+
+
+### Student Newman Keuls
+
+The Student Newman Keuls test is another post-hoc test that is used to make comparisons of differences between groups. 
+
+The Student Newman Keuls test is available through a package called `agricolae`. 
+
+First, we will install the package using `install.packages("PackageName").
+
+Second, we will load the package through the use of `library(agricolae)`.
+
+The arguments in the Student Newman Keuls test are as follows:
+
+`y` - This is where you will put your model, (this is why it is so important to store your models!)
+`trt` - This is the name of your grouping variable, it will need to appear in quotes. 
+`main` - This is what the title of your output will be. 
+`alpha` - This is where you will specify what alpha level you will be testing your comparisons against. 
+`console` - This is the option that asks whether you want to see the output (you should always make it equal to TRUE)
+
+In full:
+
+```{r}
+library(agricolae)
+SNK.test(aovex.mod, "groups", main = "Test Student Newman Keuls", alpha = .05, console = TRUE)
+```
+
+The output from the Newman Keuls test does not return p-values, however, the same ideas about the confidence intervals apply. 
+
+You will notice that Control and Treatment have ranges that include 0, (-6.01-10) and (-3.31-14.79) respectively. 
+
+The output also prints out a helpful tool: **Means with the same letter are not significantly different.**
+
+We can see that Treatment 3 Treatment 2 are both different and Treatment 1 and Control are the same letter, indicating they are not significantly different. 
+
 
 
 

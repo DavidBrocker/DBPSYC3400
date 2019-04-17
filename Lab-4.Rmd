@@ -1,5 +1,4 @@
 ---
-title: " "
 output:
   html_document:
     toc: true
@@ -15,7 +14,7 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
 ```
 <br>
 
-###Additions to Linear Regression
+### Additions to Linear Regression
 
 In last weeks lecture we discussed how to create the regression line. If we are trying to predict Y given X, we can plug a value in for X and the output we get should be the predicted Y value. 
 
@@ -23,9 +22,6 @@ Is this prediction perfect?
 
 The regression line is created by the points you have in your dataset, but, keep in mind that the relationships in your datasets are not always perfect in nature. As such, there is an error of the prediction that can be computed. The textbook likens this error to the standard deviation, and you will see that the formula is quite similar as well. 
 
-
-
-(2*sd(res)/length(x-2))
 
 $s_{Y|X} = \sqrt{\frac{\sum(Y-Y')^2}{N-2}}$
 
@@ -50,7 +46,7 @@ summary(xy.mod)
 
 
 
-##Graphical Additions
+## Graphical Additions
 
 We have already seen the basics of using graphics to visualize our data with functons such as `plot()` and `hist()`.Additionally, we have seen that we can do certain things to clean-up our visualizations such as providing titles and captions through the use of `main="Title"`, `sub="Caption"` and respectively, adding axis lables with `xlab="X", ylab="Y"`. `
 
@@ -110,12 +106,19 @@ If you are presented with a dataset with more than one independent variable, it 
 
 ```{r}
 set.seed(10)
+
 Attention_Experiment<-data.frame(Age=round(rnorm(50,17,2),digits = 0),Minutes_Phone=round(rnorm(50,120,5),digits=2),Test_Score=round(rnorm(50,80,10),digits=2))
+
 plot(Attention_Experiment$Test_Score~Attention_Experiment$Age,xlab="Age",ylab="Test Score")
+
 plot(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age,xlab="Age",ylab="Hours TV Watched")
+
 Test_Age.mod<-lm(Attention_Experiment$Test_Score~Attention_Experiment$Age)
+
 Phone_Use.mod<-lm(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age)
+
 summary(Test_Age.mod)
+
 summary(Phone_Use.mod)
 ```
 We could take the correlation using `cor()` and see what the value of R-Squared was and keep looking back and forth, but there is a (somewhat) easier way!

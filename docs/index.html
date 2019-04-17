@@ -69,9 +69,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -90,8 +88,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -107,7 +111,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -127,6 +130,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -148,19 +188,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -205,13 +311,16 @@ $(document).ready(function () {
   <a href="Lab-7.html">Lab 7</a>
 </li>
 <li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
   <a href="Lab-8.html">Lab 8</a>
 </li>
 <li>
   <a href="Lab-9.html">Lab 9</a>
 </li>
 <li>
-  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+  <a href="Lab-10.html">Lab 10</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -247,9 +356,9 @@ $(document).ready(function () {
 <p><a href="https://www.amazon.com/Understanding-Statistics-Behavioral-Sciences-10th/dp/1111837260/ref=sr_1_1?ie=UTF8&amp;qid=1548815933&amp;sr=8-1&amp;keywords=understanding+statistics+in+behavioral+sciences">Understanding Statistics in the Behavioral Sciences by Robert Pagano</a></p>
 <h3 id="optional">Optional</h3>
 <p><a href="https://www.amazon.com/R-Dummies-Andrie-Vries/dp/1119055806/ref=sr_1_1?keywords=r+for+dummies+de+vries&amp;qid=1549591007&amp;sr=8-1">R For Dummies 2nd Edition</a></p>
-<h4 id="contact-information">Contact Information</h4>
+<h3 id="contact-information">Contact Information</h3>
 <p>David Brocker</p>
-<p><a href="mailto:DavidABrocker@gmail.com">DavidABrocker@gmail.com</a></p>
+<p><a href="mailto:DavidABrocker@gmail.com" class="email">DavidABrocker@gmail.com</a></p>
 <p>Office Hours: 12:00-1:30 Tuesday’s in 4606A or by Appointment</p>
 <h3 id="what-is-the-point-of-the-lab-section">What is the point of the lab section?</h3>
 <p>The lab section serves as a way to go from the theoretical and conceptual materials and transform them into the practical applications that they serve. In lecture, you will learn about <em>why</em> a certain statistic is calculated when dealing with specific data, in lab, you will learn <em>how</em>.</p>
