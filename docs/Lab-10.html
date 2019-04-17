@@ -11,7 +11,7 @@
 
 
 
-<title>Lab-10.utf8.md</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,7 +69,9 @@ h6 {
 </style>
 
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -88,14 +90,8 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
-}
-summary {
-  display: list-item;
 }
 </style>
 
@@ -111,6 +107,7 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
+
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -130,43 +127,6 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -188,85 +148,19 @@ $(document).ready(function () {
 });
 </script>
 
+
+<div class="container-fluid main-container">
+
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
 });
 </script>
 
 <!-- code folding -->
 
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
 
 
 
@@ -338,7 +232,12 @@ $(document).ready(function () {
 </div>
 
 
+<div id="lab-10" class="section level1">
+<h1>Lab 10</h1>
+<div id="analysis-of-variance-anova" class="section level2">
+<h2>Analysis Of Variance (ANOVA)</h2>
 <p><br></p>
+</div>
 <div id="one-way-anova-post-hoc-tests-and-review" class="section level2">
 <h2>One-Way ANOVA: Post-Hoc Tests and Review</h2>
 <p><br></p>
@@ -437,8 +336,9 @@ plot(tukey.test)</code></pre>
 <p>The arguments in the Student Newman Keuls test are as follows:</p>
 <p><code>y</code> - This is where you will put your model, (this is why it is so important to store your models!) <code>trt</code> - This is the name of your grouping variable, it will need to appear in quotes. <code>main</code> - This is what the title of your output will be. <code>alpha</code> - This is where you will specify what alpha level you will be testing your comparisons against. <code>console</code> - This is the option that asks whether you want to see the output (you should always make it equal to TRUE)</p>
 <p>In full:</p>
-<pre class="r"><code>library(agricolae)
-SNK.test(aovex.mod, &quot;groups&quot;, main = &quot;Test Student Newman Keuls&quot;, alpha = .05, console = TRUE)</code></pre>
+<pre class="r"><code>library(agricolae)</code></pre>
+<pre><code>Warning: package &#39;agricolae&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>SNK.test(aovex.mod, &quot;groups&quot;, main = &quot;Test Student Newman Keuls&quot;, alpha = .05, console = TRUE)</code></pre>
 <pre><code>
 Study: Test Student Newman Keuls
 
@@ -472,6 +372,7 @@ ctrl  3.071869      c</code></pre>
 <p>You will notice that Control and Treatment have ranges that include 0, (-6.01-10) and (-3.31-14.79) respectively.</p>
 <p>The output also prints out a helpful tool: <strong>Means with the same letter are not significantly different.</strong></p>
 <p>We can see that Treatment 3 Treatment 2 are both different and Treatment 1 and Control are the same letter, indicating they are not significantly different.</p>
+</div>
 </div>
 </div>
 
