@@ -1,5 +1,4 @@
 ---
-title: ' '
 output:
   html_document:
     collapsed: no
