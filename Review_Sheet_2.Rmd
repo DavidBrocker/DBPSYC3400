@@ -15,8 +15,10 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   
   `col` - This is the same idea from the color argument used in a scatter plot, however, with bar plots you need to add a concatenation if you are looking to plot more than one bar (which you should!).
       
-    `col=c("white","red","blue")`
-        `names.arg` - This is similar to `xlab`,     however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.
+  `col=c("white","red","blue")`
+        
+  `names.arg` - This is similar to `xlab`,however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.
+  
   `names.arg=c("Experimental","Control")`
 
 **Data Generation**
@@ -32,8 +34,9 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   `n` - This specifies how many items you  want to sample from `x`. 
 
 
-    *Sampling Example* 
-    `sample(x, 10)`
+  **Sampling Example** 
+  
+  `sample(x, 10)`
 
 `rnorm` - This function returns whatever size you specify as a vector from the normal distribution.
 
@@ -47,8 +50,8 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   `sd` - This is what you would like the standard deviation of the data returned to be. 
 
 
-    *Example of rnorm* 
-    `rnorm(100, 120, 10)`
+  **Example of rnorm** 
+  `rnorm(100, 120, 10)`
 
 `library()` - This function loads a package outside of the ones native to R. So far, the only package we will be using is `BSDA`. 
 
@@ -57,25 +60,25 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 `z.test()` -  This is the function you will use to perform a z test. It contains several arguments.
 
 
-  `x` - This will be your vector that continues the data you will be comparing to $$\mu$$ and $$\sigma$$.
+  `x` - This will be your vector that continues the data you will be comparing to $\mu$ and $\sigma$.
 
 
-  `sigma.x` - This will be the population standard deviation, $$\sigma$$, which will *usually* be given to you in a question.
+  `sigma.x` - This will be the population standard deviation, $\sigma$, which will *usually* be given to you in a question.
 
 
-  `mu` - This will be the population mean, $$\mu$$, which will *usually* be given to you in a question. 
+  `mu` - This will be the population mean, $\mu$, which will *usually* be given to you in a question. 
 
 
   `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
 
 
-    `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
 
 
-    `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
 
 
-    `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
 
 
   Here is what a full z.test function could look like:
@@ -89,19 +92,19 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
   `x` - This will be your vector that continues the data that is the *difference* between the first group and second group. 
 
 
-  `md` - This will rarely be given, but implied. The sign test will test against the $$H_0$$, which states that no difference exists, so 0 should be the default value. 
+  `md` - This will rarely be given, but implied. The sign test will test against the $H_0$, which states that no difference exists, so 0 should be the default value. 
 
 
   `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
 
 
-    `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
 
 
-    `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
 
 
-    `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
 
 
   Here is what a full sign test function could look like:
@@ -114,22 +117,22 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA,warning = FALSE)
 `t.test` - This function contains several arguments, the results, as well as the type of test that is run will be determined on which you specify. 
 
 
-  `x` - This is a vector that you be comparing against the population mean, $$\mu$$.
+  `x` - This is a vector that you be comparing against the population mean, $\mu$.
 
 
   `y1, y2` - These arguments specify two distinct vectors of the same length to be compared. 
 
 
-  `mu` - This will be the population mean, $$\mu$$, which will *usually* be given to you in a question. 
+  `mu` - This will be the population mean, $\mu$, which will *usually* be given to you in a question. 
 
 
   `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
   
-    `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
   
-    `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $$\mu$$.
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
   
-    `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $$\mu$$.
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
 
 
   
