@@ -106,12 +106,19 @@ If you are presented with a dataset with more than one independent variable, it 
 
 ```{r}
 set.seed(10)
+
 Attention_Experiment<-data.frame(Age=round(rnorm(50,17,2),digits = 0),Minutes_Phone=round(rnorm(50,120,5),digits=2),Test_Score=round(rnorm(50,80,10),digits=2))
+
 plot(Attention_Experiment$Test_Score~Attention_Experiment$Age,xlab="Age",ylab="Test Score")
+
 plot(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age,xlab="Age",ylab="Hours TV Watched")
+
 Test_Age.mod<-lm(Attention_Experiment$Test_Score~Attention_Experiment$Age)
+
 Phone_Use.mod<-lm(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age)
+
 summary(Test_Age.mod)
+
 summary(Phone_Use.mod)
 ```
 We could take the correlation using `cor()` and see what the value of R-Squared was and keep looking back and forth, but there is a (somewhat) easier way!

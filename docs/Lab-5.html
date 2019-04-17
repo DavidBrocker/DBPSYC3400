@@ -437,12 +437,14 @@ div.tocify {
 </div>
 
 
-<p><br> ###Probability</p>
+<p><br></p>
+<div id="probability" class="section level3">
+<h3>Probability</h3>
 <p>Before we can talk about inferential satistics we have to understand probability.</p>
 <p>We all know, that if I toss a quarter in the air. There are only two possible options. Either the coin lands on a head, or it lands on a tail.</p>
 <pre class="r"><code>coin=c(&quot;head&quot;,&quot;tails&quot;)
 sample(coin,1)</code></pre>
-<pre><code>[1] &quot;head&quot;</code></pre>
+<pre><code>[1] &quot;tails&quot;</code></pre>
 <p>By using the <code>sample()</code> function, we can tell R to randomly sample an event for us.</p>
 <p>We ‘tossed’ a coin, and it landed on heads. What is the probabiity of this happening?</p>
 <p>Probablity is written as:</p>
@@ -484,7 +486,9 @@ length(which(z == 10)) #Return the length of Z when &quot;10&quot; is present.</
 <pre><code>[1] 5</code></pre>
 <pre class="r"><code>length(which(z&gt;91))#Return the length of Z when a score is less than `&lt;`</code></pre>
 <pre><code>[1] 0</code></pre>
-<p>##Proportioning Data</p>
+</div>
+<div id="proportioning-data" class="section level2">
+<h2>Proportioning Data</h2>
 <p>The below code will allow you to take a set of data and see what proportion is accounted for given a certain criteria.</p>
 <p>For example: If I have a data set of 1’s and 0’s, how can I know how many I have of each. Additionally, how can I tell the proportion of each?</p>
 <p>To do this we need to use the <code>which()</code>command as well as how much od the data is made up of 1’s and 0’s.</p>
@@ -551,20 +555,20 @@ op</code></pre>
 <p>So, let’s make a sample of 20 numbers with a mean of 12 and a standard deviation of 3.</p>
 <pre class="r"><code>x = rnorm(20,12,3)
 x</code></pre>
-<pre><code> [1]  4.772241 12.669913 13.647396 11.097458 14.711718 10.953515 11.231921
- [8]  8.700693  9.439912 12.662757 12.629698 20.544733 10.058838 11.090353
-[15] 17.406570 12.610658  9.518459 14.033584 13.947719 16.284123</code></pre>
+<pre><code> [1]  9.590313 18.247746 15.996434 13.067731 12.219206 13.069325  9.935969
+ [8] 12.155760 10.080002 11.667873 11.729901 10.444642 12.713615  8.725700
+[15] 13.927560  6.271804  9.261975 12.850326 11.323334 15.082801</code></pre>
 <p>See how the numbers came out a little unwieldy? Let’s fix that:</p>
 <pre class="r"><code>x=round(rnorm(20,12,3),digits=2)
 x</code></pre>
-<pre><code> [1] 14.18  8.46  8.72 15.05 14.63 17.98 13.16 11.83 14.64 13.82 10.34
-[12] 10.23 13.05 10.94 17.16 10.99  7.87 11.84 10.55  7.66</code></pre>
+<pre><code> [1] 13.73 12.39 14.15 10.58  9.36 10.66 15.74  8.39 13.29 12.81  8.54
+[12] 14.60 12.03 19.50 13.51 13.52 12.14 11.26 12.74 14.82</code></pre>
 <p>Notice how the <code>digits=</code> command is preceded by a comma. This is because it is a part of the <code>round()</code> function but <em>not</em> a part of the <code>rnorm()</code> function.</p>
 <p>We can specify the mean and the standard deviation of the dataset, but does introducing the variability of the standard deviation make it harder for the mean to be exactly what we asked for? Let’s see!</p>
 <pre class="r"><code>x=rnorm(100,12,3)
 x = round(x, digits = 2)
 mean(x)</code></pre>
-<pre><code>[1] 12.3841</code></pre>
+<pre><code>[1] 12.3263</code></pre>
 </div>
 <div id="sampling" class="section level3">
 <h3>Sampling</h3>
@@ -584,6 +588,7 @@ mean(s1)</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
 <pre><code>[1] 10.11374</code></pre>
 <p>Do you see how it becomes difficult to tell a certain property of a random sample when you only have small sample to use?</p>
+</div>
 </div>
 
 

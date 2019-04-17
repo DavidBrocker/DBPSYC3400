@@ -438,11 +438,11 @@ div.tocify {
 
 
 <p><br></p>
-<p>###Additions to Linear Regression</p>
+<div id="additions-to-linear-regression" class="section level3">
+<h3>Additions to Linear Regression</h3>
 <p>In last weeks lecture we discussed how to create the regression line. If we are trying to predict Y given X, we can plug a value in for X and the output we get should be the predicted Y value.</p>
 <p>Is this prediction perfect?</p>
 <p>The regression line is created by the points you have in your dataset, but, keep in mind that the relationships in your datasets are not always perfect in nature. As such, there is an error of the prediction that can be computed. The textbook likens this error to the standard deviation, and you will see that the formula is quite similar as well.</p>
-<p>(2*sd(res)/length(x-2))</p>
 <p><span class="math inline">\(s_{Y|X} = \sqrt{\frac{\sum(Y-Y&#39;)^2}{N-2}}\)</span></p>
 <p>The expanded formula looks like:</p>
 <p><span class="math inline">\(s_{Y|X} = \sqrt{\frac{[\sum(XY)-(\sum X)(\sum Y^2/N]^2}{N-2}}\)</span></p>
@@ -475,7 +475,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.954 on 98 degrees of freedom
 Multiple R-squared:  0.001197,  Adjusted R-squared:  -0.008995 
 F-statistic: 0.1175 on 1 and 98 DF,  p-value: 0.7325</code></pre>
-<p>##Graphical Additions</p>
+</div>
+<div id="graphical-additions" class="section level2">
+<h2>Graphical Additions</h2>
 <p>We have already seen the basics of using graphics to visualize our data with functons such as <code>plot()</code> and <code>hist()</code>.Additionally, we have seen that we can do certain things to clean-up our visualizations such as providing titles and captions through the use of <code>main=&quot;Title&quot;</code>, <code>sub=&quot;Caption&quot;</code> and respectively, adding axis lables with <code>xlab=&quot;X&quot;, ylab=&quot;Y&quot;</code>. `</p>
 <p>We have also seen how to draw a line through the points that would best explain the relationship present if any, in the dat through the use of <code>abline(a=,b=)</code>.</p>
 <pre class="r"><code>set.seed(105)
@@ -528,13 +530,17 @@ plot(x,y,col=&quot;green&quot;,pch=15)</code></pre>
 <p>Okay, so we can add colors and shapes to our graphs. So what? What if we wanted to display certain information in a certain way, or what if we wanted to separate our data in some distinguishing way?</p>
 <p>If you are presented with a dataset with more than one independent variable, it can be difficult to discern any relationship when you have to graph it twice. Additionally we will calculate the linerar regression summaries of each independent vairables:</p>
 <pre class="r"><code>set.seed(10)
+
 Attention_Experiment&lt;-data.frame(Age=round(rnorm(50,17,2),digits = 0),Minutes_Phone=round(rnorm(50,120,5),digits=2),Test_Score=round(rnorm(50,80,10),digits=2))
+
 plot(Attention_Experiment$Test_Score~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Test Score&quot;)</code></pre>
 <p><img src="Lab-4_files/figure-html/unnamed-chunk-7-1.png" width="1152" /></p>
 <pre class="r"><code>plot(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age,xlab=&quot;Age&quot;,ylab=&quot;Hours TV Watched&quot;)</code></pre>
 <p><img src="Lab-4_files/figure-html/unnamed-chunk-7-2.png" width="1152" /></p>
 <pre class="r"><code>Test_Age.mod&lt;-lm(Attention_Experiment$Test_Score~Attention_Experiment$Age)
+
 Phone_Use.mod&lt;-lm(Attention_Experiment$Minutes_Phone~Attention_Experiment$Age)
+
 summary(Test_Age.mod)</code></pre>
 <pre><code>
 Call:
@@ -607,6 +613,7 @@ abline(Phone_Use.mod,col=&quot;red&quot;)</code></pre>
 </ul></li>
 <li><code>points()</code>: Plot additional points on an existing graph with pre-defined graphical parameters.</li>
 </ul>
+</div>
 
 
 

@@ -66,7 +66,7 @@ $$Xbar = \frac{71+74+73+71+78+73+72+71+73+72+74+72+75}{13} = 73 $$
 We can then plug that into the Z formula:
 
 $$Z_{obt} = \frac{73-71}{.66} = 3.03$$
-Then we can look in the Z-Table for the $Z_{crit} of .05 is 1.64. 
+Then we can look in the Z-Table for the $Z_{crit}$ of .05 is 1.64. 
 
 Because $Z_{obt} > Z_{crit}$, we can reject the null hypothesis that there is no difference. 
 
