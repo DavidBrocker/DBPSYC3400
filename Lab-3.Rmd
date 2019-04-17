@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(fig.width=12, fig.height=8, comment=NA)
 ```
 <br>
-###Correlation
+### Correlation
 
 Correlaton refers to the strength of the relationship between two different variables. 
 
