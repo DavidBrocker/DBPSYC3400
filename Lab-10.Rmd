@@ -1,0 +1,18 @@
+---
+title: "Lab_10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+# Lab 9
+
+## Analysis Of Variance (ANOVA)
+
+
+
+
+
+
