@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Lab-11.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Lab-9.html">Lab 9</a>
+</li>
+<li>
+  <a href="Lab-10.html">Lab 10</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="two-factor-between-subject-anova" class="section level2">
+<h2>Two Factor Between Subject ANOVA</h2>
+<p>Recall the way that the ANOVA is formatted:</p>
+<pre class="r"><code>groups = rep(c(&quot;Control&quot;,&quot;Treatment 1&quot;, &quot;Treatment 2&quot;), each = 20)
+score =c(rnorm(20,10),rnorm(20,15),rnorm(20,22))
+onefact &lt;- data.frame(groups,score)</code></pre>
+<p>We have three independent variables, or conditions, control, treatment 1 and treatment 2. We have one dependent variable, some idea of “score”.</p>
+<p>The ANOVA is analyzed through the use of the <code>aov</code> function. Remember to save the analysis as a model so you can use it later if you need to do any post-hoc tests/unplanned comparisons.</p>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+groups       2 1475.2   737.6   713.7 &lt;2e-16 ***
+Residuals   57   58.9     1.0                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">groups</td>
+<td align="right">2</td>
+<td align="right">1475.15453</td>
+<td align="right">737.577264</td>
+<td align="right">713.7353</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">57</td>
+<td align="right">58.90406</td>
+<td align="right">1.033405</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>This produces a sum of squares and mean squares for the between subjects factor, groups. It also produces a sum of squares and mean squares for the within subjects factor, also called the residuals, or the error.</p>
+<p>From this we get one F-value.</p>
+<p>The current design will not help us too much so we need to move on to another design, the two factor between subjects ANOVA.</p>
+<p>The set-up is mostly the same:</p>
+<pre class="r"><code> Gender = c(rep(&quot;Male&quot;, 30), rep(&quot;Female&quot;,30))
+ Diet = c(rep(c(&quot;Diet 1&quot;, &quot;Diet 2&quot;), 30))
+ Count = c(rnorm(30,28,2),rnorm(30,35,2))
+ twofact.df &lt;- data.frame(Gender,Diet,Count)
+ twofact.df</code></pre>
+<pre><code>   Gender   Diet    Count
+1    Male Diet 1 22.67655
+2    Male Diet 2 29.35854
+3    Male Diet 1 31.93067
+4    Male Diet 2 27.75096
+5    Male Diet 1 30.02002
+6    Male Diet 2 23.93551
+7    Male Diet 1 29.20136
+8    Male Diet 2 29.17159
+9    Male Diet 1 27.23686
+10   Male Diet 2 31.21502
+11   Male Diet 1 29.39725
+12   Male Diet 2 25.24220
+13   Male Diet 1 32.63705
+14   Male Diet 2 27.85621
+15   Male Diet 1 30.49511
+16   Male Diet 2 29.77837
+17   Male Diet 1 28.15581
+18   Male Diet 2 24.59904
+19   Male Diet 1 26.72456
+20   Male Diet 2 29.14359
+21   Male Diet 1 26.36284
+22   Male Diet 2 24.53734
+23   Male Diet 1 31.46813
+24   Male Diet 2 27.96462
+25   Male Diet 1 27.40348
+26   Male Diet 2 26.90934
+27   Male Diet 1 27.29749
+28   Male Diet 2 28.30183
+29   Male Diet 1 30.50816
+30   Male Diet 2 27.64922
+31 Female Diet 1 32.84199
+32 Female Diet 2 33.18926
+33 Female Diet 1 32.46185
+34 Female Diet 2 38.19903
+35 Female Diet 1 36.53001
+36 Female Diet 2 35.11607
+37 Female Diet 1 38.13782
+38 Female Diet 2 34.93763
+39 Female Diet 1 35.97011
+40 Female Diet 2 34.40235
+41 Female Diet 1 35.99387
+42 Female Diet 2 36.73728
+43 Female Diet 1 33.81399
+44 Female Diet 2 31.17713
+45 Female Diet 1 37.01405
+46 Female Diet 2 33.98869
+47 Female Diet 1 34.14987
+48 Female Diet 2 34.62933
+49 Female Diet 1 34.12689
+50 Female Diet 2 33.84156
+51 Female Diet 1 36.84563
+52 Female Diet 2 36.51812
+53 Female Diet 1 33.94685
+54 Female Diet 2 36.44349
+55 Female Diet 1 34.00480
+56 Female Diet 2 39.66163
+57 Female Diet 1 35.04273
+58 Female Diet 2 34.96337
+59 Female Diet 1 36.80252
+60 Female Diet 2 37.75104</code></pre>
+<p>We can see that there are two levels of the independent variable (gender) and two levels of the independent variable (Diet) and one dependent variable, count.</p>
+<p>From this we will generate four sums of squares and four mean squares. - Sum of Squares for Factor A - Sum of Squares for Factor B - Sum of Squares for the <em>interaction</em> between A and B - Sum of Squares within, or Error, or residual.</p>
+<p>Analyizing the data just uses one more term:</p>
+<pre class="r"><code>twofact.mod&lt;-aov(Count~Gender*Diet,data = twofact.df)
+summary(twofact.mod)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Gender       1  765.5   765.5 162.484 &lt;2e-16 ***
+Diet         1    3.4     3.4   0.716  0.401    
+Gender:Diet  1    8.0     8.0   1.708  0.197    
+Residuals   56  263.8     4.7                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>kable(xtable(summary(twofact.mod)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gender</td>
+<td align="right">1</td>
+<td align="right">765.481583</td>
+<td align="right">765.481583</td>
+<td align="right">162.4842678</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Diet</td>
+<td align="right">1</td>
+<td align="right">3.374393</td>
+<td align="right">3.374393</td>
+<td align="right">0.7162625</td>
+<td align="right">0.4009747</td>
+</tr>
+<tr class="odd">
+<td>Gender:Diet</td>
+<td align="right">1</td>
+<td align="right">8.048339</td>
+<td align="right">8.048339</td>
+<td align="right">1.7083736</td>
+<td align="right">0.1965383</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">56</td>
+<td align="right">263.822272</td>
+<td align="right">4.711112</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Okay, so we have the anova table, but what do these results look like?</p>
+<p>In order to plot these relationships we use <code>interaction.plot</code>.</p>
+<pre class="r"><code>interaction.plot(twofact.df$Gender,twofact.df$Diet, twofact.df$Count)</code></pre>
+<p><img src="Lab-11_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>scored=rnorm(80,c(15,20,30,40))
+iv1 = rep(c(&quot;Level 1&quot;,&quot;Level 2&quot;),each=2,20)
+iv2 = rep(c(&quot;Level 1&quot;,&quot;Level 2&quot;),each=1,40)
+df &lt;- data.frame(iv1,iv2,scored)
+length(iv1)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>length(iv2)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>length(scored)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>summary(aov(scored~iv1*iv2,data = df))</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+iv1          1   6120    6120  5447.6 &lt;2e-16 ***
+iv2          1   1115    1115   992.6 &lt;2e-16 ***
+iv1:iv2      1    153     153   135.8 &lt;2e-16 ***
+Residuals   76     85       1                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>interaction.plot(iv1,iv2,scored)</code></pre>
+<p><img src="Lab-11_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

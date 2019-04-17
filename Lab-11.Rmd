@@ -1,0 +1,84 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,comment = NA)
+```
+
+## Two Factor Between Subject ANOVA
+
+Recall the way that the ANOVA is formatted:
+
+```{r}
+groups = rep(c("Control","Treatment 1", "Treatment 2"), each = 20)
+score =c(rnorm(20,10),rnorm(20,15),rnorm(20,22))
+onefact <- data.frame(groups,score)
+```
+
+We have three independent variables, or conditions, control, treatment 1 and treatment 2. We have one dependent variable, some idea of "score". 
+
+The ANOVA is analyzed through the use of the `aov` function. Remember to save the analysis as a model so you can use it later if you need to do any post-hoc tests/unplanned comparisons. 
+
+```{r,echo=FALSE}
+library(xtable)
+library(knitr)
+onefact.mod <- aov(score~groups, data=onefact)
+summary(onefact.mod)
+kable(xtable(onefact.mod),format = 'markdown')
+```
+
+This produces a sum of squares and mean squares for the between subjects factor, groups. It also produces a sum of squares and mean squares for the within subjects factor, also called the residuals, or the error. 
+
+From this we get one F-value. 
+
+The current design will not help us too much so we need to move on to another design, the two factor between subjects ANOVA. 
+
+The set-up is mostly the same:
+
+```{r}
+ Gender = c(rep("Male", 30), rep("Female",30))
+ Diet = c(rep(c("Diet 1", "Diet 2"), 30))
+ Count = c(rnorm(30,28,2),rnorm(30,35,2))
+ twofact.df <- data.frame(Gender,Diet,Count)
+ twofact.df
+```
+We can see that there are two levels of the independent variable (gender) and two levels of the independent variable (Diet) and one dependent variable, count.
+
+From this we will generate four sums of squares and four mean squares. 
+  - Sum of Squares for Factor A
+  - Sum of Squares for Factor B
+  - Sum of Squares for the *interaction* between A and B
+  - Sum of Squares within, or Error, or residual. 
+  
+Analyizing the data just uses one more term:
+
+```{r}
+twofact.mod<-aov(Count~Gender*Diet,data = twofact.df)
+summary(twofact.mod)
+kable(xtable(summary(twofact.mod)))
+```
+
+Okay, so we have the anova table, but what do these results look like?
+
+In order to plot these relationships we use `interaction.plot`. 
+
+```{r}
+interaction.plot(twofact.df$Gender,twofact.df$Diet, twofact.df$Count)
+```
+
+
+```{r}
+scored=rnorm(80,c(15,20,30,40))
+iv1 = rep(c("Level 1","Level 2"),each=2,20)
+iv2 = rep(c("Level 1","Level 2"),each=1,40)
+df <- data.frame(iv1,iv2,scored)
+length(iv1)
+length(iv2)
+length(scored)
+summary(aov(scored~iv1*iv2,data = df))
+interaction.plot(iv1,iv2,scored)
+```
+
+
+
