@@ -341,6 +341,7 @@ $(document).ready(function () {
 </div>
 
 
+<p><br></p>
 <div id="two-factor-between-subject-anova" class="section level2">
 <h2>Two Factor Between Subject ANOVA</h2>
 <p>Recall the way that the ANOVA is formatted:</p>
@@ -350,8 +351,8 @@ onefact &lt;- data.frame(groups,score)</code></pre>
 <p>We have three independent variables, or conditions, control, treatment 1 and treatment 2. We have one dependent variable, some idea of “score”.</p>
 <p>The ANOVA is analyzed through the use of the <code>aov</code> function. Remember to save the analysis as a model so you can use it later if you need to do any post-hoc tests/unplanned comparisons.</p>
 <pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
-groups       2 1421.9   711.0   589.7 &lt;2e-16 ***
-Residuals   57   68.7     1.2                   
+groups       2 1407.7   703.8   586.4 &lt;2e-16 ***
+Residuals   57   68.4     1.2                   
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <table>
@@ -369,16 +370,16 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <tr class="odd">
 <td align="left">groups</td>
 <td align="right">2</td>
-<td align="right">1421.94812</td>
-<td align="right">710.974062</td>
-<td align="right">589.6924</td>
+<td align="right">1407.69983</td>
+<td align="right">703.84991</td>
+<td align="right">586.4194</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">Residuals</td>
 <td align="right">57</td>
-<td align="right">68.72315</td>
-<td align="right">1.205669</td>
+<td align="right">68.41426</td>
+<td align="right">1.20025</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -394,76 +395,76 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
  twofact.df &lt;- data.frame(Gender,Diet,Count)
  twofact.df</code></pre>
 <pre><code>   Gender   Diet    Count
-1    Male Diet 1 28.53147
-2    Male Diet 2 26.23178
-3    Male Diet 1 28.84731
-4    Male Diet 2 25.42578
-5    Male Diet 1 31.91951
-6    Male Diet 2 23.53508
-7    Male Diet 1 27.10036
-8    Male Diet 2 29.43256
-9    Male Diet 1 27.70672
-10   Male Diet 2 28.89447
-11   Male Diet 1 30.95259
-12   Male Diet 2 29.05285
-13   Male Diet 1 28.42184
-14   Male Diet 2 27.79416
-15   Male Diet 1 27.70466
-16   Male Diet 2 24.69838
-17   Male Diet 1 24.06149
-18   Male Diet 2 27.75426
-19   Male Diet 1 30.17468
-20   Male Diet 2 25.61311
-21   Male Diet 1 28.68784
-22   Male Diet 2 28.07542
-23   Male Diet 1 26.79345
-24   Male Diet 2 29.52234
-25   Male Diet 1 29.54715
-26   Male Diet 2 29.36756
-27   Male Diet 1 28.88748
-28   Male Diet 2 27.96414
-29   Male Diet 1 27.84210
-30   Male Diet 2 29.36165
-31 Female Diet 1 36.46115
-32 Female Diet 2 32.36776
-33 Female Diet 1 38.14701
-34 Female Diet 2 38.50928
-35 Female Diet 1 37.42701
-36 Female Diet 2 32.01130
-37 Female Diet 1 37.59093
-38 Female Diet 2 35.79940
-39 Female Diet 1 33.10649
-40 Female Diet 2 34.81801
-41 Female Diet 1 30.38123
-42 Female Diet 2 34.80708
-43 Female Diet 1 33.97652
-44 Female Diet 2 39.04267
-45 Female Diet 1 33.94122
-46 Female Diet 2 33.09970
-47 Female Diet 1 32.09293
-48 Female Diet 2 38.99377
-49 Female Diet 1 37.52461
-50 Female Diet 2 33.59144
-51 Female Diet 1 34.64711
-52 Female Diet 2 36.04067
-53 Female Diet 1 36.99550
-54 Female Diet 2 32.53166
-55 Female Diet 1 37.14753
-56 Female Diet 2 29.47567
-57 Female Diet 1 36.13137
-58 Female Diet 2 36.04017
-59 Female Diet 1 34.21301
-60 Female Diet 2 37.13720</code></pre>
+1    Male Diet 1 27.75444
+2    Male Diet 2 27.77672
+3    Male Diet 1 26.46343
+4    Male Diet 2 27.47751
+5    Male Diet 1 25.97975
+6    Male Diet 2 29.44150
+7    Male Diet 1 22.57227
+8    Male Diet 2 26.57238
+9    Male Diet 1 29.12370
+10   Male Diet 2 28.01403
+11   Male Diet 1 25.95883
+12   Male Diet 2 29.11127
+13   Male Diet 1 30.26321
+14   Male Diet 2 28.23514
+15   Male Diet 1 26.43920
+16   Male Diet 2 29.47807
+17   Male Diet 1 30.39601
+18   Male Diet 2 29.40052
+19   Male Diet 1 25.40175
+20   Male Diet 2 27.88896
+21   Male Diet 1 27.04195
+22   Male Diet 2 29.08836
+23   Male Diet 1 28.96365
+24   Male Diet 2 30.88137
+25   Male Diet 1 31.13416
+26   Male Diet 2 28.33216
+27   Male Diet 1 29.76521
+28   Male Diet 2 28.01631
+29   Male Diet 1 28.74957
+30   Male Diet 2 26.63328
+31 Female Diet 1 37.12409
+32 Female Diet 2 29.77303
+33 Female Diet 1 34.07045
+34 Female Diet 2 37.46748
+35 Female Diet 1 35.30107
+36 Female Diet 2 34.52635
+37 Female Diet 1 31.91394
+38 Female Diet 2 33.99508
+39 Female Diet 1 32.90966
+40 Female Diet 2 36.18597
+41 Female Diet 1 36.46719
+42 Female Diet 2 32.37528
+43 Female Diet 1 33.34848
+44 Female Diet 2 32.98707
+45 Female Diet 1 35.02677
+46 Female Diet 2 33.60315
+47 Female Diet 1 37.16357
+48 Female Diet 2 32.83340
+49 Female Diet 1 36.00737
+50 Female Diet 2 37.23606
+51 Female Diet 1 34.84202
+52 Female Diet 2 33.21682
+53 Female Diet 1 38.17228
+54 Female Diet 2 33.80665
+55 Female Diet 1 34.48369
+56 Female Diet 2 32.83819
+57 Female Diet 1 35.62518
+58 Female Diet 2 34.66736
+59 Female Diet 1 33.57724
+60 Female Diet 2 33.98398</code></pre>
 <p>We can see that there are two levels of the independent variable (gender) and two levels of the independent variable (Diet) and one dependent variable, count.</p>
 <p>From this we will generate four sums of squares and four mean squares. - Sum of Squares for Factor A - Sum of Squares for Factor B - Sum of Squares for the <em>interaction</em> between A and B - Sum of Squares within, or Error, or residual.</p>
 <p>Analyizing the data just uses one more term:</p>
 <pre class="r"><code>twofact.mod&lt;-aov(Count~Gender*Diet,data = twofact.df)
 summary(twofact.mod)</code></pre>
 <pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
-Gender       1  764.3   764.3 149.250 &lt;2e-16 ***
-Diet         1    6.6     6.6   1.298  0.259    
-Gender:Diet  1    1.3     1.3   0.260  0.612    
-Residuals   56  286.8     5.1                   
+Gender       1  621.9   621.9 183.250 &lt;2e-16 ***
+Diet         1    0.6     0.6   0.189 0.6658    
+Gender:Diet  1   12.0    12.0   3.548 0.0648 .  
+Residuals   56  190.1     3.4                   
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>kable(xtable(summary(twofact.mod)))</code></pre>
@@ -482,32 +483,32 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <tr class="odd">
 <td>Gender</td>
 <td align="right">1</td>
-<td align="right">764.317335</td>
-<td align="right">764.317335</td>
-<td align="right">149.2502497</td>
+<td align="right">621.9377014</td>
+<td align="right">621.9377014</td>
+<td align="right">183.2496576</td>
 <td align="right">0.0000000</td>
 </tr>
 <tr class="even">
 <td>Diet</td>
 <td align="right">1</td>
-<td align="right">6.648651</td>
-<td align="right">6.648651</td>
-<td align="right">1.2982996</td>
-<td align="right">0.2593745</td>
+<td align="right">0.6399817</td>
+<td align="right">0.6399817</td>
+<td align="right">0.1885662</td>
+<td align="right">0.6657812</td>
 </tr>
 <tr class="odd">
 <td>Gender:Diet</td>
 <td align="right">1</td>
-<td align="right">1.331248</td>
-<td align="right">1.331248</td>
-<td align="right">0.2599562</td>
-<td align="right">0.6121539</td>
+<td align="right">12.0401025</td>
+<td align="right">12.0401025</td>
+<td align="right">3.5475332</td>
+<td align="right">0.0648306</td>
 </tr>
 <tr class="even">
 <td>Residuals</td>
 <td align="right">56</td>
-<td align="right">286.778554</td>
-<td align="right">5.121046</td>
+<td align="right">190.0604440</td>
+<td align="right">3.3939365</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -528,11 +529,11 @@ length(iv1)</code></pre>
 <pre class="r"><code>length(scored)</code></pre>
 <pre><code>[1] 80</code></pre>
 <pre class="r"><code>summary(aov(scored~iv1*iv2,data = df))</code></pre>
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-iv1          1   6241    6241  5793.1  &lt; 2e-16 ***
-iv2          1   1101    1101  1021.6  &lt; 2e-16 ***
-iv1:iv2      1    102     102    95.1 4.91e-15 ***
-Residuals   76     82       1                     
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+iv1          1   5910    5910  7342.2 &lt;2e-16 ***
+iv2          1   1250    1250  1552.8 &lt;2e-16 ***
+iv1:iv2      1    107     107   132.4 &lt;2e-16 ***
+Residuals   76     61       1                   
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>interaction.plot(iv1,iv2,scored)</code></pre>
