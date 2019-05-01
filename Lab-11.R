@@ -1,0 +1,10 @@
+Subjects <- rep(1:21,4)
+Test <- factor(rep(c("Pre-Test","Week 1", "Week 2", "Week 3"), each = 21))
+Score <- round(runif(84,min=22,max=99),digits=0)
+Musik <- data.frame(Subjects,Test,Score)
+plot_musik <- tapply(Musik$Score,Musik$Test,mean)
+plot(plot_musik,pch=19,xlab = "Week",ylab = "Percent Correct",main = "Student Performance at Music School")
+musik.aov <- aov(Score~Test+Error(Subjects))
+summary(musik.aov)
+omega_sq <- (1435+3*108.1)/(48421-108.1)
+omega_sq

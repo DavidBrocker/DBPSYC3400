@@ -81,5 +81,104 @@ summary(aov(scored~iv1*iv2,data = df))
 interaction.plot(iv1,iv2,scored)
 ```
 
+## Two Factor Within Subjects ANOVA
+
+In a Two Factor Between Subjcts ANOVA, a particlar participant is only ever in one condition or group or treatment level. 
+
+In a Two Factor Within Subjects ANOVA, a particular participant is in *each* condition or group or treatment level. 
+
+Setting this data up uses the same principles as we have learned before. 
+
+The one major difference in the set-up of the data is that there is now a variable of the subject itself. 
+
+When we had a between subjects design, each participant was unique, with a within deisgn, each participant experiences every aspect of the experiment so it is reasonable that they may have an effect on the experiment itself. 
+
+Here is a sample dataset:
+
+
+```{r}
+set.seed(1234)
+subject <- rep(1:10,4)
+groups <- rep(c("pre","post","post 1", "post 2"),each = 10)
+score <- rnorm(40,c(20,30,40,70))
+within_anova <- data.frame(subject,groups,score)
+within_anova
+```
+
+It would be helpful if we could see the means of each group, and plot those means. 
+
+For this, we willl use a new function called `tappy`. This applies a specified function to whatever variables you provide in the arguments. 
+
+To get the means:
+```{r}
+within_means <- tapply(within_anova$score,within_anova$groups,mean)
+within_means
+```
+To get the standard deviations:
+```{r}
+within_sd <- tapply(within_anova$score,within_anova$groups,sd)
+within_sd
+```
+
+For now, it will only be important to use `tapply` in order to get the means. 
+
+Here is how we will plot the means:
+
+```{r}
+plot(within_means,pch=19,xlab = "Treatments",ylab = "Survey Score",main = "Means of Survey Score by Treatment")
+```
+Performing the ANOVA requires two new terms: `Error` and the `Subject` factor. 
+
+The model that the ANOVA should resemble looks like this:
+
+`aov(DV~IV+Error(Subjects))`
+
+From here it is important to note that your IV **must* be a factor. 
+
+With this in mind, you should run the function `levels(Grouping Variable`) or `factor(Grouping Variable`.)
+
+If the first function returns `NULL`, use the second function. 
+
+Putting all of this together gives us the following:
+
+
+```{r}
+within_anova.mod <- aov(score~groups+Error(subject))
+summary(within_anova.mod)
+```
+
+When reporting these findings, you will ignore the subject variable and report the F-value for the grouping variable.
+
+This particualr finding should be reported as follows:
+
+$F(3,35) = .303, p >.05$
+
+> The results of a one-factor within subjects ANOVA revealed that there does not appear to be any effect of treatment on survey score. 
+
+## Effect Sizes
+
+Most times you will want to report effect sizes for your experiment. Effect sizes help to tell you how much of your effect is *due* to your manipulation. 
+
+In this example, there does not appear to be an effect at all, but we will compute an effect size anyways. 
+
+We will be using the $\omega^2$ effect size estimate. 
+
+The formula is as follows:
+
+$$\omega^2 = \frac{SS_B-(k-1)(MS_W)}{SS_T-MS_W}$$
+
+or
+
+$$\omega^2 = \frac{SS_{Effect}-(k-1)(MS_{Within})}{SS_{Total}-MS_{Within}}$$
+
+There is no `R` function that reports $\omega^2$, so we will do this by hand. 
+
+$\omega^2 = \frac{355-(4-1)(390.4)}{14020-390.4}$
+
+$\omega^2 = -.059$
+
+This effect size is negative because our effect was not significant, but it is still important for you to see how to get these numbers!
+
+
 
 
