@@ -1,0 +1,244 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA,warning = FALSE)
+```
+
+## Non-Parametric Tests
+
+In this class we have learned the following, *parametric* tests, that is, tests that work when we have data on an interval or ratio scale:
+
+- Z-test
+
+-T-Test
+  
+  - Single Sample
+  
+  - Dependent Samples
+  
+  - Independent Samples
+  
+- One Factor ANOVA
+
+  - Between
+  
+  - Within
+  
+- Two Factor ANOVA
+
+  - Between
+  
+These tests all share something in common in that our results are estimates of a 
+
+parameter, and they all are derived from a distribution. Additionally, these tests make 
+assumptions about *where* the data comes from, i.e. normally distributed, equal 
+
+variances etc. 
+
+
+
+What happens when our data does not meet these criteria? Do we throw our data out? No!
+
+We use non-parametric tests. These tests are *distribution-free*. Think of these tests 
+
+as another version of what we have already learned. 
+<br>
+
+<br>
+
+### Parametric Tests and Their Non-Parametric Equivalences
+
+Instead of a **Paired t-test**, we can use a **Wilcoxin Signed Ranks test**. 
+
+Instead of a **Pearson correlation**, we can use a **Spearman correlation**.
+
+Instead of an **Independent T-Test**, we can use a **Mann-Whitney U test**. 
+
+Instead of a **One Way ANOVA**, we can use a **Kruskal Wallis Test** instead. 
+
+Instead of a **Two Way ANOVA**, we can use a **Friedman Test**. 
+
+
+### Chi-Square 
+
+One of the non-parametric tests that does not have a direct equivalence is the chi square test. For this lab you will only need to know about two. 
+
+The Chi Square Goodness of Fit test, and the Chi-Square test for independence. 
+
+#### Chi-Square Goodness of Fit
+
+The Goodness of fit test compares whether observed distribution matches an expected distribution. 
+
+Imagine that we go out into a wealthy neighborhood and we count 81 Teslas, 50 Ferrari's, and 27 Saturn's. 
+
+Are these car makes equally common in this neighborhood?
+
+If these car makes were equally common in wealthy neighborhoods, the proportion of them would be $\frac{1}{3}$ each. 
+
+However, in this wealthy part of town, the breakdown *should* be:
+
+- $\frac{1}{2} = Tesla$
+
+- $\frac{1}{3} = Ferrari$
+
+- $\frac{1}{6} = Saturn$
+
+Is there a significant difference between the observed frequencies and the expected frequencies?
+
+In `R`, we can use the `chisq.test(x,p)` function where `x` = a numeric vector, and `p` represents probabilities of the same length as `x. 
+
+To see if the car makes are equally common in the neighborhood we would create our data:
+
+```{r}
+#First, we create a vector of our observed frequencies
+cars <- c(81,50,27)
+#Next, we create a vector of the probabilities assuming the null is  true. 
+p <- c(1/3,1/3,1/3)
+#Lastly, we name the function 'res', so we can call it later in more detail. Think of why we label regressions and ANOVA's as 'something.mod'. 
+res <- chisq.test(cars,p=p)
+```
+
+##### Proper Reporting: 
+
+The proper way to report this would be as follows: 
+
+$\chi^2(2) = 27.886, p <.01$
+
+Now we ask whether or not there is a difference in what we observed and what we expected. 
+
+```{r}
+#If the null were true and the proportion of cars were each 1/3, this is what we would have found
+res$expected
+```
+Are these observed frequencies significantly different from the expected frequencies?
+
+```{r}
+#Create vector of our observations
+cars <- c(81,50,27)
+#Create vector of our expectations
+obs <- c(1/2,1/3,1/6)
+#Create output of our test
+res <- chisq.test(cars,p=obs)
+res
+```
+
+#### Formatting and Interpretation
+
+$\chi^2(2) p > .05$
+
+> There is not a significant different in our observed frequencies and the expected 
+frequencies. 
+
+
+
+### Chi-Square Test of Independence
+
+Similarly, we can use a Chi Square test to see if there is a significant difference in two different groups. For this we will need to make a table. 
+
+```{r}
+mat <- matrix(c(100,100,120,24,25,26,34,13,12),nrow = 3,ncol = 3)
+rownames(mat) <- c("High","Medium","Low")
+colnames(mat) <- c("First","Second","Third")
+mat
+
+chisq.test(mat)
+```
+
+#### Formatting:
+
+$\chi^2(4) = 16.025, p <.01$
+
+
+
+### Spearman Rho
+
+Spearman Rho is another way of obtaining a correlation. Let us make a dataframe, plot the variables and calculate a correlation value:
+
+```{r}
+Professional1 <- c(6,5,7,10,2.5,2.5,9,1,11,4,11,12)
+Professional2 <- c(5,3,4,8,1,6,10,2,9,7,8,12)
+df <- data.frame(Professional1,Professional2)
+plot(df$Professional1~df$Professional2,pch=20)
+cor.test(x=df$Professional1,y=df$Professional2,method = "spearman")
+cor(df$Professional1,df$Professional2)
+```
+
+#### Proper Reporting: Spearman Rho
+> r~s~(12) =.81, p < .05
+
+
+### Mann-Whitney U
+
+We can use this test when comparing two dependent groups:
+
+
+```{r}
+GoodNeighborhood <- c(3, 4, 5, 2, 2, 3, 4, 2, 4, 2, 1, 4)
+BadNeighborhood <- c(4, 4, 2, 1, 1, 5, 5, 1, 1, 5, 1, 4)
+Neighborhoods <- data.frame(GoodNeighborhood,BadNeighborhood)
+boxplot(GoodNeighborhood,BadNeighborhood,data=Neighborhoods)
+wilcox.test(GoodNeighborhood,BadNeighborhood,data=Neighborhoods)
+```
+
+### Proper Reporting: Mann-Whitney U
+
+ $U_{obt} = 77, NS$
+
+### Wilcoxin Signed Ranks Test
+
+We can use the Wilcoxin Signed Ranks Test when comparing two *dependent* groups:
+
+
+
+```{r}
+Condition1 <- c(75,66,78,66,25,88,89,60,70,49,88,12)
+Condition2 <- c(88,55,78,67,56,85,96,54,97,76,91,13)
+twelve_nin <- data.frame(Condition1,Condition2)
+twelve_nin
+wilcox.test(x=twelve_nin$Condition1,twelve_nin$Condition2,paired = TRUE)
+
+```
+
+### Proper Reporting:
+
+$V(12) = 15.5, p >.05$
+
+### Kruskal Wallis Test
+
+We can use the Kruskal Wallis Test when we want to test several independent variables. 
+
+Imagine we have the following data:
+
+```{r}
+Food_1 <-c("good","good","good","ok","ok","poor","good")
+Food_2 <-c("good","superior","excellent","ok","excellent","excellent","good")
+Food_3 <-c("good","superior","excellent","ok","ok","ok","good") 
+Food_4 <-c("superior","excellent","good","excellent","excellent","superior","superior")
+FoodRating <- data.frame(Food_1,Food_2,Food_3,Food_4)
+FoodRating
+
+```
+
+The problem with this data is that we cannot directly do an analysis because the data type is character. We can recode this like such:
+
+```{r}
+Food_1 <- c(3,3,3,2,2,1,3)
+Food_2 <- c(3,5,4,2,4,4,3)
+Food_3 <- c(3,5,4,2,2,2,3)
+Food_4 <- c(5,4,3,4,4,5,5)
+NFoodRating <- data.frame(Food_1,Food_2,Food_3,Food_4)
+NFoodRating
+kruskal.test(NFoodRating)
+```
+
+#### Proper Formatting:
+
+$H(4) = 10.677, p <.05$
+
+
+
+
+
+
