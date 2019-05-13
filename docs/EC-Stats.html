@@ -11,7 +11,7 @@
 
 
 
-<title>Lab-9.utf8.md</title>
+<title>EC-Stats.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -344,120 +344,149 @@ $(document).ready(function () {
 </div>
 
 
-<p><br></p>
-<div id="analysis-of-variance-anova" class="section level2">
-<h2>Analysis Of Variance (ANOVA)</h2>
-<p><br></p>
-<p>Before we dive into a new test, let us take a second to look back at the tests we have already covered and remember what those tests allowed us to do, and what the data for those tests looked like:</p>
-<p><strong>Z-Test</strong></p>
+<div id="design-satimes-bc" class="section level3">
+<h3>Design <span class="math inline">\(S(A)\times B(C)\)</span></h3>
 <ul>
-<li>What does it do - The Z-test allows us to see if the scores from one population differ from another.</li>
-<li>What does our data look like - In order perform a Z-test, we need to have large enough sample to work with (N&gt;30) and we need to know <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</li>
+<li><p>A and C are <strong>fixed</strong></p></li>
+<li><p>B and S are <strong>random</strong></p></li>
 </ul>
-<p><strong>T-Test</strong></p>
+<p>Random Factors are denoted by <strong>Greek Letters</strong></p>
 <ul>
-<li>What does it do - The T-test allows us to compare a sample to :
-<ul>
-<li><ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\(\mu\)</span> when it is given, and when <span class="math inline">\(\sigma\)</span> is not.</li>
-</ol></li>
-<li><ol start="2" style="list-style-type: lower-alpha">
-<li>another sample with paired values.</li>
-</ol></li>
-<li><ol start="3" style="list-style-type: lower-alpha">
-<li>another sample with uncorrelated values</li>
-</ol></li>
-</ul></li>
-<li>What does our data look like - In order to perform a T-test, we need to have a sample that we are comparing to either, <span class="math inline">\(\mu\)</span>, paired values, or a sample of (hopefully) equal length.</li>
+<li><span class="math inline">\(\sigma^2\)</span></li>
 </ul>
-<p><strong>Why is ANOVA different?</strong></p>
-<p>Here is what t-test for independent samples might look like:</p>
-<pre class="r"><code>    control = rnorm(20,4.5,2)
-    experimental = rnorm(20,6.8,1)
-    t_test_ex &lt;-data.frame(control, experimental)
-    t_test_ex</code></pre>
-<pre><code>    control experimental
-1  3.754906     6.808382
-2  7.389271     7.956203
-3  8.365136     6.437727
-4  3.806689     6.542073
-5  6.603090     4.723796
-6  5.744958     5.951253
-7  7.851548     7.040809
-8  1.637994     7.126070
-9  2.596960     5.253820
-10 3.923568     6.740366
-11 4.883509     5.837033
-12 4.259951     6.006551
-13 6.080465     6.576601
-14 3.362435     5.045794
-15 3.602458     5.915300
-16 5.056833     8.316844
-17 6.494460     6.075228
-18 5.005776     6.250811
-19 5.898055     6.195952
-20 4.538331     4.601158</code></pre>
-<p>You will notice that there are two columns, one for a condition of control and one for a condition of experimental.</p>
-<p>We we have yet to discuss what this experiment <em>actually</em> is trying to answer, but, we can tell from looking at the data that whatever experimental is—it’s mean is higher than control and may be a significant difference.</p>
-<p>Here is what an ANOVA might look like:</p>
-<pre class="r"><code>    Condition=c(rep(&quot;control&quot;,10),rep(&quot;Treatment 1&quot;, 10), rep(&quot;Treatment 2&quot;, 10))
-    Scores = rnorm(30, 18, 10)
-    anova_example &lt;- data.frame(Condition, Scores)
-    anova_example</code></pre>
-<pre><code>     Condition     Scores
-1      control -0.9689048
-2      control 26.6273471
-3      control 30.2080579
-4      control 15.9674795
-5      control 10.6720467
-6      control 14.4474183
-7      control  3.3724806
-8      control 13.5926203
-9      control 29.0388862
-10     control 28.7153238
-11 Treatment 1 22.1216564
-12 Treatment 1 35.4177689
-13 Treatment 1  3.8963550
-14 Treatment 1 17.8014222
-15 Treatment 1 19.3182562
-16 Treatment 1 29.4222719
-17 Treatment 1 30.8034988
-18 Treatment 1 14.2926043
-19 Treatment 1 36.0051646
-20 Treatment 1 27.1696292
-21 Treatment 2 22.8969475
-22 Treatment 2  4.0449779
-23 Treatment 2 28.7262779
-24 Treatment 2 31.1518134
-25 Treatment 2 23.4820982
-26 Treatment 2 35.8090498
-27 Treatment 2 23.6293282
-28 Treatment 2 21.5468760
-29 Treatment 2  8.2093041
-30 Treatment 2 37.2451531</code></pre>
-<p>As you can see, we still have two columns, but the main difference is that what used to be a condition two separate samples has become one single sample, separated by the various conditions.</p>
-<p>Herein lies the main difference between t-tests and ANOVAs: the amount of conditions (samples) that can be compared.</p>
-<p>t-tests can only compare two conditions, while ANOVAs can compare more than two conditions.</p>
-<p>There are several notes to make when dealing with data in the format of an ANOVA.</p>
-<p>It becomes essential that you understand the differences between an independent variable and a dependent variable.</p>
-<p>When you are dealing with 3 or more conditions, you need to convert them into factors if they are not already.</p>
-<p>factors are a type of data that tell R which subjects are in which condition.</p>
-<p>You can check if a vector is a <code>factor</code> by running the <code>is.factor()</code> function.</p>
-<p>We we will go through some examples to see what it looks like when <code>R</code> recognizes a vector as a <code>factor</code> and when it does not.</p>
-<p>The following example shows a vector of conditions. However, R does not know that these are conditions until we tell it that they are factors. If we are unsure if R knows if a vector is a factor, we can test it using <code>is.factor</code> :</p>
-<pre class="r"><code>example &lt;- c(&quot;Control&quot;,&quot;Control&quot;,&quot;Placebo&quot;,&quot;Placebo&quot;,&quot;Drug&quot;,&quot;Drug&quot;)
-is.factor(example)</code></pre>
-<pre><code>[1] FALSE</code></pre>
-<p>Now that we know that R does not consider this vector to be a factor, we can manually tell R to make it a factor.</p>
-<pre class="r"><code>  factor(example)</code></pre>
-<pre><code>[1] Control Control Placebo Placebo Drug    Drug   
-Levels: Control Drug Placebo</code></pre>
-<p>Now R, will recognize <code>example</code> as a factor.</p>
-<pre class="r"><code>aov.test.mod&lt;-aov(anova_example$Scores ~ anova_example$Condition)
-summary(aov.test.mod)</code></pre>
-<pre><code>                        Df Sum Sq Mean Sq F value Pr(&gt;F)
-anova_example$Condition  2  280.1   140.1   1.228  0.309
-Residuals               27 3080.4   114.1               </code></pre>
+<p>Fixed Factors are denoted by <em>Roman Letters</em></p>
+<ul>
+<li><span class="math inline">\(\theta^2\)</span></li>
+</ul>
+<div id="sources-of-variation" class="section level4">
+<h4>Sources of variation:</h4>
+<div id="elementary-factors" class="section level6">
+<h6>Elementary Factors</h6>
+<p>-<span class="math inline">\(A\)</span></p>
+<p>-<span class="math inline">\(B(C)\)</span></p>
+<p>-<span class="math inline">\(C\)</span></p>
+<p>-<span class="math inline">\(S(A)\)</span></p>
+</div>
+<div id="complexinteraction-factors" class="section level6">
+<h6>Complex/Interaction Factors</h6>
+<p>-<span class="math inline">\(AC\)</span></p>
+<p>-<span class="math inline">\(BS(AC)\)</span></p>
+<p>-<span class="math inline">\(AB(C)\)</span></p>
+</div>
+<div id="obtain-formulas-for-degrees-of-freedom" class="section level5">
+<h5>Obtain formulas for degrees of freedom</h5>
+<p><span class="math inline">\(df_A = A-1\)</span></p>
+<p><span class="math inline">\(df_{B(C)} = C(B-1)\)</span></p>
+<p><span class="math inline">\(df_C = C-1\)</span></p>
+<p><span class="math inline">\(df_{S(A)} = A(S-1)\)</span></p>
+<p><span class="math inline">\(df_{AB(C)} =C(A-1)(B-1)\)</span></p>
+<p><span class="math inline">\(df_{AC} = (A-1)(C-1)\)</span></p>
+<p><span class="math inline">\(df_{BS(AC)} = AC(B-1)(S-1)\)</span></p>
+<table style="width:100%;">
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>BS(AC)</th>
+<th>AC</th>
+<th>S(A)</th>
+<th>C</th>
+<th>B(C)</th>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\sigma^2_e\)</span></td>
+<td><span class="math inline">\(\theta^2_{bs(ac)}\)</span></td>
+<td><span class="math inline">\(BS\theta^2_{ac}\)</span></td>
+<td><span class="math inline">\(BC\theta^2_{s(a)}\)</span></td>
+<td><span class="math inline">\(ABS\sigma^2_{c}\)</span></td>
+<td><span class="math inline">\(AS\sigma^2_{bc}\)</span></td>
+<td><span class="math inline">\(BCS\theta^2_a\)</span></td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>B(C)</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>S(A)</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>AC</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>BS(AC)</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><span class="math inline">\(E(MS_A) = \sigma^2_e + \theta^2_{bs(ac)} + BS\theta^2_{ac} + BCS\theta^2_a\)</span></p>
+<p><span class="math inline">\(E(MS_{B(C)}) = \sigma^2_e + \theta^2_{bs(ac)} + AS\sigma^2_{bc}\)</span></p>
+<p><span class="math inline">\(E(MS_C) = \sigma^2_e + \theta^2_{bs(ac)}+ABS\sigma^2_{c}\)</span></p>
+<p><span class="math inline">\(E(MS_{S(A)} = \sigma^2_e + BC\theta^2_{s(a)}\)</span></p>
+<p><span class="math inline">\(E(MS_{AC}) = \sigma^2_e + \theta^2_{bs(ac)} + BS\theta^2_{ac}\)</span></p>
+<p><span class="math inline">\(E(MS_{BS(AC)} = \sigma^2_e + \theta^2_{bs(ac)}\)</span></p>
+</div>
+</div>
 </div>
 
 

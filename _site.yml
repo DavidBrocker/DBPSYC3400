@@ -30,6 +30,8 @@ navbar:
     href: Lab-10.html
   - text: Lab 11
     href: Lab-11.html 
+  - text: Lab 12
+    href: Lab-12.html 
     
 output_dir: docs
 output:
