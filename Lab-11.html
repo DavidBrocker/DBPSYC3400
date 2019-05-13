@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Lab-11.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Lab-9.html">Lab 9</a>
+</li>
+<li>
+  <a href="Lab-10.html">Lab 10</a>
+</li>
+<li>
+  <a href="Lab-11.html">Lab 11</a>
+</li>
+<li>
+  <a href="Lab-12.html">Lab 12</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p><br></p>
+<div id="two-factor-between-subject-anova" class="section level2">
+<h2>Two Factor Between Subject ANOVA</h2>
+<p>Recall the way that the ANOVA is formatted:</p>
+<pre class="r"><code>groups = rep(c(&quot;Control&quot;,&quot;Treatment 1&quot;, &quot;Treatment 2&quot;), each = 20)
+score =c(rnorm(20,10),rnorm(20,15),rnorm(20,22))
+onefact &lt;- data.frame(groups,score)</code></pre>
+<p>We have three independent variables, or conditions, control, treatment 1 and treatment 2. We have one dependent variable, some idea of “score”.</p>
+<p>The ANOVA is analyzed through the use of the <code>aov</code> function. Remember to save the analysis as a model so you can use it later if you need to do any post-hoc tests/unplanned comparisons.</p>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+groups       2 1421.9   711.0   589.7 &lt;2e-16 ***
+Residuals   57   68.7     1.2                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">groups</td>
+<td align="right">2</td>
+<td align="right">1421.94812</td>
+<td align="right">710.974062</td>
+<td align="right">589.6924</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">57</td>
+<td align="right">68.72315</td>
+<td align="right">1.205669</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>This produces a sum of squares and mean squares for the between subjects factor, groups. It also produces a sum of squares and mean squares for the within subjects factor, also called the residuals, or the error.</p>
+<p>From this we get one F-value.</p>
+<p>The current design will not help us too much so we need to move on to another design, the two factor between subjects ANOVA.</p>
+<p>The set-up is mostly the same:</p>
+<pre class="r"><code> Gender = c(rep(&quot;Male&quot;, 30), rep(&quot;Female&quot;,30))
+ Diet = c(rep(c(&quot;Diet 1&quot;, &quot;Diet 2&quot;), 30))
+ Count = c(rnorm(30,28,2),rnorm(30,35,2))
+ twofact.df &lt;- data.frame(Gender,Diet,Count)
+ twofact.df</code></pre>
+<pre><code>   Gender   Diet    Count
+1    Male Diet 1 28.53147
+2    Male Diet 2 26.23178
+3    Male Diet 1 28.84731
+4    Male Diet 2 25.42578
+5    Male Diet 1 31.91951
+6    Male Diet 2 23.53508
+7    Male Diet 1 27.10036
+8    Male Diet 2 29.43256
+9    Male Diet 1 27.70672
+10   Male Diet 2 28.89447
+11   Male Diet 1 30.95259
+12   Male Diet 2 29.05285
+13   Male Diet 1 28.42184
+14   Male Diet 2 27.79416
+15   Male Diet 1 27.70466
+16   Male Diet 2 24.69838
+17   Male Diet 1 24.06149
+18   Male Diet 2 27.75426
+19   Male Diet 1 30.17468
+20   Male Diet 2 25.61311
+21   Male Diet 1 28.68784
+22   Male Diet 2 28.07542
+23   Male Diet 1 26.79345
+24   Male Diet 2 29.52234
+25   Male Diet 1 29.54715
+26   Male Diet 2 29.36756
+27   Male Diet 1 28.88748
+28   Male Diet 2 27.96414
+29   Male Diet 1 27.84210
+30   Male Diet 2 29.36165
+31 Female Diet 1 36.46115
+32 Female Diet 2 32.36776
+33 Female Diet 1 38.14701
+34 Female Diet 2 38.50928
+35 Female Diet 1 37.42701
+36 Female Diet 2 32.01130
+37 Female Diet 1 37.59093
+38 Female Diet 2 35.79940
+39 Female Diet 1 33.10649
+40 Female Diet 2 34.81801
+41 Female Diet 1 30.38123
+42 Female Diet 2 34.80708
+43 Female Diet 1 33.97652
+44 Female Diet 2 39.04267
+45 Female Diet 1 33.94122
+46 Female Diet 2 33.09970
+47 Female Diet 1 32.09293
+48 Female Diet 2 38.99377
+49 Female Diet 1 37.52461
+50 Female Diet 2 33.59144
+51 Female Diet 1 34.64711
+52 Female Diet 2 36.04067
+53 Female Diet 1 36.99550
+54 Female Diet 2 32.53166
+55 Female Diet 1 37.14753
+56 Female Diet 2 29.47567
+57 Female Diet 1 36.13137
+58 Female Diet 2 36.04017
+59 Female Diet 1 34.21301
+60 Female Diet 2 37.13720</code></pre>
+<p>We can see that there are two levels of the independent variable (gender) and two levels of the independent variable (Diet) and one dependent variable, count.</p>
+<p>From this we will generate four sums of squares and four mean squares. - Sum of Squares for Factor A - Sum of Squares for Factor B - Sum of Squares for the <em>interaction</em> between A and B - Sum of Squares within, or Error, or residual.</p>
+<p>Analyizing the data just uses one more term:</p>
+<pre class="r"><code>twofact.mod&lt;-aov(Count~Gender*Diet,data = twofact.df)
+summary(twofact.mod)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Gender       1  764.3   764.3 149.250 &lt;2e-16 ***
+Diet         1    6.6     6.6   1.298  0.259    
+Gender:Diet  1    1.3     1.3   0.260  0.612    
+Residuals   56  286.8     5.1                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>kable(xtable(summary(twofact.mod)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gender</td>
+<td align="right">1</td>
+<td align="right">764.317335</td>
+<td align="right">764.317335</td>
+<td align="right">149.2502497</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Diet</td>
+<td align="right">1</td>
+<td align="right">6.648651</td>
+<td align="right">6.648651</td>
+<td align="right">1.2982996</td>
+<td align="right">0.2593745</td>
+</tr>
+<tr class="odd">
+<td>Gender:Diet</td>
+<td align="right">1</td>
+<td align="right">1.331248</td>
+<td align="right">1.331248</td>
+<td align="right">0.2599562</td>
+<td align="right">0.6121539</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">56</td>
+<td align="right">286.778554</td>
+<td align="right">5.121046</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Okay, so we have the anova table, but what do these results look like?</p>
+<p>In order to plot these relationships we use <code>interaction.plot</code>.</p>
+<pre class="r"><code>interaction.plot(twofact.df$Gender,twofact.df$Diet, twofact.df$Count)</code></pre>
+<p><img src="Lab-11_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>scored=rnorm(80,c(15,20,30,40))
+iv1 = rep(c(&quot;Level 1&quot;,&quot;Level 2&quot;),each=2,20)
+iv2 = rep(c(&quot;Level 1&quot;,&quot;Level 2&quot;),each=1,40)
+df &lt;- data.frame(iv1,iv2,scored)
+length(iv1)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>length(iv2)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>length(scored)</code></pre>
+<pre><code>[1] 80</code></pre>
+<pre class="r"><code>summary(aov(scored~iv1*iv2,data = df))</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+iv1          1   6241    6241  5793.1  &lt; 2e-16 ***
+iv2          1   1101    1101  1021.6  &lt; 2e-16 ***
+iv1:iv2      1    102     102    95.1 4.91e-15 ***
+Residuals   76     82       1                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>interaction.plot(iv1,iv2,scored)</code></pre>
+<p><img src="Lab-11_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="two-factor-within-subjects-anova" class="section level2">
+<h2>Two Factor Within Subjects ANOVA</h2>
+<p>In a Two Factor Between Subjcts ANOVA, a particlar participant is only ever in one condition or group or treatment level.</p>
+<p>In a Two Factor Within Subjects ANOVA, a particular participant is in <em>each</em> condition or group or treatment level.</p>
+<p>Setting this data up uses the same principles as we have learned before.</p>
+<p>The one major difference in the set-up of the data is that there is now a variable of the subject itself.</p>
+<p>When we had a between subjects design, each participant was unique, with a within deisgn, each participant experiences every aspect of the experiment so it is reasonable that they may have an effect on the experiment itself.</p>
+<p>Here is a sample dataset:</p>
+<pre class="r"><code>set.seed(1234)
+subject &lt;- rep(1:10,4)
+groups &lt;- rep(c(&quot;pre&quot;,&quot;post&quot;,&quot;post 1&quot;, &quot;post 2&quot;),each = 10)
+score &lt;- rnorm(40,c(20,30,40,70))
+within_anova &lt;- data.frame(subject,groups,score)
+within_anova</code></pre>
+<pre><code>   subject groups    score
+1        1    pre 18.79293
+2        2    pre 30.27743
+3        3    pre 41.08444
+4        4    pre 67.65430
+5        5    pre 20.42912
+6        6    pre 30.50606
+7        7    pre 39.42526
+8        8    pre 69.45337
+9        9    pre 19.43555
+10      10    pre 29.10996
+11       1   post 39.52281
+12       2   post 69.00161
+13       3   post 19.22375
+14       4   post 30.06446
+15       5   post 40.95949
+16       6   post 69.88971
+17       7   post 19.48899
+18       8   post 29.08880
+19       9   post 39.16283
+20      10   post 72.41584
+21       1 post 1 20.13409
+22       2 post 1 29.50931
+23       3 post 1 39.55945
+24       4 post 1 70.45959
+25       5 post 1 19.30628
+26       6 post 1 28.55180
+27       7 post 1 40.57476
+28       8 post 1 68.97634
+29       9 post 1 19.98486
+30      10 post 1 29.06405
+31       1 post 2 41.10230
+32       2 post 2 69.52441
+33       3 post 2 19.29056
+34       4 post 2 29.49874
+35       5 post 2 38.37091
+36       6 post 2 68.83238
+37       7 post 2 17.81996
+38       8 post 2 28.65901
+39       9 post 2 39.70571
+40      10 post 2 69.53410</code></pre>
+<p>It would be helpful if we could see the means of each group, and plot those means.</p>
+<p>For this, we willl use a new function called <code>tappy</code>. This applies a specified function to whatever variables you provide in the arguments.</p>
+<p>To get the means:</p>
+<pre class="r"><code>within_means &lt;- tapply(within_anova$score,within_anova$groups,mean)
+within_means</code></pre>
+<pre><code>    post   post 1   post 2      pre 
+42.88183 36.61205 42.23381 36.61684 </code></pre>
+<p>To get the standard deviations:</p>
+<pre class="r"><code>within_sd &lt;- tapply(within_anova$score,within_anova$groups,sd)
+within_sd</code></pre>
+<pre><code>    post   post 1   post 2      pre 
+20.47817 18.96593 20.24584 18.49391 </code></pre>
+<p>For now, it will only be important to use <code>tapply</code> in order to get the means.</p>
+<p>Here is how we will plot the means:</p>
+<pre class="r"><code>plot(within_means,pch=19,xlab = &quot;Treatments&quot;,ylab = &quot;Survey Score&quot;,main = &quot;Means of Survey Score by Treatment&quot;)</code></pre>
+<p><img src="Lab-11_files/figure-html/unnamed-chunk-10-1.png" width="672" /> Performing the ANOVA requires two new terms: <code>Error</code> and the <code>Subject</code> factor.</p>
+<p>The model that the ANOVA should resemble looks like this:</p>
+<p><code>aov(DV~IV+Error(Subjects))</code></p>
+<p>From here it is important to note that your IV **must* be a factor.</p>
+<p>With this in mind, you should run the function <code>levels(Grouping Variable</code>) or <code>factor(Grouping Variable</code>.)</p>
+<p>If the first function returns <code>NULL</code>, use the second function.</p>
+<p>Putting all of this together gives us the following:</p>
+<pre class="r"><code>within_anova.mod &lt;- aov(score~groups+Error(subject))
+summary(within_anova.mod)</code></pre>
+<pre><code>
+Error: subject
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+Residuals  1  113.9   113.9               
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+groups     3    355   118.4   0.303  0.823
+Residuals 35  13665   390.4               </code></pre>
+<p>When reporting these findings, you will ignore the subject variable and report the F-value for the grouping variable.</p>
+<p>This particualr finding should be reported as follows:</p>
+<p><span class="math inline">\(F(3,35) = .303, p &gt;.05\)</span></p>
+<blockquote>
+<p>The results of a one-factor within subjects ANOVA revealed that there does not appear to be any effect of treatment on survey score.</p>
+</blockquote>
+</div>
+<div id="effect-sizes" class="section level2">
+<h2>Effect Sizes</h2>
+<p>Most times you will want to report effect sizes for your experiment. Effect sizes help to tell you how much of your effect is <em>due</em> to your manipulation.</p>
+<p>In this example, there does not appear to be an effect at all, but we will compute an effect size anyways.</p>
+<p>We will be using the <span class="math inline">\(\omega^2\)</span> effect size estimate.</p>
+<p>The formula is as follows:</p>
+<p><span class="math display">\[\omega^2 = \frac{SS_B-(k-1)(MS_W)}{SS_T-MS_W}\]</span></p>
+<p>or</p>
+<p><span class="math display">\[\omega^2 = \frac{SS_{Effect}-(k-1)(MS_{Within})}{SS_{Total}-MS_{Within}}\]</span></p>
+<p>There is no <code>R</code> function that reports <span class="math inline">\(\omega^2\)</span>, so we will do this by hand.</p>
+<p><span class="math inline">\(\omega^2 = \frac{355-(4-1)(390.4)}{14020-390.4}\)</span></p>
+<p><span class="math inline">\(\omega^2 = -.059\)</span></p>
+<p>This effect size is negative because our effect was not significant, but it is still important for you to see how to get these numbers!</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>EC-Stats.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Lab-9.html">Lab 9</a>
+</li>
+<li>
+  <a href="Lab-10.html">Lab 10</a>
+</li>
+<li>
+  <a href="Lab-11.html">Lab 11</a>
+</li>
+<li>
+  <a href="Lab-12.html">Lab 12</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="design-satimes-bc" class="section level3">
+<h3>Design <span class="math inline">\(S(A)\times B(C)\)</span></h3>
+<ul>
+<li><p>A and C are <strong>fixed</strong></p></li>
+<li><p>B and S are <strong>random</strong></p></li>
+</ul>
+<p>Random Factors are denoted by <strong>Greek Letters</strong></p>
+<ul>
+<li><span class="math inline">\(\sigma^2\)</span></li>
+</ul>
+<p>Fixed Factors are denoted by <em>Roman Letters</em></p>
+<ul>
+<li><span class="math inline">\(\theta^2\)</span></li>
+</ul>
+<div id="sources-of-variation" class="section level4">
+<h4>Sources of variation:</h4>
+<div id="elementary-factors" class="section level6">
+<h6>Elementary Factors</h6>
+<p>-<span class="math inline">\(A\)</span></p>
+<p>-<span class="math inline">\(B(C)\)</span></p>
+<p>-<span class="math inline">\(C\)</span></p>
+<p>-<span class="math inline">\(S(A)\)</span></p>
+</div>
+<div id="complexinteraction-factors" class="section level6">
+<h6>Complex/Interaction Factors</h6>
+<p>-<span class="math inline">\(AC\)</span></p>
+<p>-<span class="math inline">\(BS(AC)\)</span></p>
+<p>-<span class="math inline">\(AB(C)\)</span></p>
+</div>
+<div id="obtain-formulas-for-degrees-of-freedom" class="section level5">
+<h5>Obtain formulas for degrees of freedom</h5>
+<p><span class="math inline">\(df_A = A-1\)</span></p>
+<p><span class="math inline">\(df_{B(C)} = C(B-1)\)</span></p>
+<p><span class="math inline">\(df_C = C-1\)</span></p>
+<p><span class="math inline">\(df_{S(A)} = A(S-1)\)</span></p>
+<p><span class="math inline">\(df_{AB(C)} =C(A-1)(B-1)\)</span></p>
+<p><span class="math inline">\(df_{AC} = (A-1)(C-1)\)</span></p>
+<p><span class="math inline">\(df_{BS(AC)} = AC(B-1)(S-1)\)</span></p>
+<table style="width:100%;">
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>BS(AC)</th>
+<th>AC</th>
+<th>S(A)</th>
+<th>C</th>
+<th>B(C)</th>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\sigma^2_e\)</span></td>
+<td><span class="math inline">\(\theta^2_{bs(ac)}\)</span></td>
+<td><span class="math inline">\(BS\theta^2_{ac}\)</span></td>
+<td><span class="math inline">\(BC\theta^2_{s(a)}\)</span></td>
+<td><span class="math inline">\(ABS\sigma^2_{c}\)</span></td>
+<td><span class="math inline">\(AS\sigma^2_{bc}\)</span></td>
+<td><span class="math inline">\(BCS\theta^2_a\)</span></td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>B(C)</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>S(A)</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>AC</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>BS(AC)</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><span class="math inline">\(E(MS_A) = \sigma^2_e + \theta^2_{bs(ac)} + BS\theta^2_{ac} + BCS\theta^2_a\)</span></p>
+<p><span class="math inline">\(E(MS_{B(C)}) = \sigma^2_e + \theta^2_{bs(ac)} + AS\sigma^2_{bc}\)</span></p>
+<p><span class="math inline">\(E(MS_C) = \sigma^2_e + \theta^2_{bs(ac)}+ABS\sigma^2_{c}\)</span></p>
+<p><span class="math inline">\(E(MS_{S(A)} = \sigma^2_e + BC\theta^2_{s(a)}\)</span></p>
+<p><span class="math inline">\(E(MS_{AC}) = \sigma^2_e + \theta^2_{bs(ac)} + BS\theta^2_{ac}\)</span></p>
+<p><span class="math inline">\(E(MS_{BS(AC)} = \sigma^2_e + \theta^2_{bs(ac)}\)</span></p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
