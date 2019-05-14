@@ -107,6 +107,31 @@ friedman.test(Likert ~ Instructor | Rater,
 # Forcing values to be rankings
 # Forcing values to be ordered
 
+df_fried <-round(data.frame(Subject = 1:12,
+                        Dose_0 = runif(12,min = 1.1,max = 1.7),
+                        Dose_1 = runif(12,min = 1.2,max = 1.7),
+                        Dose_10 = runif(12,min = 1.1,max = 2.6),
+                        Dose_100 = runif(12,min = 1.6,max = 8)),digits = 1)
+df_fried
+
+df_fried$Subject <- as.factor(df_fried$Subject)
+
+a <- rep(c("Thing 0","Thing 1","Thing 10","Thing 100"),each=12)
+y <- round(runif(48,min=c(1.1,1.2,1.1,1.6),max = c(1.7,1.7,2.6,8)),digits=1)
+b <- as.factor(rep(1:12,4))
+fried_tst <- data.frame(a,b,y)
+fried_tst
+friedman.test(y~a|b)
+
+
+
+ 
+
+
+
+
+
+
 
 
 

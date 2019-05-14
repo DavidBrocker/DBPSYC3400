@@ -5,6 +5,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA,warning = FALSE)
 ```
+<br>
+
 
 ## Non-Parametric Tests
 
@@ -182,7 +184,7 @@ boxplot(GoodNeighborhood,BadNeighborhood,data=Neighborhoods)
 wilcox.test(GoodNeighborhood,BadNeighborhood,data=Neighborhoods)
 ```
 
-### Proper Reporting: Mann-Whitney U
+#### Proper Reporting: Mann-Whitney U
 
  $U_{obt} = 77, NS$
 
@@ -201,7 +203,7 @@ wilcox.test(x=twelve_nin$Condition1,twelve_nin$Condition2,paired = TRUE)
 
 ```
 
-### Proper Reporting:
+#### Proper Reporting:
 
 $V(12) = 15.5, p >.05$
 
@@ -237,8 +239,24 @@ kruskal.test(NFoodRating)
 
 $H(4) = 10.677, p <.05$
 
+### Friedman Test
 
+We can use a Friedman Test when we want to compare the effect of two or more independent variables on a dependent variable like such:
 
+*Remember: This test is designed to replicate the two-way ANOVA, just with different data types, because of this your data needs to look similar.*
+
+```{r}
+a <- rep(c("Thing 0","Thing 1","Thing 10","Thing 100"),each=12)
+y <- round(runif(48,min=c(11.1,11.2,11.1,11.6),max = c(11.7,11.7,22.6,18)),digits=1)
+b <- as.factor(rep(1:12,4))
+fried_tst <- data.frame(a,b,y)
+fried_tst
+friedman.test(y~a|b)
+```
+
+#### Proper Formatting
+
+$fr_{obt} (3), = 3.2655,N.S$
 
 
 
