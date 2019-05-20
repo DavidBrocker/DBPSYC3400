@@ -32,6 +32,8 @@ navbar:
     href: Lab-11.html 
   - text: Lab 12
     href: Lab-12.html 
+  - text: Final Review
+    href: Final-Review.html
     
 output_dir: docs
 output:

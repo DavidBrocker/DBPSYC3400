@@ -1,0 +1,328 @@
+---
+title: ''
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,comment = NA)
+```
+## Final Review Sheet
+
+We made it! 
+
+I am quite proud of all of you for making it to this point. This was never an easy class, and it should not be. This class is designed to show you the basic concepts that underlie all of psychological analyses. Whether you go on to be clinical psychologists or in an entirely unrelated field, I hope that you will take away an understanding, and an appreciation for the science that floods the news daily. Being able to understand what all those numbers mean, will make you a better consumer of scientific knowledge. 
+
+### OK, on to what you really want in a review sheet:
+
+#### Functions and Arguments
+
+Here are some important functions and arguments to know:
+
+`plot()` - This is the function to graphically visualize your data. Within this function can be several arguments. 
+  
+  - `x`,`y`:The independent and dependent variable you are interested in
+  
+  - `main = `,`xlab = `, `ylab = `, `sub = `: Title, x-axis lable, y-axis label, and caption. 
+  
+  - `xlim = `,`ylim = `: These set parameters for the graph that will be drawn.
+  
+  - `col =` : Designates a desired color for the lines, and points that will be drawn. 
+  
+  - `pch = `: Point character, assigns shape for points drawn.
+
+- `points()`: Plot additional points on an existing graph with pre-defined graphical parameters
+
+-`cor()` - This function will return the correlation, or r, of an entire dataframe, or of specified variables. 
+
+-`hist()` - This function will create a histogram of a given variable, displaying its frequencies.
+
+  - `breaks = ` - This argument allows you to specify a bin width of your choice.
+
+- `lm()` - This function allows you to create a linear model from which you can predict a variable, from another. 
+
+  - the `~` is used to delinate between the predicting variable and the predictor variable. 
+
+    - For example: `lm(x~y)` is different than `lm(y~x)`. 
+
+  - When using `lm()`, it is common to name the model something that makes sense + `.mod.`.
+
+-`summary()` - This can be used on entire datasets to return the minimum, maximum, and median values. 
+
+  - This can also be used to expand a linear model to give you values such as the coefficient of correlation, slope and intercept. 
+  
+#### Syntax
+
+When using R-Studio, it is important that the math you do in the console follows the same rules as the math you would do on a calculator or a piece of paper. 
+
+For example: 
+
+I have a dataset with a **mean** of 10, and a **standard deviation** of 7. What is the probability of having a score of 18?
+
+We know the formula for this is the **Z-Score** formula:
+$$z = \frac{x - M}{\sigma}$$
+Depending on how you enter this data into R, you will get two different answers:
+
+```{r}
+wrong = 18-10/7
+wrong
+right = (18-10)/7
+right
+```
+`()` are very important to R, and your answers will either be incorrect or will not be ouput corectly if the `()` are misplaced/misused. Depending on how difficult you want to make your calculations, keeping track of your `()` placement is very important.
+
+The below equation will not render the correct answer:
+```{r}
+incorrect = (100-200*300/4)/(300-120^2/4)*(220-320^2/4)
+correct = (100-(200*300/4)/(300-((120^2)/4)*(220-((320^2)/4))))
+incorrect
+correct
+diff = incorrect-correct
+diff
+
+```
+Not too bad, we were **only** off by *one hundred and fourteen thousand six hundred nintey-four*.
+
+##### Math Operators
+
+
+`()` matter, quite a lot. Additionally, here are the math operators you can use:
+
+`+`
+
+`-`
+
+`*`
+
+`/`
+
+`^`
+
+`sqrt()`
+
+<br>
+
+`barplot` - This is the overall function for creating a bar graph. It has several functions that go along with it.
+
+  
+  `col` - This is the same idea from the color argument used in a scatter plot, however, with bar plots you need to add a concatenation if you are looking to plot more than one bar (which you should!).
+      
+  `col=c("white","red","blue")`
+        
+  `names.arg` - This is similar to `xlab`,however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.
+  
+  `names.arg=c("Experimental","Control")`
+
+**Data Generation**
+
+`set.seed()` - This function specifies a ‘seed’ of your choice. By choosing a ‘seed’ you are ensuring the ability of the data you produce to be replicable either for the use of a problem set, or for troubleshooting. 
+
+`sample`  - This function allows you to create a sample from an existing vector. It has two arguments. 
+
+
+  `x` - The vector that you will be sampling from. It is important that whatever you decide to sample from x *cannot* be larger than the length of x.
+
+
+  `n` - This specifies how many items you  want to sample from `x`. 
+
+
+  **Sampling Example** 
+  
+  `sample(x, 10)`
+
+`rnorm` - This function returns whatever size you specify as a vector from the normal distribution.
+
+
+  `N` - This is the size of the vector that you would like.
+
+
+  `mean` - This is what you would like the mean of the data returned to be.
+
+
+  `sd` - This is what you would like the standard deviation of the data returned to be. 
+
+
+  **Example of rnorm** 
+  `rnorm(100, 120, 10)`
+
+`library()` - This function loads a package outside of the ones native to R. So far, the only package we will be using is `BSDA`. 
+
+**BSDA** 
+
+`z.test()` -  This is the function you will use to perform a z test. It contains several arguments.
+
+
+  `x` - This will be your vector that continues the data you will be comparing to $\mu$ and $\sigma$.
+
+
+  `sigma.x` - This will be the population standard deviation, $\sigma$, which will *usually* be given to you in a question.
+
+
+  `mu` - This will be the population mean, $\mu$, which will *usually* be given to you in a question. 
+
+
+  `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
+
+
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+
+
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
+
+
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
+
+
+  Here is what a full z.test function could look like:
+
+
+  `z.test(x, mu = 12, sigma.x = 3.12, alternative ="two.sided")`
+
+`SIGN.test()` -  This is the function you will use to perform a sign test. It contains several arguments.
+
+
+  `x` - This will be your vector that continues the data that is the *difference* between the first group and second group. 
+
+
+  `md` - This will rarely be given, but implied. The sign test will test against the $H_0$, which states that no difference exists, so 0 should be the default value. 
+
+
+  `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
+
+
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+
+
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
+
+
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
+
+
+  Here is what a full sign test function could look like:
+
+
+  `SIGN.test(x, md = 0, alternative = "two.sided")`
+
+**T-Test: One-Sample, Paired, Independent**
+
+`t.test` - This function contains several arguments, the results, as well as the type of test that is run will be determined on which you specify. 
+
+
+  `x` - This is a vector that you be comparing against the population mean, $\mu$.
+
+
+  `y1, y2` - These arguments specify two distinct vectors of the same length to be compared. 
+
+
+  `mu` - This will be the population mean, $\mu$, which will *usually* be given to you in a question. 
+
+
+  `alternative` - This argument specifies the directionality of the hypothesis you wish to test. 
+  
+  `two.sided` - This argument specifies that you wish to run a 2-tailed test. 
+  
+  `lesser` - This argument specified that you wish to run a 1-tailed test indicating that your sample is *less* than the population mean, $\mu$.
+  
+  `greater`  - This argument specified that you wish to run a 1-tailed test indicating that your sample is *greater*  than the population mean, $\mu$.
+
+
+  
+  `var.equal = TRUE` - This argument specifies that the variances are assumed to be equal. 
+
+
+  `paired = TRUE` - If specified, this will result in R assuming the sample(s) are to be paired.
+
+**Determining which Test will be run:**
+
+*Single Sample T-Test*
+
+`t.test(x, mu = 23, alternative ="lesser")`
+
+*Paired Sample T-Test*
+
+`t.test(y1, y2, paired = TRUE, var.equal= TRUE, alternative = "greater")`
+
+*Independent T-Test*
+
+`t.test(y1, y2, var.equal= TRUE, alternative = "two.sided")`
+
+### ANOVA's 
+
+We have learned three different kinds of ANOVA in this class. 
+
+#### 1. One-Way Between Subjects ANOVA
+
+
+`aov(DV~IV)`
+
+  - DV is what is being measured, usually a score, rating, measurement, etc. 
+
+  - IV is what is being manipulated, in order for `R` to calculate anything, this **must** be a factor. 
+
+`factor(variable)` - This will produce the variable as a factor. 
+
+This produces **One F**
+
+#### 2.One-Way Between Subjects ANOVA
+
+`aov(DV~IV1*IV2)`
+
+  - DV is what is being measured, usually a score, rating, measurement, etc. 
+
+  - IV1 is what is being manipulated: Control, Treatment, Treatment 2, etc. 
+
+  - IV2 is also what is being manipulted **throughout** the IV1. 
+
+    - Control-High, Control-Medium, Control-Low
+  
+This produces **Three F's**
+
+#### 3.One-Way Subjects ANOVA
+
+`aov(DV~IV+Error(Subject))`
+
+   - DV is what is being measured, usually a score, rating, measurement, etc. 
+
+  - IV1 is what is being manipulated: Control, Treatment, Treatment 2, etc. 
+  
+  - Subject is the ID of the participant taking the experiment, they factor into your analysis because their data is in each 
+  level of the independent variable. **Must be a factor**. 
+  
+This produces **One F**. 
+
+### Non-Parametric Tests
+
+#### Independent 2-group Mann-Whitney U Test 
+`wilcox.test(y~A)` 
+ 
+ where y is numeric 
+ 
+ A is A binary factor
+
+#### Independent 2-group Mann-Whitney U Test
+`wilcox.test(y,x)` # 
+
+y is numeric
+x is numeric
+
+#### Dependent 2-group Wilcoxon Signed Rank Test 
+`wilcox.test(y1,y2,paired=TRUE)` # where y1 and y2 are numeric
+
+#### Kruskal Wallis Test One Way Anova by Ranks 
+`kruskal.test(y~A)` # where y1 is numeric and A is a factor
+
+#### Friedman Test 
+
+`friedman.test(y~A|B)`
+
+y is data values
+
+A is a grouping factor
+
+B is a blocking factor
+    
+
+
+
+
+

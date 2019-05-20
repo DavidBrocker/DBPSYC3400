@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Final-Review.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PSYCH 3400</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Lab-1.html">Lab 1</a>
+</li>
+<li>
+  <a href="Lab-2.html">Lab 2</a>
+</li>
+<li>
+  <a href="Lab-3.html">Lab 3</a>
+</li>
+<li>
+  <a href="Review-Sheet.html">Review Sheet 1</a>
+</li>
+<li>
+  <a href="Lab-4.html">Lab 4</a>
+</li>
+<li>
+  <a href="Lab-5.html">Lab 5</a>
+</li>
+<li>
+  <a href="Lab-6.html">Lab 6</a>
+</li>
+<li>
+  <a href="Lab-7.html">Lab 7</a>
+</li>
+<li>
+  <a href="Review_Sheet_2.html">Review Sheet 2</a>
+</li>
+<li>
+  <a href="Lab-8.html">Lab 8</a>
+</li>
+<li>
+  <a href="Lab-9.html">Lab 9</a>
+</li>
+<li>
+  <a href="Lab-10.html">Lab 10</a>
+</li>
+<li>
+  <a href="Lab-11.html">Lab 11</a>
+</li>
+<li>
+  <a href="Lab-12.html">Lab 12</a>
+</li>
+<li>
+  <a href="Final-Review.html">Final Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="final-review-sheet" class="section level2">
+<h2>Final Review Sheet</h2>
+<p>We made it!</p>
+<p>I am quite proud of all of you for making it to this point. This was never an easy class, and it should not be. This class is designed to show you the basic concepts that underlie all of psychological analyses. Whether you go on to be clinical psychologists or in an entirely unrelated field, I hope that you will take away an understanding, and an appreciation for the science that floods the news daily. Being able to understand what all those numbers mean, will make you a better consumer of scientific knowledge.</p>
+<div id="ok-on-to-what-you-really-want-in-a-review-sheet" class="section level3">
+<h3>OK, on to what you really want in a review sheet:</h3>
+<div id="functions-and-arguments" class="section level4">
+<h4>Functions and Arguments</h4>
+<p>Here are some important functions and arguments to know:</p>
+<p><code>plot()</code> - This is the function to graphically visualize your data. Within this function can be several arguments.</p>
+<ul>
+<li><p><code>x</code>,<code>y</code>:The independent and dependent variable you are interested in</p></li>
+<li><p><code>main =</code>,<code>xlab =</code>, <code>ylab =</code>, <code>sub =</code>: Title, x-axis lable, y-axis label, and caption.</p></li>
+<li><p><code>xlim =</code>,<code>ylim =</code>: These set parameters for the graph that will be drawn.</p></li>
+<li><p><code>col =</code> : Designates a desired color for the lines, and points that will be drawn.</p></li>
+<li><p><code>pch =</code>: Point character, assigns shape for points drawn.</p></li>
+<li><p><code>points()</code>: Plot additional points on an existing graph with pre-defined graphical parameters</p></li>
+</ul>
+<p>-<code>cor()</code> - This function will return the correlation, or r, of an entire dataframe, or of specified variables.</p>
+<p>-<code>hist()</code> - This function will create a histogram of a given variable, displaying its frequencies.</p>
+<ul>
+<li><p><code>breaks =</code> - This argument allows you to specify a bin width of your choice.</p></li>
+<li><p><code>lm()</code> - This function allows you to create a linear model from which you can predict a variable, from another.</p>
+<ul>
+<li><p>the <code>~</code> is used to delinate between the predicting variable and the predictor variable.</p>
+<ul>
+<li>For example: <code>lm(x~y)</code> is different than <code>lm(y~x)</code>.</li>
+</ul></li>
+<li><p>When using <code>lm()</code>, it is common to name the model something that makes sense + <code>.mod.</code>.</p></li>
+</ul></li>
+</ul>
+<p>-<code>summary()</code> - This can be used on entire datasets to return the minimum, maximum, and median values.</p>
+<ul>
+<li>This can also be used to expand a linear model to give you values such as the coefficient of correlation, slope and intercept.</li>
+</ul>
+</div>
+<div id="syntax" class="section level4">
+<h4>Syntax</h4>
+<p>When using R-Studio, it is important that the math you do in the console follows the same rules as the math you would do on a calculator or a piece of paper.</p>
+<p>For example:</p>
+<p>I have a dataset with a <strong>mean</strong> of 10, and a <strong>standard deviation</strong> of 7. What is the probability of having a score of 18?</p>
+<p>We know the formula for this is the <strong>Z-Score</strong> formula: <span class="math display">\[z = \frac{x - M}{\sigma}\]</span> Depending on how you enter this data into R, you will get two different answers:</p>
+<pre class="r"><code>wrong = 18-10/7
+wrong</code></pre>
+<pre><code>[1] 16.57143</code></pre>
+<pre class="r"><code>right = (18-10)/7
+right</code></pre>
+<pre><code>[1] 1.142857</code></pre>
+<p><code>()</code> are very important to R, and your answers will either be incorrect or will not be ouput corectly if the <code>()</code> are misplaced/misused. Depending on how difficult you want to make your calculations, keeping track of your <code>()</code> placement is very important.</p>
+<p>The below equation will not render the correct answer:</p>
+<pre class="r"><code>incorrect = (100-200*300/4)/(300-120^2/4)*(220-320^2/4)
+correct = (100-(200*300/4)/(300-((120^2)/4)*(220-((320^2)/4))))
+incorrect</code></pre>
+<pre><code>[1] -114594.5</code></pre>
+<pre class="r"><code>correct</code></pre>
+<pre><code>[1] 99.99984</code></pre>
+<pre class="r"><code>diff = incorrect-correct
+diff</code></pre>
+<pre><code>[1] -114694.5</code></pre>
+<p>Not too bad, we were <strong>only</strong> off by <em>one hundred and fourteen thousand six hundred nintey-four</em>.</p>
+<div id="math-operators" class="section level5">
+<h5>Math Operators</h5>
+<p><code>()</code> matter, quite a lot. Additionally, here are the math operators you can use:</p>
+<p><code>+</code></p>
+<p><code>-</code></p>
+<p><code>*</code></p>
+<p><code>/</code></p>
+<p><code>^</code></p>
+<p><code>sqrt()</code></p>
+<p><br></p>
+<p><code>barplot</code> - This is the overall function for creating a bar graph. It has several functions that go along with it.</p>
+<p><code>col</code> - This is the same idea from the color argument used in a scatter plot, however, with bar plots you need to add a concatenation if you are looking to plot more than one bar (which you should!).</p>
+<p><code>col=c(&quot;white&quot;,&quot;red&quot;,&quot;blue&quot;)</code></p>
+<p><code>names.arg</code> - This is similar to <code>xlab</code>,however, we are usually going to be referring to each bar by a different name so you will need to add a concatenation.</p>
+<p><code>names.arg=c(&quot;Experimental&quot;,&quot;Control&quot;)</code></p>
+<p><strong>Data Generation</strong></p>
+<p><code>set.seed()</code> - This function specifies a ‘seed’ of your choice. By choosing a ‘seed’ you are ensuring the ability of the data you produce to be replicable either for the use of a problem set, or for troubleshooting.</p>
+<p><code>sample</code> - This function allows you to create a sample from an existing vector. It has two arguments.</p>
+<p><code>x</code> - The vector that you will be sampling from. It is important that whatever you decide to sample from x <em>cannot</em> be larger than the length of x.</p>
+<p><code>n</code> - This specifies how many items you want to sample from <code>x</code>.</p>
+<p><strong>Sampling Example</strong></p>
+<p><code>sample(x, 10)</code></p>
+<p><code>rnorm</code> - This function returns whatever size you specify as a vector from the normal distribution.</p>
+<p><code>N</code> - This is the size of the vector that you would like.</p>
+<p><code>mean</code> - This is what you would like the mean of the data returned to be.</p>
+<p><code>sd</code> - This is what you would like the standard deviation of the data returned to be.</p>
+<p><strong>Example of rnorm</strong> <code>rnorm(100, 120, 10)</code></p>
+<p><code>library()</code> - This function loads a package outside of the ones native to R. So far, the only package we will be using is <code>BSDA</code>.</p>
+<p><strong>BSDA</strong></p>
+<p><code>z.test()</code> - This is the function you will use to perform a z test. It contains several arguments.</p>
+<p><code>x</code> - This will be your vector that continues the data you will be comparing to <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p><code>sigma.x</code> - This will be the population standard deviation, <span class="math inline">\(\sigma\)</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>mu</code> - This will be the population mean, <span class="math inline">\(\mu\)</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<p><code>two.sided</code> - This argument specifies that you wish to run a 2-tailed test.</p>
+<p><code>lesser</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>less</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p><code>greater</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>greater</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>Here is what a full z.test function could look like:</p>
+<p><code>z.test(x, mu = 12, sigma.x = 3.12, alternative =&quot;two.sided&quot;)</code></p>
+<p><code>SIGN.test()</code> - This is the function you will use to perform a sign test. It contains several arguments.</p>
+<p><code>x</code> - This will be your vector that continues the data that is the <em>difference</em> between the first group and second group.</p>
+<p><code>md</code> - This will rarely be given, but implied. The sign test will test against the <span class="math inline">\(H_0\)</span>, which states that no difference exists, so 0 should be the default value.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<p><code>two.sided</code> - This argument specifies that you wish to run a 2-tailed test.</p>
+<p><code>lesser</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>less</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p><code>greater</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>greater</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>Here is what a full sign test function could look like:</p>
+<p><code>SIGN.test(x, md = 0, alternative = &quot;two.sided&quot;)</code></p>
+<p><strong>T-Test: One-Sample, Paired, Independent</strong></p>
+<p><code>t.test</code> - This function contains several arguments, the results, as well as the type of test that is run will be determined on which you specify.</p>
+<p><code>x</code> - This is a vector that you be comparing against the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p><code>y1, y2</code> - These arguments specify two distinct vectors of the same length to be compared.</p>
+<p><code>mu</code> - This will be the population mean, <span class="math inline">\(\mu\)</span>, which will <em>usually</em> be given to you in a question.</p>
+<p><code>alternative</code> - This argument specifies the directionality of the hypothesis you wish to test.</p>
+<p><code>two.sided</code> - This argument specifies that you wish to run a 2-tailed test.</p>
+<p><code>lesser</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>less</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p><code>greater</code> - This argument specified that you wish to run a 1-tailed test indicating that your sample is <em>greater</em> than the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p><code>var.equal = TRUE</code> - This argument specifies that the variances are assumed to be equal.</p>
+<p><code>paired = TRUE</code> - If specified, this will result in R assuming the sample(s) are to be paired.</p>
+<p><strong>Determining which Test will be run:</strong></p>
+<p><em>Single Sample T-Test</em></p>
+<p><code>t.test(x, mu = 23, alternative =&quot;lesser&quot;)</code></p>
+<p><em>Paired Sample T-Test</em></p>
+<p><code>t.test(y1, y2, paired = TRUE, var.equal= TRUE, alternative = &quot;greater&quot;)</code></p>
+<p><em>Independent T-Test</em></p>
+<p><code>t.test(y1, y2, var.equal= TRUE, alternative = &quot;two.sided&quot;)</code></p>
+</div>
+</div>
+</div>
+<div id="anovas" class="section level3">
+<h3>ANOVA’s</h3>
+<p>We have learned three different kinds of ANOVA in this class.</p>
+<div id="one-way-between-subjects-anova" class="section level4">
+<h4>1. One-Way Between Subjects ANOVA</h4>
+<p><code>aov(DV~IV)</code></p>
+<ul>
+<li><p>DV is what is being measured, usually a score, rating, measurement, etc.</p></li>
+<li><p>IV is what is being manipulated, in order for <code>R</code> to calculate anything, this <strong>must</strong> be a factor.</p></li>
+</ul>
+<p><code>factor(variable)</code> - This will produce the variable as a factor.</p>
+<p>This produces <strong>One F</strong></p>
+</div>
+<div id="one-way-between-subjects-anova-1" class="section level4">
+<h4>2.One-Way Between Subjects ANOVA</h4>
+<p><code>aov(DV~IV1*IV2)</code></p>
+<ul>
+<li><p>DV is what is being measured, usually a score, rating, measurement, etc.</p></li>
+<li><p>IV1 is what is being manipulated: Control, Treatment, Treatment 2, etc.</p></li>
+<li><p>IV2 is also what is being manipulted <strong>throughout</strong> the IV1.</p>
+<ul>
+<li>Control-High, Control-Medium, Control-Low</li>
+</ul></li>
+</ul>
+<p>This produces <strong>Three F’s</strong></p>
+</div>
+<div id="one-way-subjects-anova" class="section level4">
+<h4>3.One-Way Subjects ANOVA</h4>
+<p><code>aov(DV~IV+Error(Subject))</code></p>
+<ul>
+<li><p>DV is what is being measured, usually a score, rating, measurement, etc.</p></li>
+<li><p>IV1 is what is being manipulated: Control, Treatment, Treatment 2, etc.</p></li>
+<li><p>Subject is the ID of the participant taking the experiment, they factor into your analysis because their data is in each level of the independent variable. <strong>Must be a factor</strong>.</p></li>
+</ul>
+<p>This produces <strong>One F</strong>.</p>
+</div>
+</div>
+<div id="non-parametric-tests" class="section level3">
+<h3>Non-Parametric Tests</h3>
+<div id="independent-2-group-mann-whitney-u-test" class="section level4">
+<h4>Independent 2-group Mann-Whitney U Test</h4>
+<p><code>wilcox.test(y~A)</code></p>
+<p>where y is numeric</p>
+<p>A is A binary factor</p>
+</div>
+<div id="independent-2-group-mann-whitney-u-test-1" class="section level4">
+<h4>Independent 2-group Mann-Whitney U Test</h4>
+<p><code>wilcox.test(y,x)</code> #</p>
+<p>y is numeric x is numeric</p>
+</div>
+<div id="dependent-2-group-wilcoxon-signed-rank-test" class="section level4">
+<h4>Dependent 2-group Wilcoxon Signed Rank Test</h4>
+<p><code>wilcox.test(y1,y2,paired=TRUE)</code> # where y1 and y2 are numeric</p>
+</div>
+<div id="kruskal-wallis-test-one-way-anova-by-ranks" class="section level4">
+<h4>Kruskal Wallis Test One Way Anova by Ranks</h4>
+<p><code>kruskal.test(y~A)</code> # where y1 is numeric and A is a factor</p>
+</div>
+<div id="friedman-test" class="section level4">
+<h4>Friedman Test</h4>
+<p><code>friedman.test(y~A|B)</code></p>
+<p>y is data values</p>
+<p>A is a grouping factor</p>
+<p>B is a blocking factor</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
